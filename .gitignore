@@ -5,3 +5,4 @@ db/*.db
 tmp/**/*
 log/*.log
 config/database.yml
+db/schema.rb
