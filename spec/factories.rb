@@ -1,8 +1,9 @@
 # This will guess the User class
 Factory.define :user do |u|
-  u.first_name 'John'
-  u.last_name  'Doe'
-  u.admin false
+  u.login 'johndoe'
+  u.email 'ben@ben.com'
+  u.password "benrocks"
+  u.password_confirmation "benrocks"
 end
 
 # This will use the User class (Admin would have been guessed)
