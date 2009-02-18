@@ -1,2 +1,1 @@
-default: -r features/support/env.rb -r features/support/plain.rb -r features/step_definitions features/plain --format pretty features
-selenium: -r features/support/env.rb -r features/support/enhanced.rb -r features/step_definitions features/enhanced features/plain --format pretty features
+default: -r features/support/env.rb -r features/step_definitions features --format pretty features
