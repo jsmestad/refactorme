@@ -9,7 +9,7 @@
   %body
     
     - [ :error, :success, :notice ].each do |type|
-      - if message[type]
-        %div{:class => type }= message[type]
+      - if flash[type]
+        %div{:class => type }= flash[type]
     
     = yield
