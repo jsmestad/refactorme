@@ -1,7 +1,7 @@
 Feature: Manage Snippets
   
   Scenario: Snippet of the Day
-    Given that a snippet exists
+    Given that an active snippet exists
     When I visit the main page
     Then I should see a snippet for today
   
@@ -12,25 +12,32 @@ Feature: Manage Snippets
     And I fill in "Title" with "Rails 3 Commit"
     And I fill in "Code" with "def hello(thing)"
     And I press "Submit"
-    Then it should be successful
-    And I should see a notice message
+    Then I should see a success message
     
   Scenario: Viewing Snippet Queue
     Given that a snippet exists
-    And I am logged in as an "admin" user
+    And I am logged in as an admin
     When I visit the main page
     And I click "Snippet Queue"
     Then I should see "1" "pending" snippet
   
   Scenario: Approving Snippet
     Given that a snippet exists
-    And I am logged in as an "admin" user
+    And I am logged in as an admin
     And I am on the snippet queue page
     When I press "Approve"
-    Then I should see a notice message
-    And I should see "1" "approved" snippet
+    Then I should see a success message
+    And I should see "1" approved snippet
 
-  Scenario: Snippet Selection
+  Scenario: Rejecting Snippet
+    Given that a snippet exists
+    And I am logged in as an admin
+    And I am on the snippet queue page
+    When I press "Reject"
+    Then I should see a success message
+    And I should see 0 snippets
+
+  Scenario: Snippet Selection Task
     Given that a snippet exists with the title "Snippet Today"
     And that snippet is approved
     And the time is "11:59pm"

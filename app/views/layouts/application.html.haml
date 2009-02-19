@@ -7,9 +7,17 @@
     /[if IE]
       = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
   %body
-    
-    - [ :error, :success, :notice ].each do |type|
-      - if flash[type]
-        %div{:class => type }= flash[type]
-    
-    = yield
+    #header
+      %ul#navigation
+        %li= link_to "main", root_path
+        %li= link_to "submit new", submit_snippet_path
+    #container
+      - [ :error, :success, :notice ].each do |type|
+        - if flash[type]
+          %div{:class => type }= flash[type]
+
+      = yield
+    #footer
+      %ul#admin
+        %li= link_to 'Snippet Queue', snippets_path
+        %li= link_to 'User List', users_path

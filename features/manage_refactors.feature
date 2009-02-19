@@ -11,7 +11,7 @@ Feature: Manage Refactors
     
   Scenario: Vote For Refactor
     Given I am logged in
-    And that a snippet exists with a refactor
+    And that a snippet exists that has a refactor
     When I click "+1"
     Then I should see a notice message
     And the score should increase from "0" to "1"

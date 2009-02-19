@@ -1,4 +1,3 @@
-# This will guess the User class
 Factory.define :user do |u|
   u.login 'johndoe'
   u.email 'ben@ben.com'
@@ -6,9 +5,11 @@ Factory.define :user do |u|
   u.password_confirmation "benrocks"
 end
 
-# This will use the User class (Admin would have been guessed)
-Factory.define :admin, :class => User do |u|
-  u.first_name 'Admin'
-  u.last_name  'User'
+Factory.define :admin, :class => User, :parent => :user do |u|
   u.admin true
+end
+
+Factory.define :snippet do |s|
+  s.title "Code Snippet"
+  s.code "def hello_world; hello world; end;"
 end
