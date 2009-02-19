@@ -20,7 +20,7 @@ describe UserSessionsController do
   it "should destroy user session" do
     delete :destroy
     UserSession.find.should be_nil
-    response.should redirect_to(new_user_session_path)
+    response.should redirect_to(login_path)
   end
 
 end

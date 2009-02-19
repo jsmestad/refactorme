@@ -1,5 +1,5 @@
 Given /^a user exists$/ do
-  Factory(:user)
+  Factory.create(:user)
 end
  
 Given /^a user exists with email "(.+)"$/ do |email|
@@ -13,7 +13,7 @@ end
  
 Given /^I am logged in$/ do
   Given %{a user exists}
-  Given %{I go to /login}
+  Given %{I visit the login page}
   Given %{I fill in "login" with "#{User.first.login}"}
   Given %{I fill in "password" with "#{User.first.password}"}
   Given %{I press "Login"}

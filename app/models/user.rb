@@ -6,4 +6,12 @@ class User < ActiveRecord::Base
     Notifier.deliver_password_reset_instructions(self)
   end
   
+  def is_admin?
+    !!self.admin
+  end
+  
+  def to_param
+    login
+  end
+  
 end

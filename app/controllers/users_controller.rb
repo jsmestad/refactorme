@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
   before_filter :require_no_user, :only => [:new, :create]
   before_filter :require_user, :only => [:show, :edit, :update]
+  before_filter :require_admin, :only => [:index, :destroy]
+  
+  def index
+    @users = User.all
+  end
   
   def new
     @user = User.new
@@ -17,7 +22,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = @current_user
+    if @current_user.is_admin?
+      @user = User.find_by_login!(params[:id])
+    else
+      @user = @current_user
+    end
   end
 
   def edit
@@ -33,4 +42,15 @@ class UsersController < ApplicationController
       render :action => :edit
     end
   end
+  
+  def destroy
+    user = User.find_by_login!(params[:id])
+    if user.destroy
+      flash[:success] = "User has been deleted"
+    else
+      flash[:error] = "Error occured while deleting user"
+    end
+    redirect_to users_path
+  end
+  
 end

@@ -1,6 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe UsersController do
+  integrate_views
   
   it "should get new" do
     get :new
@@ -18,7 +19,6 @@ describe UsersController do
   describe "given a user exists" do
     before do
       @user = Factory.create(:user)
-      #
     end
   
     it "should show user" do
