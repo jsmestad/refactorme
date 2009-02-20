@@ -1,74 +1,43 @@
-/* 
- * Welcome to Compass.
- * In this file you should write your main styles. (or centralize your imports)
- * Import this file using the following HTML or equivalent:
- * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
-html, body {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-weight: inherit;
-  font-style: inherit;
-  font-size: 100%;
-  font-family: inherit;
-  vertical-align: baseline; }
 
-div, span, object, iframe, h1, h2, h3, h4, h5, h6, p,
-pre, a, abbr, acronym, address, code, del, dfn, em, img,
-dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption, tbody, tfoot, thead, tr {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-weight: inherit;
-  font-style: inherit;
-  font-size: 100%;
-  font-family: inherit;
-  vertical-align: baseline; }
+
+
+
+
+
+
+
+
+
+
+
+
 
 body {
-  line-height: 1.5; }
-
-blockquote, q {
+  background-color: #D1C9C0;
   margin: 0;
-  padding: 0;
-  border: 0;
-  font-weight: inherit;
-  font-style: inherit;
-  font-size: 100%;
-  font-family: inherit;
-  vertical-align: baseline;
-  quotes: "" ""; }
-  blockquote:before,
-  blockquote:after,   q:before,
-  q:after {
-    content: ""; }
+  padding: 0; }
 
-th, td, caption {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-weight: inherit;
-  font-style: inherit;
-  font-size: 100%;
-  font-family: inherit;
-  vertical-align: baseline;
-  text-align: left;
-  font-weight: normal;
-  vertical-align: middle; }
-
-table {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-weight: inherit;
-  font-style: inherit;
-  font-size: 100%;
-  font-family: inherit;
-  vertical-align: baseline;
-  border-collapse: separate;
-  border-spacing: 0;
-  vertical-align: middle; }
-
-a img {
-  border: none; }
+.container {
+  background-color: #FFF;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 780px; }
+  .container #header .navigation {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    display: inline; }
+    .container #header .navigation li {
+      margin: 0px;
+      padding: 0px;
+      display: inline; }
+  .container #footer .admin-panel {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    display: inline; }
+    .container #footer .admin-panel li {
+      margin: 0px;
+      padding: 0px;
+      display: inline; }
