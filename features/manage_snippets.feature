@@ -8,7 +8,7 @@ Feature: Manage Snippets
   Scenario: Submit New Snippet
     Given I am logged in
     When I visit the main page
-    And I click "Submit New"
+    And I click "submit"
     And I fill in "Title" with "Rails 3 Commit"
     And I fill in "Code" with "def hello(thing)"
     And I press "Submit"

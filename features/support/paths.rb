@@ -5,7 +5,10 @@ def path_to(page_name)
     root_url
   when /the login page/i
     login_url
-  when / /i
+  when /the registration page/i
+    new_user_url
+  when /the manage users page/i
+    users_url
   
   # Add more page name => path mappings here
   

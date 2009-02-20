@@ -1,2 +1,11 @@
-- @users.each do |user|
-  = link_to user.login, user
+%table
+  %thead
+    %th Login
+    %th Email
+    %th Registration Date
+  - @users.each do |user|
+    %tr
+      %td= link_to user.login, user
+      %td= user.email
+      %td= user.created_at.to_s(:no_year)
+      %td= link_to 'Delete', user, :class => 'delete'
