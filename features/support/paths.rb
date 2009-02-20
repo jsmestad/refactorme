@@ -2,9 +2,9 @@ def path_to(page_name)
   case page_name
   
   when /the main page/i
-    root_path
+    root_url
   when /the login page/i
-    login_path
+    login_url
   when / /i
   
   # Add more page name => path mappings here
