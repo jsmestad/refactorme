@@ -22,7 +22,6 @@ development:
   pool: 5
   username: root
   password:
-  socket: /tmp/mysql.sock
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -34,8 +33,7 @@ test:
   database: refactor_me_test
   pool: 5
   username: build_user
-  password: 
-  socket: /tmp/mysql.sock
+  password:
 
 production:
   adapter: mysql
@@ -45,4 +43,3 @@ production:
   pool: 5
   username: root
   password: 
-  socket: /tmp/mysql.sock
