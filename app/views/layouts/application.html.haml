@@ -7,17 +7,23 @@
     /[if IE]
       = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
   %body
-    #header
-      %ul#navigation
-        %li= link_to "main", root_path
-        %li= link_to "submit new", submit_snippet_path
-    #container
-      - [ :error, :success, :notice ].each do |type|
-        - if flash[type]
-          %div{:class => type }= flash[type]
+    .container
+      #header
+        %h1
+          %a{ :href => root_url }
+            RefactorMe
+        %ul.navigation
+          %li= link_to "main", root_url
+          %li= link_to "submit new", submit_snippet_url
+          %li= link_to "login", login_url
 
-      = yield
-    #footer
-      %ul#admin
-        %li= link_to 'Snippet Queue', snippets_path
-        %li= link_to 'User List', users_path
+      #content
+        - [ :error, :success, :notice ].each do |type|
+          - if flash[type]
+            %div{:class => type }= flash[type]
+
+        = yield
+      #footer
+        %ul.admin-panel
+          %li= link_to 'Snippet Queue', snippets_path
+          %li= link_to 'User List', users_path

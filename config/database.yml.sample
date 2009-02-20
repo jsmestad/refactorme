@@ -18,9 +18,9 @@ development:
   adapter: mysql
   encoding: utf8
   reconnect: false
-  database: refactor_me_development
+  database: refactor_me_dev
   pool: 5
-  username: root
+  username: build_user
   password:
 
 # Warning: The database defined as "test" will be erased and
