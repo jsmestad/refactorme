@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      flash[:notice] = "Account registered!"
+      flash[:success] = "Account registered!"
       redirect_back_or_default account_url
     else
       render :action => :new
@@ -46,11 +46,8 @@ class UsersController < ApplicationController
   def destroy
     user = User.find_by_login!(params[:id])
     if user.destroy
-      flash[:success] = "User has been deleted"
-    else
-      flash[:error] = "Error occured while deleting user"
+      render :text => "User has been deleted"
     end
-    redirect_to users_path
   end
   
 end

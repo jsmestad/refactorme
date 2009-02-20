@@ -1,15 +1,8 @@
-Given /I am on the new user page/ do
-  visit "/users/new"
-end
-
-Given /^the following users:$/ do |users|
-  User.create!(users.hashes)
-end
-
 When /^I delete the (\d+)(?:st|nd|rd|th) user$/ do |pos|
+  p User.count
   visit users_url
   within("table > tr:nth-child(#{pos.to_i+1})") do
-    click_link "Destroy"
+    click_link "Delete"
   end
 end
 
