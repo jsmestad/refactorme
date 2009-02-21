@@ -28,8 +28,8 @@ end
 
 Given /^I am logged in as an admin$/ do
   user = Factory.create(:admin)
-  visits "/login"
-  fills_in "login", :with => "#{user.login}"
-  fills_in "password", :with => "#{user.password}"
-  clicks_button "Login"
+  visit "/login"
+  fill_in "login", :with => "#{user.login}"
+  fill_in "password", :with => "#{user.password}"
+  click_button "Login"
 end
