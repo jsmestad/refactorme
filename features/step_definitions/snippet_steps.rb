@@ -8,3 +8,8 @@ Then /I should see a snippet for today/ do
   now = Date.today
   response_body.should have_xpath("//*[@class=\"date\" and text()=\"#{now.strftime('%b %d')}\"]")
 end
+
+Then /I should see "(\d+)" (\w+) snippet/ do |amount, type|
+  amount = amount.to_i
+  
+end

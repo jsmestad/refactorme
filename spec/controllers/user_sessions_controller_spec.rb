@@ -11,7 +11,7 @@ describe UserSessionsController do
   end
 
   it "should create user session" do
-    post :create, :user_session => { :login => "johndoe", :password => "benrocks" }
+    post :create, :user_session => { :login => @user.login, :password => "benrocks" }
     user_session = UserSession.find
     @user.should == user_session.user
     response.should redirect_to(account_path)

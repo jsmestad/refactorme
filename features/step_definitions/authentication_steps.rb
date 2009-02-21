@@ -7,11 +7,11 @@ Given /^a user exists with login "(.+)" and password "(.+)"$/ do |login, passwor
 end
  
 Given /^I am logged in$/ do
-  Given %{a user exists}
-  Given %{I visit the login page}
-  Given %{I fill in "Login" with "#{User.first.login}"}
-  Given %{I fill in "Password" with "#{User.first.password}"}
-  Given %{I press "Login"}
+  user = Factory.create(:user)
+  visits "/login"
+  fills_in "login", :with => "#{user.login}"
+  fills_in "password", :with => "#{user.password}"
+  clicks_button "Login"
 end
  
 Given /^I am logged in as "(.+)"$/ do |user|
@@ -28,5 +28,8 @@ end
 
 Given /^I am logged in as an admin$/ do
   user = Factory.create(:admin)
-  Given %{I login as "#{user.login}"}
+  visits "/login"
+  fills_in "login", :with => "#{user.login}"
+  fills_in "password", :with => "#{user.password}"
+  clicks_button "Login"
 end

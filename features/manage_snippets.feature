@@ -19,7 +19,7 @@ Feature: Manage Snippets
     And I am logged in as an admin
     When I visit the main page
     And I click "Snippet Queue"
-    Then I should see "1" "pending" snippet
+    Then I should see "1" pending snippet
   
   Scenario: Approving Snippet
     Given that a snippet exists

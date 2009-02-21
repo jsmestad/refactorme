@@ -1,7 +1,7 @@
 
 jQuery(document).ready(function() {
   
-  jQuery('a.delete').livequery('click', function() {
+  jQuery('a.delete').live('click', function() {
     var answer = confirm('Are you sure?');
     var self = jQuery(this);
     if (answer == true) {
