@@ -11,7 +11,6 @@ end
  
 When /^I click "(.*)"$/ do |link|
   @response = click_link(link)
-  p @response
 end
  
 When /^I fill in "(.*)" with "(.*)"$/ do |field, value|

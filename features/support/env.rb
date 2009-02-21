@@ -7,6 +7,7 @@ require 'cucumber/formatters/unicode'
 require 'webrat'
 require 'factory_girl'
 require File.expand_path(File.join( RAILS_ROOT, "spec", "factories"))
+Dir[ File.join(Rails.root, "spec", "lib", "*.rb") ].each { |f| require f }
 
 Cucumber::Rails.use_transactional_fixtures
  

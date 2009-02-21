@@ -1,4 +1,14 @@
-- @snippets.each do |snippet|
-  = link_to snippet.title, snippet
+%h1 Snippet Queue
 
+%table
+  %thead
+    %th Title
+    %th Submit Date
+    %th Status
+  - @snippets.each do |snippet|
+    %tr
+      %td= link_to snippet.title, snippet
+      %td= snippet.created_at.to_s(:no_date)
+      %td= snippet.queue_position ? "In-queue" : link_to "Queue", '#'
+    
 = "Pending Snippets: #{@snippets.size}"
