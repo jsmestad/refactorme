@@ -24,24 +24,22 @@ Feature: Manage Snippets
   Scenario: Approving Snippet
     Given that a snippet exists
     And I am logged in as an admin
-    And I am on the snippet queue page
-    When I press "Approve"
+    And I visit the snippet queue page
+    When I click "Approve"
     Then I should see a success message
     And I should see "1" approved snippet
 
   Scenario: Rejecting Snippet
     Given that a snippet exists
     And I am logged in as an admin
-    And I am on the snippet queue page
-    When I press "Reject"
+    And I visit the snippet queue page
+    When I click "Reject"
     Then I should see a success message
-    And I should see 0 snippets
+    And I should not see any snipppets
 
   Scenario: Snippet Selection Task
-    Given that a snippet exists with the title "Snippet Today"
-    And that snippet is approved
-    And the time is "11:59pm"
-    When the clock hits "12:00am"
+    Given that an approved snippet exists with the title "Snippet Today"
+    When the nightly rake task runs
     And I visit the main page
     Then I should see a snippet with the title "Snippet Today"
     
