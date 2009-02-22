@@ -2,6 +2,7 @@ class Snippet < ActiveRecord::Base
   acts_as_list
   
   belongs_to :user
+  has_many :refactors
   
   def self.set_daily_snippet
     todays = Snippet.first(:conditions => 'displayed_on IS NULL AND position IS NOT NULL', :order => 'position')

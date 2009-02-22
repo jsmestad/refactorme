@@ -2,12 +2,13 @@ Feature: Manage Refactors
 
   Scenario: New Refactor
     Given I am logged in as "john_doe"
-    And that a snippet exists
+    And that an active snippet exists
+    And I visit the main page
     When I click "Refactor"
     And I fill in "Code" with "@thing.each { |x| x.thingy }"
     And I press "Submit"
     Then I should see a refactor by "john_doe"
-    And I should see a notice message
+    And I should see a success message
     
   Scenario: Vote For Refactor
     Given I am logged in

@@ -9,7 +9,14 @@ class RefactorsController < ApplicationController
   end
   
   def create
-    
+    @refactor = @snippet.refactors.build(params[:refactor])
+    @refactor.user = current_user # Set User As Author
+    if @refactor.save
+      flash[:success] = "Refactor posted successfully."
+      redirect_to @snippet
+    else
+      render :action => :new
+    end
   end
   
   def edit

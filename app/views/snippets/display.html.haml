@@ -1,3 +1,8 @@
 .date= @snippet.displayed_on.to_s(:no_year)
 
 .title= @snippet.title
+
+.refactor= link_to "Refactor", new_snippet_refactor_path(@snippet)
+
+
+= render :partial => 'refactors/refactor', :collection => @snippet.refactors
