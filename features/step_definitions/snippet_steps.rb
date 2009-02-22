@@ -21,7 +21,7 @@ Then /I should see "(\d+)" (\w+) snippet/ do |amount, type|
   end
 end
 
-Then /I should not see any snipppets/ do
+Then /I should not see any snippets/ do
   response_body.should_not have_xpath("//tr")
 end
 
@@ -32,5 +32,9 @@ Given /that an approved snippet exists with the title "(.+)"/ do |title|
 end
 
 When /the nightly rake task runs/ do
-  Rake::Task[:set_todays_snippet]
+  Snippet.set_daily_snippet
+end
+
+Then /I should see a snippet with the title "(.+)"/ do |title|
+  response_body.should have_xpath("//*[text()=\"#{title}\"]")
 end
