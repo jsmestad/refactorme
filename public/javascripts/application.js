@@ -8,9 +8,17 @@ jQuery(document).ready(function() {
       $.post(self.attr('href') + ".js", { "_method": "delete" }, function(data) {
         self.parents('tr').remove();
         jQuery('#content').after('<div class=\"success\">' + data + '</div>');
-        }
-      )
+        });
     }
+    return false;
+  });
+  
+  jQuery('a.approve').live('click', function() {
+    var self = jQuery(this);
+    $.post(self.attr('href') + ".js", {}, function(data) {
+      jQuery('#content').after('<div class=\"notice\">' + data + '</div>');
+    });
+    
     return false;
   });
   
