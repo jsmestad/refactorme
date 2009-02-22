@@ -15,8 +15,11 @@ Given /^I am logged in$/ do
 end
  
 Given /^I am logged in as "(.+)"$/ do |user|
-  Given %{a user exists with login "#{user}" and password "thedude"}
-  Given %{I login as "#{user}"}
+  @user = Factory.create(:user, :login => user)
+  visit "/login"
+  fill_in "login", :with => "#{@user.login}"
+  fill_in "password", :with => "#{@user.password}"
+  click_button "Login"
 end
 
 Given /^I login as "(.+)"$/ do |user|
