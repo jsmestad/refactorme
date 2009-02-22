@@ -9,6 +9,10 @@
     %tr
       %td= link_to snippet.title, snippet
       %td= snippet.created_at.to_s(:no_date)
-      %td= snippet.queue_position ? "In-queue" : link_to "Queue", '#'
+      %td= snippet.position if snippet.position
+      %td
+        = link_to "Approve", '#'
+        |
+        = link_to "Reject", '#'
     
 = "Pending Snippets: #{@snippets.size}"
