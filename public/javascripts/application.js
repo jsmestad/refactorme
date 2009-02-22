@@ -1,5 +1,9 @@
 
 jQuery(document).ready(function() {
+
+  var appendContent = function(className, msg) {
+    jQuery('#content').after('<div class=\"'+className+'\">' + msg + '</div>');
+  }
   
   jQuery('a.delete').live('click', function() {
     var answer = confirm('Are you sure?');
@@ -7,7 +11,7 @@ jQuery(document).ready(function() {
     if (answer == true) {
       $.post(self.attr('href') + ".js", { "_method": "delete" }, function(data) {
         self.parents('tr').remove();
-        jQuery('#content').after('<div class=\"success\">' + data + '</div>');
+        appendContent('success', data);
         });
     }
     return false;
@@ -16,7 +20,7 @@ jQuery(document).ready(function() {
   jQuery('a.approve').live('click', function() {
     var self = jQuery(this);
     $.post(self.attr('href') + ".js", {}, function(data) {
-      jQuery('#content').after('<div class=\"notice\">' + data + '</div>');
+      appendContent('notice', data);
     });
     
     return false;
