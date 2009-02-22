@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
   acts_as_authentic
   
+  has_many :snippets
+  has_many :refactors
+  
   validates_uniqueness_of :login, :email
   
   def deliver_password_reset_instructions!
