@@ -1,5 +1,4 @@
 When /^I delete the (\d+)(?:st|nd|rd|th) user$/ do |pos|
-  p User.count
   visit users_url
   within("table > tr:nth-child(#{pos.to_i+1})") do
     click_link "Delete"

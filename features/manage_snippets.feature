@@ -35,7 +35,7 @@ Feature: Manage Snippets
     And I visit the snippet queue page
     When I click "Reject"
     Then I should see a success message
-    And I should not see any snipppets
+    And I should not see any snippets
 
   Scenario: Snippet Selection Task
     Given that an approved snippet exists with the title "Snippet Today"
