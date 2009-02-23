@@ -6,8 +6,8 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user_session, :current_user
   filter_parameter_logging :password, :password_confirmation
-  
-  rescue_from(ActiveRecord::RecordNotFound) { |e| render :template => "exceptions/404", :status => 404 }
+
+  rescue_from ActiveRecord::RecordNotFound, :with => :not_found
 
   private
   
@@ -56,4 +56,11 @@ class ApplicationController < ActionController::Base
       session[:return_to] = nil
     end
 
+    def bad_request
+      render :template => 'exceptions/400', :status => :bad_request
+    end
+
+    def not_found
+      render :template => 'exceptions/404', :status => :not_found
+    end
 end
