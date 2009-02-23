@@ -26,6 +26,13 @@ jQuery(document).ready(function() {
     return false;
   });
   
+  
+  jQuery('a.fork').live('click', function() {
+    var self = jQuery(this);
+    self.next("div.hidden").slideToggle("slow"); 
+    return false;
+  });
+  
 });
 
 jQuery(document).ajaxSend(function(event, request, settings) {
