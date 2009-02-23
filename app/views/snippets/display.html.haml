@@ -9,6 +9,12 @@
     %script{ :src => @snippet.gist_url + ".js" }
     .hidden=h @snippet.code
 
+- if @snippet.user
+  .author
+    = "submitted by #{@snippet.user.login}"
+    .avatar
+      = gravatar_for @snippet.user
+
 %hr
 
 = render :partial => 'refactors/refactor', :collection => @snippet.refactors

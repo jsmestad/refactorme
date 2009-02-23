@@ -1,6 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 def create_snippet
+  #@snippet = mock(Snippet)
   Factory.create(:snippet)
 end
 
@@ -11,6 +12,10 @@ end
 
 describe SnippetsController do
   integrate_views
+  
+  before do
+    
+  end
 
   describe "GET /snippets" do
     before(:each) do
