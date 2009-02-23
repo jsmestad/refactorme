@@ -17,7 +17,11 @@
         %ul.navigation
           %li= link_to "main", root_url
           %li= link_to "submit", submit_snippet_url
-          %li= link_to "login", login_url
+          - if logged_in?
+            %li= link_to "account", account_url
+            %li= link_to "logout", logout_url
+          - else
+            %li= link_to "login", login_url
 
       #content
         - [ :error, :success, :notice ].each do |type|
