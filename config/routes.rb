@@ -14,7 +14,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :password_resets
 
   map.login '/login', :controller => "user_sessions", :action => "new"
-  # map.logout '/logout', :controller => "user_sessions", :action => "destroy"
+  map.logout '/logout', :controller => "user_sessions", :action => "destroy"
   
   map.root :controller => "snippets", :action => "display", :month => Date.today.month, :day => Date.today.day, :year => Date.today.year
 
