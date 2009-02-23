@@ -27,14 +27,21 @@
             %a{:href => 'http://getsatisfaction.com/evalcode'} feedback
           %li
             %a{:href => '/about'} about
-            
+      
+      %hr
+         
       #content
         - [ :error, :success, :notice ].each do |type|
           - if flash[type]
             %div{:class => type }= flash[type]
 
         = yield
+      
+      %hr
+      
       #footer
-        %ul.admin-panel
-          %li= link_to 'Snippet Queue', snippets_path
-          %li= link_to 'User List', users_path
+        .copyright RefactorMe is eval(code) &copy; 2009
+        - if logged_in? && current_user.is_admin?
+          %ul.admin-panel
+            %li= link_to 'Snippet Queue', snippets_path
+            %li= link_to 'User List', users_path
