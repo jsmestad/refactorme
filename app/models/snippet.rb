@@ -1,5 +1,6 @@
 require 'nokogiri'
 require 'open-uri'
+require 'net/http'
 
 class Snippet < ActiveRecord::Base
   acts_as_list
@@ -9,6 +10,8 @@ class Snippet < ActiveRecord::Base
   
   validates_presence_of :title, :message => "can't be blank"
   validates_presence_of :code, :message => "can't be blank"
+  
+  before_save :send_to_gist
 
   def self.set_daily_snippet
     todays = Snippet.first(:conditions => 'displayed_on IS NULL AND position IS NOT NULL', :order => 'position')
@@ -32,17 +35,33 @@ class Snippet < ActiveRecord::Base
   end
   
   def gist_url=(url)
-    self.gist_id = url.match(/\/(\d+)\/?/)[1]
-    gist_url = "http://gist.github.com/#{gist_id}"
-    doc = Nokogiri::HTML.parse(open(gist_url))
+    id = url.match(/[http:\/\/gist.github.com\/]?(\d+)\/?/)
+    unless id.nil?
+      p id[1]
+      self.gist_id = id[1]
+      gist_url = "http://gist.github.com/#{gist_id}"
+      doc = Nokogiri::HTML.parse(open(gist_url))
     
-    raw_gist_url = "http://gist.github.com" + doc.xpath('//a[text()="raw"]').first.attributes['href'].to_s
+      raw_gist_url = "http://gist.github.com" + doc.xpath('//a[text()="raw"]').first.attributes['href'].to_s
 
-    self.code = open(raw_gist_url).read
+      self.code = open(raw_gist_url).read
+    end
   end
   
   def code=(code)
     write_attribute(:code, code) unless code.blank?
+  end
+  
+  def send_to_gist
+    p "hey"
+    if self.gist_id.blank?
+      p "passed"
+      response = Net::HTTP.post_form(URI.parse('http://gist.github.com/api/v1/xml/new'), { "files[#{self.title.downcase!.gsub!(' ', '_')}.rb]" => "#{self.code}" })
+      doc = Nokogiri::XML.parse(response.body)
+      debugger
+      repo_id = doc.xpath('//repo').first.content
+      write_attribute(:gist_id, repo_id)
+    end
   end
   
 end
