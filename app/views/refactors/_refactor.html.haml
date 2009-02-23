@@ -1,6 +1,7 @@
 .author
   = refactor.user.login
-
+  .avatar= gravatar_for refactor.user
+  
 .code
   - if refactor.gist_id.blank?
     =h refactor.code

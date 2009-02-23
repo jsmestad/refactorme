@@ -13,3 +13,7 @@ Factory.define :snippet do |s|
   s.title "Code Snippet"
   s.code "def hello_world; hello world; end;"
 end
+
+Factory.define :gist_snippet, :class => Snippet, :parent => :snippet do |s|
+  s.github_url "http://gist.github.com/4277"
+end
