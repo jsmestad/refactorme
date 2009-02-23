@@ -1,8 +1,11 @@
 .author
-  = refactor.user
+  = refactor.user.login
 
 .code
   = refactor.code
 
 .timestamp
   = refactor.created_at
+  
+= render :partial => 'refactors/inline_form', :locals => {:code => refactor.code}
+%hr

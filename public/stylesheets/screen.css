@@ -13,6 +13,9 @@
 
 
 
+.hidden {
+  display: none; }
+
 body {
   background-color: #D1C9C0;
   margin: 0;

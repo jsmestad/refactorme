@@ -11,6 +11,7 @@ class SnippetsController < ApplicationController
     @snippets = Snippet.all(:conditions => ['displayed_on IS NULL'])
   end
 
+  # Admin Functionality - for main site, see display method
   def show
     @snippet = Snippet.find_by_id!(params[:id])
   end
