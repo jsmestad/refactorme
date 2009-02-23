@@ -9,7 +9,6 @@
     %script{ :src => @snippet.gist_url + ".js" }
     .hidden=h @snippet.code
 
-
 %hr
 
 = render :partial => 'refactors/refactor', :collection => @snippet.refactors

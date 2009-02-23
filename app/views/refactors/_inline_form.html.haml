@@ -1,4 +1,10 @@
-- form_for @snippet.refactors.new, :url => new_snippet_refactor_path(@snippet) do |f|
+- form_for @snippet.refactors.new, :url => snippet_refactors_path(@snippet) do |f|
+  = f.label :gist_url
+  %br
+  = f.text_field :gist_url
+  %br
+  %br
+
   = f.label :code
   %br
   = f.text_area :code
