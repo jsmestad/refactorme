@@ -2,10 +2,14 @@
   = refactor.user.login
 
 .code
-  = refactor.code
+  - if refactor.gist_id.blank?
+    =h refactor.code
+  - else
+    %script{ :src => refactor.gist_url + ".js" }
+    .hidden=h refactor.code
 
 .timestamp
   = refactor.created_at
-  
-= render :partial => 'refactors/inline_form', :locals => {:code => refactor.code}
+
+.hidden= render :partial => 'refactors/inline_form', :locals => {:code => refactor.code}
 %hr

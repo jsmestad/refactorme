@@ -53,12 +53,9 @@ class Snippet < ActiveRecord::Base
   end
   
   def send_to_gist
-    p "hey"
     if self.gist_id.blank?
-      p "passed"
       response = Net::HTTP.post_form(URI.parse('http://gist.github.com/api/v1/xml/new'), { "files[#{self.title.downcase!.gsub!(' ', '_')}.rb]" => "#{self.code}" })
       doc = Nokogiri::XML.parse(response.body)
-      debugger
       repo_id = doc.xpath('//repo').first.content
       write_attribute(:gist_id, repo_id)
     end
