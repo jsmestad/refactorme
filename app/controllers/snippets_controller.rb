@@ -22,6 +22,7 @@ class SnippetsController < ApplicationController
 
   def create
     @snippet = Snippet.new(params[:snippet])
+    @snippet.user = current_user # Set Author as current user
     
     if @snippet.save
       flash[:success] = "Snippet submitted for review"

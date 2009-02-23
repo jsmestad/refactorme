@@ -1,3 +1,8 @@
 %h1 Show Snippet
 
-= @snippet.code
+.code
+  - if @snippet.gist_id.blank?
+    =h @snippet.code
+  - else
+    %script{ :src => @snippet.gist_url + ".js" }
+    .hidden=h @snippet.code
