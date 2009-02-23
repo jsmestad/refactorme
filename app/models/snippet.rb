@@ -10,6 +10,8 @@ class Snippet < ActiveRecord::Base
   
   validates_presence_of :title, :message => "can't be blank"
   validates_presence_of :code, :message => "can't be blank"
+  validates_presence_of :context, :on => :create, :message => "can't be blank"
+  validates_length_of :context, :minimum => 10
   
   before_save :send_to_gist
 
