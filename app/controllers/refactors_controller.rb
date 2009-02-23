@@ -5,7 +5,7 @@ class RefactorsController < ApplicationController
   before_filter :fetch_snippet
   
   def new
-    @refactor = @snippet.refactors.new
+    @refactor = @snippet.refactors.new(:code => @snippet.code)
   end
   
   def create

@@ -1,0 +1,7 @@
+- form_for @snippet.refactors.new, :url => new_snippet_refactor_path(@snippet) do |f|
+  = f.label :code
+  %br
+  = f.text_area :code
+  %br
+  %br
+  = f.submit 'Submit'
