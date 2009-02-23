@@ -1,6 +1,16 @@
 = form.label :title
-%br
 = form.text_field :title
+%br
+%br
+%h3 Provide some context for this submission
+= form.label :context
+= form.text_area :context
+%br
+%br
+
+%h2 Post via Gist
+%a{ :href => 'http://gist.github.com' } 
+  Github
 %br
 %br
 = form.label :gist_url
@@ -8,7 +18,12 @@
 = form.text_field :gist_url
 %br
 %br
-OR
+
+%b OR 
+
+%h2 Paste Below
+.description We create the gist for you
+%br
 %br
 = form.label :code
 %br
