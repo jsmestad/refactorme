@@ -1,6 +1,7 @@
 require 'nokogiri'
 require 'open-uri'
 require 'net/http'
+require 'cgi'
 
 class Snippet < ActiveRecord::Base
   acts_as_list
