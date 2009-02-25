@@ -1,3 +1,7 @@
+.votes
+  = render :partial => 'votes/vote', :locals => { :refactor => refactor }
+
+
 .author
   = refactor.user.login
   .avatar= gravatar_for refactor.user
@@ -11,6 +15,10 @@
 
 .timestamp
   = refactor.created_at
+
+.links
+  = link_to "Send to Gist", send_to_gist_snippet_refactor_path(@snippet, refactor), :class => 'gist'
+  %a{:href => "#", :class => 'fork'} Fork
 
 .hidden= render :partial => 'refactors/inline_form', :locals => {:code => refactor.code}
 %hr

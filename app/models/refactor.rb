@@ -2,8 +2,8 @@ class Refactor < ActiveRecord::Base
   belongs_to :snippet
   belongs_to :user
   has_many :votes
-  
-  before_save :send_to_gist
+    # 
+    # before_save :send_to_gist
   
   def code=(code)
     write_attribute(:code, code) unless code.blank?
@@ -27,10 +27,13 @@ class Refactor < ActiveRecord::Base
   
   def send_to_gist
     if self.gist_id.blank?
-      response = Net::HTTP.post_form(URI.parse('http://gist.github.com/api/v1/xml/new'), { "files[#{self.title.downcase!.gsub!(' ', '_')}.rb]" => "#{self.code}" })
+      response = Net::HTTP.post_form(URI.parse('http://gist.github.com/api/v1/xml/new'), { "files[refactorme_#{self.created_at.strftime('%b%d%y').downcase!}_#{self.id}.rb]" => "#{self.code}" })
       doc = Nokogiri::XML.parse(response.body)
       repo_id = doc.xpath('//repo').first.content
-      write_attribute(:gist_id, repo_id)
+      self.gist_id = repo_id
+      return true
+    else
+      return false
     end
   end
 end

@@ -1,8 +1,16 @@
 class RefactorsController < ApplicationController
-  before_filter :require_user
+  before_filter :require_user, :except => [:send_to_gist]
   before_filter :require_admin, :only => [:destroy]
   
   before_filter :fetch_snippet
+  
+  def send_to_gist
+    @refactor = Refactor.find(params[:id])
+    if @refactor.send_to_gist
+      @refactor.save!
+    end
+    render :text => "#{@refactor.gist_url}"
+  end
   
   def new
     @refactor = @snippet.refactors.new(:code => @snippet.code)
@@ -19,13 +27,13 @@ class RefactorsController < ApplicationController
     end
   end
   
-  def edit
-    
-  end
-  
-  def update
-    
-  end
+  # def edit
+  #   
+  # end
+  # 
+  # def update
+  #   
+  # end
   
   def destroy
     refactor = Refactor.find(params[:id])

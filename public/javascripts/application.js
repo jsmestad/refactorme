@@ -26,11 +26,42 @@ jQuery(document).ready(function() {
     return false;
   });
   
-  
   jQuery('a.fork').live('click', function() {
     var self = jQuery(this);
-    self.next("div.hidden").slideToggle("slow"); 
+    self.parent().next("div.hidden").slideToggle("slow"); 
     return false;
+  });
+  
+  jQuery('a.gist').live('click', function() {
+    var self = jQuery(this);
+    $.get(self.attr('href') + ".js", function(data) {
+      self.replaceWith("<a href=\"" + data + "\">View Gist</a>");
+    });
+    return false;
+  });
+  
+  jQuery('a.vote').click(function() {
+    var self = jQuery(this);
+    if (!self.hasClass("reg")) {
+      value = self.hasClass("vote_up") ? 1 : -1;
+      $.post(self.attr('href'), { "vote[score]": value }, function(data) {
+        if (self.hasClass("vote_up")) {
+          var count = self.parents('.votes').find('.positive_vote');
+          var score = parseInt(self.parents('.votes').find('.positive_vote').html());
+          score = score + value;
+          self.parents('.votes').find('.positive_vote').html("+" + score);
+        }else{  
+          var count = self.parents('.votes').find('.negative_vote');
+          var score = parseInt(self.parents('.votes').find('.negative_vote').html());
+          score = score + value;
+          self.parents('.votes').find('.negative_vote').html(score);
+        }
+      
+        self.parent().replaceWith("Voted");
+      
+      });
+      return false;
+    }
   });
   
 });

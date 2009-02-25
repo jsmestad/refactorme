@@ -1,32 +1,25 @@
+= gravatar_for @user
+
 %p
-  %b Login:
+  %strong Login:
   =h @user.login
+
 %p
-  %b Email:
+  %strong Email:
   =h @user.email
-  
+
 %p
-  %b Login count:
-  =h @user.login_count
- 
-%p
-  %b Last request at:
-  =h @user.last_request_at
- 
-%p
-  %b Last login at:
+  %strong Last Active:
   =h @user.last_login_at
- 
-%p
-  %b Current login at:
-  =h @user.current_login_at
- 
-%p
-  %b Last login ip:
-  =h @user.last_login_ip
- 
-%p
-  %b Current login ip:
-  =h @user.current_login_ip
+
+%h1== Snippets by #{@user.login}
+%ul
+  - @user_snippets.each do |snippet|
+    %li= snippet.title
+
+%h1== Refactors by #{@user.login}
+%ul
+  - @top_refactors.each do |refactor|
+    %li= refactor.id
  
 = link_to 'Edit', edit_account_path
