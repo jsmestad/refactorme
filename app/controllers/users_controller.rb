@@ -22,6 +22,12 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find_by_login!(params[:id])
+    @user_snippets = @user.snippets.find(:all, :conditions => ["displayed_on IS NOT NULL"], :limit => 5, :order => 'created_at DESC')
+    @top_refactors = @user.refactors.find(:all, :joins => ["INNER JOIN votes ON votes.refactor_id = refactors.id"], :limit => 5, :order => "SUM(votes.score) DESC")
+  end
+
+  def edit
     if @current_user.is_admin?
       @user = User.find_by_login!(params[:id])
     else
@@ -29,12 +35,12 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-    @user = @current_user
-  end
-
   def update
-    @user = @current_user # makes our views "cleaner" and more consistent
+    if @current_user.is_admin?
+      @user = User.find_by_login!(params[:id])
+    else
+      @user = @current_user # makes our views "cleaner" and more consistent
+    end
     if @user.update_attributes(params[:user])
       flash[:notice] = "Account updated!"
       redirect_to account_url

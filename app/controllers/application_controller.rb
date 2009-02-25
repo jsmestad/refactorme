@@ -3,7 +3,9 @@ class ApplicationController < ActionController::Base
   
   #### REMOVE WHEN LIVE
   USER_NAME, PASSWORD = "betas", "testing"
-  before_filter :authenticate
+  if RAILS_ENV == "production"
+    before_filter :authenticate
+  end
   #### REMOVE WHEN LIVE
   
   helper :all
@@ -44,7 +46,7 @@ class ApplicationController < ActionController::Base
 
     def require_user
       unless current_user
-        store_location
+        #store_location
         flash[:notice] = "You must be logged in to access this page"
         redirect_to login_url
         return false
@@ -53,7 +55,7 @@ class ApplicationController < ActionController::Base
 
     def require_no_user
       if current_user
-        store_location
+        #store_location
         flash[:notice] = "You must be logged out to access this page"
         redirect_to account_url
         return false
