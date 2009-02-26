@@ -64,4 +64,9 @@ class Snippet < ActiveRecord::Base
     end
   end
   
+  def display
+    result = open(gist_url + ".js").read
+    result.scan(/document.write\('(.*|\s*)'\)/)[1][0]
+  end
+  
 end

@@ -2,8 +2,8 @@ class Refactor < ActiveRecord::Base
   belongs_to :snippet
   belongs_to :user
   has_many :votes
-    # 
-    # before_save :send_to_gist
+   
+  before_save :send_to_gist
   
   def code=(code)
     write_attribute(:code, code) unless code.blank?
@@ -35,5 +35,10 @@ class Refactor < ActiveRecord::Base
     else
       return false
     end
+  end
+  
+  def display
+    result = open(gist_url + ".js").read
+    result.scan(/document.write\('(.*|\s*)'\)/)[1][0]
   end
 end
