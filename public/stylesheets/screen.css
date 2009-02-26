@@ -61,9 +61,6 @@ body {
 code, pre {
   font-family: Monaco, 'Lucida Console', courier, monospace; }
 
-.header {
-  background-color: #CCC; }
-
 h1 {
   font-size: 1.9em; }
 
@@ -84,6 +81,9 @@ h6 {
 
 .container {
   font-size: 1.2em;
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
   margin: 0 auto -4em;
   border-left: 4px solid #DADADA;
   border-right: 4px solid #DADADA; }
