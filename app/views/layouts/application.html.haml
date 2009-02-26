@@ -28,8 +28,6 @@
             %a{:href => 'http://getsatisfaction.com/evalcode'} feedback
           %li
             %a{:href => '/about'} about
-      
-      %hr
          
       #content
         - [ :error, :success, :notice ].each do |type|
@@ -37,8 +35,6 @@
             %div{:class => type }= flash[type]
 
         = yield
-      
-      %hr
       
       #footer
         .copyright RefactorMe is eval(code) &copy; 2009

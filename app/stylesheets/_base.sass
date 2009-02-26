@@ -2,7 +2,7 @@
 @import reset.sass
 
 
-!font_family = "'Helvetica Neue', Helvetica, Arial, sans-serif"
+!font_family = "Helvetica, Arial, sans-serif"
 !fixed_font_family = "Monaco, 'Lucida Console', courier, monospace"
 
 body
@@ -11,13 +11,15 @@ body
   :width 96em
   :font-size 62.5%
   / 62.5% makes 1em = 10px
+  :border-left 4px solid #DADADA
+  :border-right 4px solid #DADADA
+  :padding 0.8em
 
 code, pre
   :font-family = !fixed_font_family
-  :font-size 1.1em
-
+  :font-size 0.83em
+  
 .container
-  :line-height 1.6em
   :font-size 1.2em
   h1
     :font-size 1.9em
@@ -31,8 +33,6 @@ code, pre
     :font-size 1.2em
   h6
     :font-size 1em
-  .code
-    :font-size 0.91em
 
 .hidden
   :display none

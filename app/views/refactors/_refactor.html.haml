@@ -1,24 +1,27 @@
-.votes
-  = render :partial => 'votes/vote', :locals => { :refactor => refactor }
-
-
-.author
-  = refactor.user.login
-  .avatar= gravatar_for refactor.user
+.refactor_container
+  .votes
+    = render :partial => 'votes/vote', :locals => { :refactor => refactor }
   
-.code
-  - if refactor.gist_id.blank?
-    =h refactor.code
-  - else
-    %script{ :src => refactor.gist_url + ".js" }
-    .hidden=h refactor.code
-
-.timestamp
-  = refactor.created_at
-
-.links
-  = link_to "Send to Gist", send_to_gist_snippet_refactor_path(@snippet, refactor), :class => 'gist'
-  %a{:href => "#", :class => 'fork'} Fork
-
-.hidden= render :partial => 'refactors/inline_form', :locals => {:code => refactor.code}
-%hr
+  .refactor
+  
+    .code
+      / - if refactor.gist_id.blank?
+      ~ render_code(refactor.code)
+      / - else
+      /   %script{ :src => refactor.gist_url + ".js" }
+      /   .hidden=h refactor.code
+  
+    %ul
+      %li
+        %span.bold Submission by:
+        = refactor.user.login
+      %li
+        %span.bold Member Since:
+        = refactor.user.created_at.strftime("%b %Y")
+      %li
+        %span.bold Participation Count:
+        = refactor.user.refactors.count
+      %li= link_to "Send to Gist", send_to_gist_snippet_refactor_path(@snippet, refactor)#, :class => 'gist'
+      %li= link_to "Fork", "#", :class => 'fork'
+    
+    .hidden= render :partial => 'refactors/inline_form', :locals => {:code => refactor.code}
