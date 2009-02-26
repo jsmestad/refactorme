@@ -2,8 +2,9 @@
 @import gist
 
 
-#header
-  :height 10em
+.header
+  :background-color #CCC
+  :height 8em
   :padding 1em
   ul.navigation
     +inline-list
@@ -44,7 +45,7 @@
         :line-height 0.6em
 
   #snippet
-    :margin-left 20em
+    :margin-left 18em
     :position relative
     .code
 
@@ -57,15 +58,19 @@
     :overflow hidden
     :text-align right
     :border 1px solid #DADADA
-    :width 8.3em
+    :width 8em
+    :padding 0.8em 0.3em
     .positive_vote
       :font-size 2.5em
       :font-weight bold
       :color #00AEEF
+      :width 100%
     .negative_vote
       :font-size 2.5em
       :font-weight bold
       :color #CC0A4A
+      :width 100%
+      
     .action
 
 
@@ -74,7 +79,7 @@
     :position relative
     :overflow hidden
     ul
-      :font-size 0.8em
+      :font-size 0.85em
       +inline-list
       .bold
         :font-weight bold

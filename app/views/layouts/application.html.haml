@@ -5,12 +5,13 @@
     = javascript_include_tag 'jquery', 'application', :cache => true
     = javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery?
     = stylesheet_link_tag 'screen.css', :media => 'screen'
+    = stylesheet_link_tag 'gist.css'
     = stylesheet_link_tag 'print.css', :media => 'print'
     /[if IE]
       = stylesheet_link_tag 'ie.css', :media => 'screen'
   %body
     .container
-      #header
+      .header
         %h1
           %a{ :href => root_url }
             RefactorMe
@@ -29,18 +30,26 @@
           %li
             %a{:href => '/about'} about
          
-      #content
+      .content
         - [ :error, :success, :notice ].each do |type|
           - if flash[type]
             %div{:class => type }= flash[type]
 
         = yield
+      .push
+    .footer
+      .about_block
+        %h1 About Us
+        %img{ :src => "/images/picture.png", :style => "float:right;"}
+        %p This is some text to see how this will be placed relative to the image. This is some text to see how this will be placed relative to the image. This is some text to see how this will be placed relative to the image.
+    
+      .copyright 
+        RefactorMe is 
+        %a{:href => "http://www.evalcode.com"} eval(code)
+        &copy; 2009
+      - if logged_in? && current_user.is_admin?
+        %ul.admin-panel
+          %li= link_to 'Snippet Queue', snippets_path
+          %li= link_to 'User List', users_path
+  = render :partial => 'layouts/google_analytics'
       
-      #footer
-        .copyright RefactorMe is eval(code) &copy; 2009
-        - if logged_in? && current_user.is_admin?
-          %ul.admin-panel
-            %li= link_to 'Snippet Queue', snippets_path
-            %li= link_to 'User List', users_path
-      = render :partial => 'layouts/google_analytics'
-      = stylesheet_link_tag 'gist.css'

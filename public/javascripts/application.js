@@ -1,4 +1,21 @@
 
+function openSlider(self, refactorHeight)
+{
+  if(self.attr("box_h") > refactorHeight) {
+    refactorHeight = refactorHeight + "px";
+  	var open_height = self.attr("box_h") + "px";
+  	self.animate({"height": open_height}, { duration: "slow" });
+  	self.click(function() { closeSlider(jQuery(this), refactorHeight); });
+  }
+}
+
+function closeSlider(self, refactorHeight)
+{
+	self.animate({ "height": refactorHeight }, { duration: "slow" });
+	self.click(function() { openSlider(jQuery(this), refactorHeight); });
+}
+
+
 jQuery(document).ready(function() {
 
   var displayMessage = function(className, msg) {
@@ -28,11 +45,11 @@ jQuery(document).ready(function() {
   
   jQuery('a.fork').live('click', function() {
     var self = jQuery(this);
-    self.parent().next("div.hidden").slideToggle("slow"); 
+    self.parents('ul').next("div.hidden").slideToggle("slow"); 
     return false;
   });
   
-  jQuery('a.gist').live('click', function() {
+  jQuery('a.send_to_gist').live('click', function() {
     var self = jQuery(this);
     $.get(self.attr('href') + ".js", function(data) {
       self.replaceWith("<a href=\"" + data + "\">View Gist</a>");
@@ -64,6 +81,14 @@ jQuery(document).ready(function() {
     }
   });
   
+  jQuery('.refactor .gist-data').each(function() { jQuery(this).attr("box_h", jQuery(this).height()); });
+	jQuery(".refactor .gist-data").css("height", "125px");
+	jQuery('.refactor .gist-data').click(function() { openSlider(jQuery(this), "125"); });
+  
+  jQuery('#snippet.code .gist-data:first').each(function() { jQuery(this).attr("box_h", jQuery(this).height()); });
+  jQuery('#snippet.code .gist-data:first').css("height", "200px");
+  jQuery('#snippet.code .gist-data:not(:first)').parent().remove();
+  jQuery('#snippet.code .gist-data:first').click(function() { openSlider(jQuery(this), "200")});
 });
 
 jQuery(document).ajaxSend(function(event, request, settings) {
@@ -72,3 +97,6 @@ jQuery(document).ajaxSend(function(event, request, settings) {
   settings.data = settings.data || "";
   settings.data += (settings.data ? "&" : "") + "authenticity_token=" + encodeURIComponent(AUTH_TOKEN);
 });
+
+
+	
