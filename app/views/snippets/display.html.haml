@@ -1,22 +1,25 @@
-.date= @snippet.displayed_on.to_s(:no_year)
+.snippet_container
+  #date
+    .day= @snippet.displayed_on.strftime('%d')
+    .month= @snippet.displayed_on.strftime('%b').upcase!
+    .year
+      .century 20
+      = @snippet.displayed_on.strftime('%y')
 
-.title= @snippet.title
+  #snippet.code
+    / - if @snippet.gist_id.blank?
+    /   =h @snippet.code
+    / - else
+    ~ render_code(@snippet.code)
+    / %script{ :src => @snippet.gist_url + ".js" }
+    /.hidden=h @snippet.code
 
-.code
-  - if @snippet.gist_id.blank?
-    =h @snippet.code
-  - else
-    %script{ :src => @snippet.gist_url + ".js" }
-    .hidden=h @snippet.code
-
-- if @snippet.user
-  .author
-    = "submitted by #{@snippet.user.login}"
-    .avatar
-      = gravatar_for @snippet.user
+  - if @snippet.user
+    .author
+      = "submitted by #{@snippet.user.login}"
+      .avatar
+        = gravatar_for @snippet.user
 
 %hr
 
 = render :partial => 'refactors/refactor', :collection => @snippet.refactors
-
-.refactor= link_to "Refactor", new_snippet_refactor_path(@snippet)

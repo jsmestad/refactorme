@@ -1,178 +1,324 @@
-.gist
-  :color #000
-  :width 80%
-  div
-    :padding 0
-    :margin 0
-  .gist-file
-    :border 1px solid #dedede
-    :font-family Monaco, "Lucidia Console", "Courier New", monospace
-    :margin-bottom 1em
-    .gist-meta
-      :display none
-    .gist-data
-      :overflow auto
-      :background-color #f8f8ff
-      :border-bottom none
-      pre
-        :font-family Monaco, "Lucidia Console", "Courier New", monospace
-        :background transparent !important
-        :margin 0 !important
-        :border none !important
-        :padding .25em .5em .5em .5em !important
-        :font-size 1em
-      .gist-highlight
-        :background transparent !important
-      .gist-line-numbers
-        :background-color #ececec
-        :color #aaa
-        :border-right 1px solid #ddd
-        :text-align right
-        span
-          :clear right
-          :display block
+.CodeRay
+  :background-color #f8f8f8
+  :border 1px solid silver
+  :color #100
+  :margin-bottom 1em
+  
 
+  .line_numbers
+    :background-color #def
+    :color gray
+    :text-align right
 
-.gist-syntax
-  :background #ffffff
-  .c
-    :color #999988
-    :font-style italic 
-  .err
-    :color #a61717
-    :background-color #e3d2d2 
-  .k
-    :color #000000
-    :font-weight bold 
-  .o
-    :color #000000
-    :font-weight bold 
-  .cm
-    :color #999988
-    :font-style italic 
-  .cp
-    :color #999999
-    :font-weight bold 
-  .c1
-    :color #999988
-    :font-style italic 
-  .cs
-    :color #999999
-    :font-weight bold
-    :font-style italic 
-  .gd
-    :color #000000
-    :background-color #ffdddd 
-    .x
-      :color #000000
-      :background-color #ffaaaa 
-  .ge
-    :color #000000
-    :font-style italic 
-  .gr
-    :color #aa0000 
-  .gh
-    :color #999999 
-  .gi
-    :color #000000
-    :background-color #ddffdd 
-    .x
-      :color #000000
-      :background-color #aaffaa 
-  .go
-    :color #888888 
-  .gp
-    :color #555555 
-  .gs
-    :font-weight bold 
-  .gu
-    :color #aaaaaa 
-  .gt
-    :color #aa0000 
-  .kc
-    :color #000000
-    :font-weight bold 
-  .kd
-    :color #000000
-    :font-weight bold 
-  .kp
-    :color #000000
-    :font-weight bold 
-  .kr
-    :color #000000
-    :font-weight bold 
-  .kt
-    :color #445588
-    :font-weight bold 
-  .m
-    :color #009999 
-  .s
-    :color #d14 
-  .na
-    :color #008080 
-  .nb
-    :color #0086B3 
-  .nc
-    :color #445588
-    :font-weight bold 
   .no
-    :color #008080 
-  .ni
-    :color #800080 
-  .ne
-    :color #990000
+    :background-color #def
+    :color gray
+    :text-align right
+    :padding 0px 4px 
+
+  br
     :font-weight bold 
-  .nf
-    :color #990000
-    :font-weight bold 
-  .nn
-    :color #555555 
-  .nt
-    :color #000080 
-  .nv
-    :color #008080 
-  .ow
-    :color #000000
-    :font-weight bold 
-  .w
-    :color #bbbbbb 
-  .mf
-    :color #009999 
-  .mh
-    :color #009999 
-  .mi
-    :color #009999 
-  .mo
-    :color #009999 
-  .sb
-    :color #d14 
-  .sc
-    :color #d14 
-  .sd
-    :color #d14 
-  .s2
-    :color #d14 
-  .se
-    :color #d14 
-  .sh
-    :color #d14 
-  .si
-    :color #d14 
-  .sx
-    :color #d14 
-  .sr
-    :color #009926 
-  .s1
-    :color #d14 
-  .ss
-    :color #990073 
-  .bp
-    :color #999999 
-  .vc
-    :color #008080 
-  .vg
-    :color #008080 
-  .vi
-    :color #008080 
+
+  .code
+    :width 100%
+    pre
+      :margin 4px
+      :max-height 250px
+      :overflow auto 
+
+
+div.CodeRay
+
+span.CodeRay
+  :white-space pre
+  :border 0px
+  :padding 2px 
+
+
+table.CodeRay
+  :border-collapse collapse
+  :width 100%
+  :padding 2px 
+
+  td
+    :padding 2px 4px
+    :vertical-align top 
+
+
+ol.CodeRay
+
+  li
+    :white-space pre 
+
+
+.af
+  :color #00C 
+
+
+.an
+  :color #007 
+
+
+.av
+  :color #700 
+
+
+.aw
+  :color #C00 
+
+
+.bi
+  :color #509
+  :font-weight bold 
+
+
+.c
+  :color #888 
+
+
+.ch
+  :color #04D 
+
+  .k
+    :color #04D 
+
+  .dl
+    :color #039 
+
+
+.cl
+  :color #B06
+  :font-weight bold 
+
+
+.co
+  :color #036
+  :font-weight bold 
+
+
+.cr
+  :color #0A0 
+
+
+.cv
+  :color #369 
+
+
+.df
+  :color #099
+  :font-weight bold 
+
+
+.di
+  :color #088
+  :font-weight bold 
+
+
+.dl
+  :color black 
+
+
+.do
+  :color #970 
+
+
+.ds
+  :color #D42
+  :font-weight bold 
+
+
+.e
+  :color #666
+  :font-weight bold 
+
+
+.en
+  :color #800
+  :font-weight bold 
+
+
+.er
+  :color #F00
+  :background-color #FAA 
+
+
+.ex
+  :color #F00
+  :font-weight bold 
+
+
+.fl
+  :color #60E
+  :font-weight bold 
+
+
+.fu
+  :color #06B
+  :font-weight bold 
+
+
+.gv
+  :color #d70
+  :font-weight bold 
+
+
+.hx
+  :color #058
+  :font-weight bold 
+
+
+.i
+  :color #00D
+  :font-weight bold 
+
+
+.ic
+  :color #B44
+  :font-weight bold 
+
+
+.il
+  :background #eee 
+
   .il
-    :color #009999
+    :background #ddd 
+
+    .il
+      :background #ccc 
+
+  .dl
+    :font-weight bold ! important
+    :color #888 ! important 
+
+
+.in
+  :color #B2B
+  :font-weight bold 
+
+
+.iv
+  :color #33B 
+
+
+.la
+  :color #970
+  :font-weight bold 
+
+
+.lv
+  :color #963 
+
+
+.oc
+  :color #40E
+  :font-weight bold 
+
+
+.on
+  :color #000
+  :font-weight bold 
+
+
+.op
+
+.pc
+  :color #038
+  :font-weight bold 
+
+
+.pd
+  :color #369
+  :font-weight bold 
+
+
+.pp
+  :color #579 
+
+
+.pt
+  :color #339
+  :font-weight bold 
+
+
+.r
+  :color #080
+  :font-weight bold 
+
+
+.rx
+  :background-color #fff0ff 
+
+  .k
+    :color #808 
+
+  .dl
+    :color #404 
+
+  .mod
+    :color #C2C 
+
+  .fu
+    :color #404
+    :font-weight bold 
+
+
+.s
+  :background-color #fff0f0 
+  &.s
+    :background-color #ffe0e0 
+
+    &.s
+      :background-color #ffd0d0 
+
+  &.k
+    :color #D20 
+
+  &.dl
+    :color #710 
+
+
+.sh
+  :background-color #f0fff0 
+
+  .k
+    :color #2B2 
+
+  .dl
+    :color #161 
+
+
+.sy
+  :color #A60 
+
+  .k
+    :color #A60 
+
+  .dl
+    :color #630 
+
+
+.ta
+  :color #070 
+
+
+.tf
+  :color #070
+  :font-weight bold 
+
+
+.ts
+  :color #D70
+  :font-weight bold 
+
+
+.ty
+  :color #339
+  :font-weight bold 
+
+
+.v
+  :color #036 
+
+
+.xt
+  :color #444
