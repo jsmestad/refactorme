@@ -18,6 +18,7 @@ describe UserSessionsController do
   end
 
   it "should destroy user session" do
+    set_session_for(@user)
     delete :destroy
     UserSession.find.should be_nil
     response.should redirect_to(login_path)
