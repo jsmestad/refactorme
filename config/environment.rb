@@ -25,7 +25,9 @@ Rails::Initializer.run do |config|
   config.gem "mislav-will_paginate", :lib => "will_paginate", :source => "http://gems.github.com"
   config.gem "authlogic"
   config.gem "nokogiri"
-  config.gem "coderay"
+  config.gem "bcrypt-ruby", :lib => 'bcrypt'
+  config.gem "simplificator-tls-support", :lib => 'tls-support', :source => "http://gems.github.com"
+  config.gem "mislav-will_paginate", :lib => 'will_paginate', :source => "http://gems.github.com"
   
   # For GitHub Messaging Integration
   # config.gem "mechanize"
