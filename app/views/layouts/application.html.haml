@@ -6,29 +6,27 @@
     = javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery?
     = stylesheet_link_tag 'screen.css', :media => 'screen'
     = stylesheet_link_tag 'gist.css'
-    = stylesheet_link_tag 'print.css', :media => 'print'
-    /[if IE]
-      = stylesheet_link_tag 'ie.css', :media => 'screen'
   %body
     .container
       .header
+        %ul.navigation
+          %li= link_to "LIST", root_url
+          %li= link_to "SUBMIT", submit_snippet_url
+          - if logged_in?
+            %li= link_to "ACCNT", edit_account_url
+            %li= link_to "LOGOUT", logout_url
+          - else
+            %li= link_to "LOGIN", login_url
+            %li= link_to "SIGNUP", signup_url
+          %li
+            %a{:href => 'http://getsatisfaction.com/evalcode'} FEEDBACK
+          %li
+            %a{:href => '/about'} ABOUT
+        
         %h1
           %a{ :href => root_url }
             RefactorMe
-            
-        %ul.navigation
-          %li= link_to "main", root_url
-          %li= link_to "submit", submit_snippet_url
-          - if logged_in?
-            %li= link_to "account", edit_account_url
-            %li= link_to "logout", logout_url
-          - else
-            %li= link_to "login", login_url
-            %li= link_to "signup", signup_url
-          %li
-            %a{:href => 'http://getsatisfaction.com/evalcode'} feedback
-          %li
-            %a{:href => '/about'} about
+
          
       .content
         - [ :error, :success, :notice ].each do |type|
@@ -38,18 +36,6 @@
         = yield
       .push
     .footer
-      .about_block
-        %h1 About Us
-        %img{ :src => "/images/picture.png", :style => "float:right;"}
-        %p This is some text to see how this will be placed relative to the image. This is some text to see how this will be placed relative to the image. This is some text to see how this will be placed relative to the image.
-    
-      .copyright 
-        RefactorMe is 
-        %a{:href => "http://www.evalcode.com"} eval(code)
-        &copy; 2009
-      - if logged_in? && current_user.is_admin?
-        %ul.admin-panel
-          %li= link_to 'Snippet Queue', snippets_path
-          %li= link_to 'User List', users_path
+      &copy; 2009 No One.
   = render :partial => 'layouts/google_analytics'
       

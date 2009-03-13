@@ -20,7 +20,8 @@ ActionController::Routing::Routes.draw do |map|
   map.login '/login', :controller => "user_sessions", :action => "new"
   map.logout '/logout', :controller => "user_sessions", :action => "destroy"
   
-  map.root :controller => "snippets", :action => "display", :month => Date.today.month, :day => Date.today.day, :year => Date.today.year
+  map.root :controller => "public", :action => "show", :path => ["welcome"]
+  #map.root :controller => "snippets", :action => "display", :month => Date.today.month, :day => Date.today.day, :year => Date.today.year
 
   map.connect '*path', :controller => 'public', :action => 'show', :conditions => { :method => :get }
 end

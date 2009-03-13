@@ -1,86 +1,28 @@
-@import base
-@import gist
+@import compass/reset.sass
+@import compass/utilities.sass
 
+@import components/global
+@import components/form
+@import components/gist
+@import components/snippet
 
 .header
-  :background-color #CCC
-  :height 8em
-  :padding 1em
+  :background-color #162748
+  :padding 10px
+  h1
+    +replace-text('/images/header_logo.png', 5%)
+  a
+    :color #ece1cb
   ul.navigation
     +inline-list
+    :font-weight bold
     :float right
-
-.snippet_container
-  :overflow hidden
-  :margin 1em 0
-  #date
-    :float left
-    :margin-left 7em
-    :width 10em
-    :overflow hidden
-    :display block
-    :text-align center
-    :border 1px solid #DADADA
-    .day
-      :font-size 6.7em
-      :font-weight bold
-      :padding-top 10px
-      :border-bottom 1px solid #DADADA
-    .month
-      :font-size 1.6em
-      :font-weight bold
-      :width 55px
-      :float left
-      :padding 0 0.1em
-      :line-height 0.6em
-      :margin-top 0.5em
-      /:position relative
-    .year
-      :font-size 3em
-      :width 50px
-      :float left
-      :padding 0 0.1em
-      :margin-top 0.3em
-      .century
-        :line-height 0.6em
-
-  #snippet
-    :margin-left 18em
-    :position relative
-    .code
-
-.refactor_container
-  :overflow hidden
-  :margin 1em 0
-  .votes
-    :float left
-    :margin-left 18.2em
-    :overflow hidden
-    :text-align right
-    :border 1px solid #DADADA
-    :width 8em
-    :padding 0.8em 0.3em
-    .positive_vote
-      :font-size 2.5em
-      :font-weight bold
-      :color #00AEEF
-      :width 100%
-    .negative_vote
-      :font-size 2.5em
-      :font-weight bold
-      :color #CC0A4A
-      :width 100%
+    :height 30px
+    :font-size 11px
+    li
+      :border-left 1px solid #DADADA
+      :padding 10px 0 0 8px
+      :margin 0 8px
       
-    .action
-
-
-  .refactor
-    :margin-left 27.5em
-    :position relative
-    :overflow hidden
-    ul
-      :font-size 0.85em
-      +inline-list
-      .bold
-        :font-weight bold
-    .code
+      a:hover
+        :text-decoration underline
