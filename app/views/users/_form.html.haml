@@ -1,29 +1,22 @@
 = form.label :login
 = form.text_field :login
 %br
-%br
 
 = form.label :password, form.object.new_record? ? nil : "Change password"
 = form.password_field :password
-%br
 %br
 
 = form.label :password_confirmation
 = form.password_field :password_confirmation
 %br
-%br
 
 = form.label :email
 = form.text_field :email
-%br
 %br
 
 = form.label :github_username
 = form.text_field :github_username
 %br
-%br
-
 = form.label :github_api_key
 = form.text_field :github_api_key
-%br
 %br
