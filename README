@@ -1,5 +1,5 @@
 == Refactor Me
-A site tightly integrated with Github and Gists. It can is TodaysBigThing.com meets ruby refactoring.
+A site tightly integrated with Github and Gists. It is TodaysBigThing.com meets ruby refactoring.
 People can submit gists via url, text box, api, gem, etc and have it approved to be the refactor of the day.
 Its intent is also to feature snippets from the Rails 3 work done by Yehuda and other popular projects to see
 if code can be refactored in a cleaner way. Want to know more? Run script/server ;)
