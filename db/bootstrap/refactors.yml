@@ -1,0 +1,22 @@
+refactor_one:
+  id: 1
+  snippet_id: 1
+  user_id: 2
+  code:
+    def collection(world=80)
+      return world
+    end
+  context: Was not sure where to go with this, but this is what I came up with
+  gist_id: 45884
+
+refactor_two:
+  id: 2
+  snippet_id: 2
+  user_id: 3
+  code:
+    def collection(world=80)
+      return world + 65 || dude
+    end
+  context: Should add 65 to make this be balanced
+  gist_id: 33296
+
