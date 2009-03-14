@@ -23,7 +23,7 @@ describe UsersController do
   
     it "should show user" do
       set_session_for(@user)
-      get :show
+      get :show, :id => @user.login
       response.should be_success
     end
   
