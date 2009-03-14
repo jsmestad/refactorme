@@ -9,3 +9,5 @@
 - Snippet.all(:order => 'displayed_on DESC').each do |snippet|
   %li
     = "#{snippet.displayed_on.to_s(:no_year)}: #{snippet.title}"
+%p
+  = "There are #{Snippet.count} snippets in the system, #{Snippet.count(:conditions => ['displayed_on IS NOT NULL'])} have been displayed & #{Snippet.count(:conditions => ['position IS NOT NULL'])} are in the queue."
