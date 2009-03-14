@@ -6,5 +6,14 @@ if code can be refactored in a cleaner way. Want to know more? Run script/server
 
 == TODO
 
-Host on EY Solo
-I HAVE TO FILL THIS SH*T OUT@?!?!
+ Profile Page
+ Rankings Page
+ Archive Viewer (Calender like Calender About Nothing)
+ Splice up design / Styling
+ jQuery inline submission for refactor posting
+ Redesign Submit page to be more IA friendly
+ Style About Page and add content about participants
+ Admin Panel
+ Add Approve / Reject to admin panel on snippets (logic is there)
+ Make Cucumber tests pass, update where needed
+ Refactor User controller to work for administration (currently only allows @user = @current_user)
