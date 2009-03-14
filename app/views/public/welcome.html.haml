@@ -1,13 +1,16 @@
-%p.summary
-  All Ruby developers speak the same language, but all have varying techniques.
-  Rewrite the code snippet and provide the best solution. Everyday a new problem
-  will be presented, and the best written refactor wins; you decide the winner,
-  you provide the solution. Good Luck --
+.simple_container
+  %p.summary
+    All Ruby developers speak the same language, but all have varying techniques.
+    Rewrite the code snippet and provide the best solution. Everyday a new problem
+    will be presented, and the best written refactor wins; you decide the winner,
+    you provide the solution. Good Luck --
 
-%h2 Snippet List by date
-%ul
-- Snippet.all(:order => 'displayed_on DESC').each do |snippet|
-  %li
-    = "#{snippet.displayed_on.to_s(:no_year)}: #{snippet.title}"
-%p
-  = "There are #{Snippet.count} snippets in the system, #{Snippet.count(:conditions => ['displayed_on IS NOT NULL'])} have been displayed & #{Snippet.count(:conditions => ['position IS NOT NULL'])} are in the queue."
+  %br
+
+  %h2 Snippet List by date
+  %ul
+  - Snippet.all(:order => 'displayed_on DESC').each do |snippet|
+    %li
+      = "#{snippet.displayed_on.to_s(:no_year)}: #{snippet.title}"
+  %p
+    = "There are #{Snippet.count} snippets in the system, #{Snippet.count(:conditions => ['displayed_on IS NOT NULL'])} have been displayed & #{Snippet.count(:conditions => ['position IS NOT NULL'])} are in the queue."
