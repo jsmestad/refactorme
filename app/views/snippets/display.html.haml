@@ -1,20 +1,33 @@
-.snippet_container
-  #date
-    .day= @snippet.displayed_on.strftime('%d')
-    .month= @snippet.displayed_on.strftime('%b').upcase!
-    .year
-      .century 20
-      = @snippet.displayed_on.strftime('%y')
+.simple_container
+  .snippet_container
+    #date
+      .day= @snippet.displayed_on.strftime('%d')
+      .month= @snippet.displayed_on.strftime('%b').upcase!
+      .year
+        .century 20
+        = @snippet.displayed_on.strftime('%y')
 
-  #snippet.code
-    %script{ :type => "text/javascript" } 
-      = "document.write('#{@snippet.display}');"
-    .hidden=h @snippet.display
+    #snippet.code
+      %script{ :type => "text/javascript" } 
+        = "document.write('#{@snippet.display}');"
+      .hidden=h @snippet.display
 
-  - if @snippet.user
-    .author
-      = "submitted by #{@snippet.user.login}"
-      .avatar
-        = gravatar_for @snippet.user
+      .author
+        = "submitted by #{@snippet.user.login}"
+        .avatar
+          = gravatar_for @snippet.user
+      %ul
+        %li
+          %span.bold Submission by:
+          = @snippet.user.login
+        %li
+          %span.bold Member Since:
+          = @snippet.user.created_at.strftime("%b %Y")
+        %li
+          %span.bold Participation Count:
+          = @snippet.user.refactors.count
+        %li= link_to "Refactor", "#", :class => 'fork'
 
-= render :partial => 'refactors/refactor', :collection => @snippet.refactors
+      .hidden= render :partial => 'refactors/inline_form', :locals => {:code => @snippet.code}
+
+  = render :partial => 'refactors/refactor', :collection => @snippet.refactors
