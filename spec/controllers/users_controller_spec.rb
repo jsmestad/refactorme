@@ -13,7 +13,7 @@ describe UsersController do
       post :create, :user => { :login => "ben", :password => "benrocks", :password_confirmation => "benrocks", :email => "myemail@email.com" }
     }.should change(User, :count)
     
-    response.should redirect_to(account_path)
+    response.should redirect_to(root_path)
   end
   
   describe "given a user exists" do
@@ -23,7 +23,7 @@ describe UsersController do
   
     it "should show user" do
       set_session_for(@user)
-      get :show
+      get :show, :id => @user.login
       response.should be_success
     end
   
