@@ -30,9 +30,9 @@ set :real_revision, 			lambda { source.query_revision(revision) { |cmd| capture(
 
 
 task :Production do
-  role :web, 'ec2-67-202-32-242.compute-1.amazonaws.com'
-  role :app, 'ec2-67-202-32-242.compute-1.amazonaws.com'
-  role :db, 'ec2-67-202-32-242.compute-1.amazonaws.com', :primary => true
+  role :web, '75.101.167.152'
+  role :app, '75.101.167.152'
+  role :db, '75.101.167.152', :primary => true
   set :environment_database, Proc.new { production_database }
   set :dbuser,        'refactorme'
   set :dbpass,        '8oCRMbneY1'
