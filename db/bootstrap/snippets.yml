@@ -1,0 +1,26 @@
+active_one:
+  id: 1
+  displayed_on: <%= Date.today %>
+  title: DM Collection Method Headache
+  context: This method has had a code smell for awhile and want to see what people can do with it.
+  code: def collection(world=90)
+  gist_id: 78941
+  user_id: 1
+
+queue_one:
+  id: 2
+  position: 1
+  title: ActionPack Changes
+  context: How would you change this block without alias_method_chain
+  code: def method_missing(params)
+  gist_id: 69427
+  user_id: 2
+
+queue_two:
+  id: 3
+  position: 2
+  title: OpenStruct refactor
+  context: How would you change this block without while maintaining backward compatibility
+  code: def something_dude(params)
+  gist_id: 47755
+  user_id: 2

@@ -1,0 +1,26 @@
+user_jstad:
+  id: 1
+  login: jstad
+  password: changeme
+  password_confirmation: changeme
+  email: justin.smestad@gmail.com
+  admin: true
+  active: true
+
+user_regular:
+  id: 2
+  login: wycats
+  password: admin
+  password_confirmation: admin
+  email: yehuda.katz@something.com
+  admin: false
+  active: true
+
+user_regular:
+  id: 3
+  login: some_guy
+  password: admin
+  password_confirmation: admin
+  email: some_guy@something.com
+  admin: false
+  active: true
