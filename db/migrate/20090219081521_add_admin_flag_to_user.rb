@@ -5,12 +5,6 @@ class AddAdminFlagToUser < ActiveRecord::Migration
     add_index :users, :login
     add_index :users, :persistence_token
     add_index :users, :last_request_at
-    
-    User.create(:login => 'jstad',
-                :email => 'justin.smestad@gmail.com',
-                :password => 'changeme',
-                :password_confirmation => 'changeme',
-                :admin => true)
   end
 
   def self.down
