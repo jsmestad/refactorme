@@ -10,7 +10,7 @@ describe User do
   end
   
   it "should respond to admin?" do
-    @user = User.create!(Factory.attributes_for(:admin))
+    @user = Factory.create(:admin)
     @user.is_admin?.should == true
   end
   
