@@ -17,3 +17,4 @@ if code can be refactored in a cleaner way. Want to know more? Run script/server
  Add Approve / Reject to admin panel on snippets (logic is there)
  Make Cucumber tests pass, update where needed
  Refactor User controller to work for administration (currently only allows @user = @current_user)
+ Add CRON task for Daily Snippet rake task
