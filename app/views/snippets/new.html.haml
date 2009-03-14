@@ -1,6 +1,7 @@
-%h1 Submit
- 
 - form_for @snippet do |f|
+  %h2 Submit New Snippet
   = f.error_messages
+  %br
   = render "form", :object => f
-  = f.submit "Submit"
+  %button{ :type => 'submit', :class => 'submission' }
+    Submit Snippet
