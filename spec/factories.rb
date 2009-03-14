@@ -13,6 +13,9 @@ end
 Factory.define :snippet do |s|
   s.title "Code Snippet"
   s.code "def hello_world; hello world; end;"
+
+  # need context, but m.context would call the rspec method
+  s.add_attribute :context, "some context"
 end
 
 Factory.define :gist_snippet, :class => Snippet, :parent => :snippet do |s|
