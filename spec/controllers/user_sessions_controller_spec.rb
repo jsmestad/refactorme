@@ -21,7 +21,7 @@ describe UserSessionsController do
     set_session_for(@user)
     delete :destroy
     UserSession.find.should be_nil
-    response.should redirect_to(login_path)
+    response.should redirect_to(new_user_session_path)
   end
 
 end
