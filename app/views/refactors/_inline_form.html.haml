@@ -1,24 +1,15 @@
 - form_for @snippet.refactors.new, :url => snippet_refactors_path(@snippet) do |f|
   = f.label :gist_url
   = f.text_field :gist_url
-  %br
-  %br
-  
+    
   %b OR
   
-  %br
-  %br
   = f.label :code
-  %br
   = f.text_area :code
-  %br
-  %br
   
   %h3 Provide some context for this submission (optional)
   = f.label :context
-  %br
   = f.text_area :context
-  %br
-  %br
   
-  = f.submit 'Submit'
+  %button{ :type => 'submit' }
+    Submit

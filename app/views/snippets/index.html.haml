@@ -1,18 +1,19 @@
-%h1 Snippet Queue
+.simple_container
+  %h2 Snippet Queue
 
-%table
-  %thead
-    %th Title
-    %th Submit Date
-    %th Status
-  - @snippets.each do |snippet|
-    %tr
-      %td= link_to snippet.title, snippet
-      %td= snippet.created_at.to_s(:no_date)
-      %td= snippet.position if snippet.position
-      %td
-        = link_to "Approve", '#'
-        |
-        = link_to "Reject", '#'
+  %table
+    %thead
+      %th Title
+      %th Submit Date
+      %th Status
+    - @snippets.each do |snippet|
+      %tr
+        %td= link_to snippet.title, snippet
+        %td= snippet.created_at.to_s(:no_date)
+        %td= snippet.position if snippet.position
+        %td
+          = link_to "Approve", '#'
+          |
+          = link_to "Reject", '#'
     
-= "Pending Snippets: #{@snippets.size}"
+  = "Pending Snippets: #{@snippets.size}"
