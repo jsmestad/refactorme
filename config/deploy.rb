@@ -8,7 +8,7 @@ set :deploy_to, "/home/jsmestad/sites/refactorme"
 # If you aren't using Subversion to manage your source code, specify
 # your SCM below:
 set :scm, :git
-set :repository, "git@sneezy.insyntax.com:refactor_me.git"
+set :repository, "git@github.com:jsmestad/refactorme.git"
 set :branch, "master"
 set :deploy_via, :remote_cache
 set :rails_env, "production" 
