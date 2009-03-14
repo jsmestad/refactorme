@@ -1,25 +1,26 @@
-= gravatar_for @user
+.simple_container
+  = gravatar_for @user
 
-%p
-  %strong Login:
-  =h @user.login
+  %p
+    %strong Login:
+    =h @user.login
 
-%p
-  %strong Email:
-  =h @user.email
+  %p
+    %strong Email:
+    =h @user.email
 
-%p
-  %strong Last Active:
-  =h @user.last_login_at
+  %p
+    %strong Last Active:
+    =h @user.last_login_at
 
-%h1== Snippets by #{@user.login}
-%ul
-  - @user_snippets.each do |snippet|
-    %li= snippet.title
+  %h1== Snippets by #{@user.login}
+  %ul
+    - @user_snippets.each do |snippet|
+      %li= snippet.title
 
-%h1== Refactors by #{@user.login}
-%ul
-  - @top_refactors.each do |refactor|
-    %li= refactor.id
+  %h1== Refactors by #{@user.login}
+  %ul
+    - @top_refactors.each do |refactor|
+      %li= refactor.id
  
-= link_to 'Edit', edit_account_path
+  = link_to 'Edit', edit_account_path

@@ -23,25 +23,17 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by_login!(params[:id])
+    @user = @current_user
     @user_snippets = @user.snippets.find(:all, :conditions => ["displayed_on IS NOT NULL"], :limit => 5, :order => 'created_at DESC')
     @top_refactors = @user.refactors.find(:all, :limit => 5, :order => "(SELECT SUM(votes.score) FROM votes WHERE votes.refactor_id = refactors.id) DESC")
   end
 
   def edit
-    if @current_user.is_admin?
-      @user = User.find_by_login!(params[:id])
-    else
-      @user = @current_user
-    end
+    @user = @current_user
   end
 
   def update
-    if @current_user.is_admin?
-      @user = User.find_by_login!(params[:id])
-    else
-      @user = @current_user # makes our views "cleaner" and more consistent
-    end
+    @user = @current_user # makes our views "cleaner" and more consistent
     if @user.update_attributes(params[:user])
       flash[:notice] = "Account updated!"
       redirect_to account_url
@@ -51,7 +43,7 @@ class UsersController < ApplicationController
   end
   
   def destroy
-    user = User.find_by_login!(params[:id])
+    user = User.find!(params[:id])
     if user.destroy
       render :text => "User has been deleted"
     end
