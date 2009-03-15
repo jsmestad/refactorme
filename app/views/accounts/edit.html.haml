@@ -1,0 +1,28 @@
+- form_for @user, :url => account_path do |f| 
+  %h2 Update Profile
+  
+  %br
+  = f.error_messages
+  %br
+  = f.label :login
+  = f.text_field :login 
+  %br
+  = f.label :password, "Change password"
+  = f.password_field :password 
+  %br
+  = f.label :password_confirmation
+  = f.password_field :password_confirmation
+  %br
+  = f.label :email
+  = f.text_field :email
+  %br
+  
+  = f.label :github_username, "Github Username"
+  = f.text_field :github_username
+  %br
+  = f.label :github_api_key, "Github API Key"
+  = f.text_field :github_api_key
+  %br
+  
+  %button{:type => 'submit'}
+    Save
