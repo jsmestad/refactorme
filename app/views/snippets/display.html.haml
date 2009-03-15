@@ -7,15 +7,21 @@
         .century 20
         = @snippet.displayed_on.strftime('%y')
 
+    .snippet_nav
+      .right_arrow
+        %a{ :href => display_snippet_path }
+          &nbsp;
+      .left_arrow
+        %a{ :href => display_snippet_path }
+          &nbsp;
+      .middle
+        SNIPPET OF THE DAY
+
+      
     #snippet.code
       %script{ :type => "text/javascript" } 
         = "document.write('#{@snippet.display}');"
       .hidden=h @snippet.display
-
-      .author
-        = "submitted by #{@snippet.user.login}"
-        .avatar
-          = gravatar_for @snippet.user
       %ul
         %li
           %span.bold Submission by:

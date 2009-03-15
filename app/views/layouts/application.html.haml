@@ -7,35 +7,36 @@
     = stylesheet_link_tag 'screen.css', :media => 'screen'
     = stylesheet_link_tag 'gist.css'
   %body
-    .container
-      .header
-        %ul.navigation
-          %li= link_to "LIST", root_url
-          %li= link_to "SUBMIT", submit_snippet_url
-          - if logged_in?
-            %li= link_to "ACCNT", edit_account_url
-            %li= link_to "LOGOUT", logout_url
-          - else
-            %li= link_to "LOGIN", login_url
-            %li= link_to "SIGNUP", signup_url
-          %li
-            %a{:href => 'http://getsatisfaction.com/evalcode'} FEEDBACK
-          %li
-            %a{:href => '/about'} ABOUT
+    .wrapper
+      .container
+        .header
+          %ul.navigation
+            %li= link_to "LIST", root_url
+            %li= link_to "SUBMIT", submit_snippet_url
+            - if logged_in?
+              %li= link_to "ACCNT", edit_account_url
+              %li= link_to "LOGOUT", logout_url
+            - else
+              %li= link_to "LOGIN", login_url
+              %li= link_to "SIGNUP", signup_url
+            %li
+              %a{:href => 'http://getsatisfaction.com/evalcode'} FEEDBACK
+            %li
+              %a{:href => '/about'} ABOUT
         
-        %h1
-          %a{ :href => root_url }
-            RefactorMe
+          %h1
+            %a{ :href => root_url }
+              RefactorMe
 
          
-      .content
-        - [ :error, :success, :notice ].each do |type|
-          - if flash[type]
-            %div{:class => type }= flash[type]
+        .content
+          - [ :error, :success, :notice ].each do |type|
+            - if flash[type]
+              %div{:class => type }= flash[type]
 
-        = yield
-      .push
-    .footer
-      &copy; 2009 No One.
-  = render :partial => 'layouts/google_analytics'
+          = yield
+
+      .footer
+        &copy; 2009 No One.
+  = render :partial => 'layouts/google_analytics' if RAILS_ENV == 'production'
       
