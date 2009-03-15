@@ -72,9 +72,10 @@
   ul
     :font-size 11px
     :margin-bottom 2px
+    :padding 7px
     +inline-list
     li
-      :padding 3px 6px
+      :padding 0 6px
       :background-color #fff
       :border-left 2px solid #DADADA
       :border-right 2px solid #DADADA
@@ -107,7 +108,31 @@
       :color #CC0A4A
       
     .action
-
+      :display block
+      :overflow hidden
+      :text-align center
+      :background-color #FFF
+      :padding 4px 0
+      a
+        :color #FFF
+        :font-weight bold
+        :padding 3px 0
+      &.voted
+        :background-color #C6D880
+        :color #264409
+      .neg_link,
+      .pos_link
+        :display block
+      .pos_link
+        :float left
+        :width 48px
+        :margin-right 1px
+        :background-color #567BA4
+      .neg_link
+        :float right
+        :width 48px
+        :margin-left 1px
+        :background-color #ed145b
 
   .refactor
     :margin-left 315px

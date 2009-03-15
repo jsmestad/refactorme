@@ -5,6 +5,7 @@ function openSlider(self, refactorHeight)
     refactorHeight = refactorHeight + "px";
   	var open_height = self.attr("box_h") + "px";
   	self.animate({"height": open_height}, { duration: "slow" });
+  	self.unbind('click');
   	self.click(function() { closeSlider(jQuery(this), refactorHeight); });
   }
 }
@@ -12,6 +13,7 @@ function openSlider(self, refactorHeight)
 function closeSlider(self, refactorHeight)
 {
 	self.animate({ "height": refactorHeight }, { duration: "slow" });
+	self.unbind('click');
 	self.click(function() { openSlider(jQuery(this), refactorHeight); });
 }
 
@@ -74,7 +76,7 @@ jQuery(document).ready(function() {
           self.parents('.votes').find('.negative_vote').html(score);
         }
       
-        self.parent().replaceWith("Voted");
+        self.closest('.action').addClass('voted').html("Voted");
       
       });
       return false;
