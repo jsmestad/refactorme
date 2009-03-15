@@ -1,4 +1,10 @@
 .simple_container
+  .success.summary
+    All Ruby developers speak the same language, but all have varying techniques.
+    Rewrite the code snippet and provide the best solution. Everyday a new problem
+    will be presented, and the best written refactor wins; you decide the winner,
+    you provide the solution. Good Luck --
+    
   .snippet_container
     #date
       .day= @snippet.displayed_on.strftime('%d')
@@ -7,15 +13,21 @@
         .century 20
         = @snippet.displayed_on.strftime('%y')
 
+    .snippet_nav
+      .right_arrow
+        %a{ :href => display_snippet_path }
+          &nbsp;
+      .left_arrow
+        %a{ :href => display_snippet_path }
+          &nbsp;
+      .middle
+        SNIPPET OF THE DAY
+
+      
     #snippet.code
       %script{ :type => "text/javascript" } 
         = "document.write('#{@snippet.display}');"
       .hidden=h @snippet.display
-
-      .author
-        = "submitted by #{@snippet.user.login}"
-        .avatar
-          = gravatar_for @snippet.user
       %ul
         %li
           %span.bold Submission by:

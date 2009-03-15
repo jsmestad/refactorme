@@ -5,9 +5,12 @@
     - if current_user.votes.include?(refactor)
       Voted
     - else
-      = link_to "up", snippet_refactor_votes_path(@snippet, refactor), :class => 'vote vote_up'
-      |
-      = link_to "down", snippet_refactor_votes_path(@snippet, refactor), :class => 'vote vote_down'
+    .neg_link
+      %a{ :href => snippet_refactor_votes_path(@snippet, refactor), :class => 'vote vote_down' }
+        BAD
+    .pos_link
+      %a{ :href => snippet_refactor_votes_path(@snippet, refactor), :class => 'vote vote_up' }
+        GOOD
   - else
     = link_to "up", login_path, :class => 'vote vote_up reg'
     |
