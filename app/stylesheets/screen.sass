@@ -7,13 +7,23 @@
 @import components/snippet
 @import components/simple_container
 
+.wrapper
+  :background url("/images/container_bg.png") repeat-y
+  :width 966px
+  :margin 0 auto
+.container
+  :width 958px
+
 .header
-  :background-color #162748
-  :padding 10px
+  :padding-top 10px
+  :height 75px
+  :margin-bottom 10px
+  :width 100%
   h1
-    +replace-text("/images/header_logo.png", 5%)
+    +replace-text("/images/cow_logo.png", 5%)
+    :height 70px
   a
-    :color #ece1cb
+    :color #707070
   ul.navigation
     +inline-list
     :font-weight bold
@@ -29,6 +39,7 @@
         :text-decoration underline
 
 .content
+  :margin 10px 0 20px 0
   .summary
     
     
