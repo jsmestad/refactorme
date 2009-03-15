@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_filter :require_admin, :only => [:index, :destroy]
   
   def index
-    @users = User.paginate :page => params[:page], :per_page => 12, :conditions => {:active => true}
+    @users = User.paginate :page => params[:page], :per_page => 12, :conditions => {:active => true}, :order => 'created_at DESC'
   end
   
   def new
@@ -28,25 +28,25 @@ class UsersController < ApplicationController
     @top_refactors = @user.refactors.find(:all, :limit => 5, :order => "(SELECT SUM(votes.score) FROM votes WHERE votes.refactor_id = refactors.id) DESC")
   end
 
-  def edit
-    @user = @current_user
-  end
-
-  def update
-    @user = @current_user # makes our views "cleaner" and more consistent
-    if @user.update_attributes(params[:user])
-      flash[:notice] = "Account updated!"
-      redirect_to account_url
-    else
-      render :action => :edit
-    end
-  end
+  # def edit
+  #   @user = @current_user
+  # end
+  # 
+  # def update
+  #   @user = @current_user # makes our views "cleaner" and more consistent
+  #   if @user.update_attributes(params[:user])
+  #     flash[:notice] = "Account updated!"
+  #     redirect_to account_url
+  #   else
+  #     render :action => :edit
+  #   end
+  # end
   
-  def destroy
-    user = User.find!(params[:id])
-    if user.destroy
-      render :text => "User has been deleted"
-    end
-  end
+  # def destroy
+  #   user = User.find!(params[:id])
+  #   if user.destroy
+  #     render :text => "User has been deleted"
+  #   end
+  # end
   
 end

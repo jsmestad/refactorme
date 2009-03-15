@@ -13,6 +13,7 @@
           %ul.navigation
             %li= link_to "LIST", root_url
             %li= link_to "SUBMIT", submit_snippet_url
+            %li= link_to "USERS", users_url
             - if logged_in?
               %li= link_to "ACCNT", edit_account_url
               %li= link_to "LOGOUT", logout_url

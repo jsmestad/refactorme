@@ -1,11 +1,8 @@
-%table
-  %thead
-    %th Login
-    %th Email
-    %th Registration Date
-  - @users.each do |user|
-    %tr
-      %td= link_to user.login, user
-      %td= user.email
-      %td= user.created_at.to_s(:no_year)
-      %td= link_to 'Delete', user, :class => 'delete'
+.simple_container
+  %h1 Users
+  
+  .users
+    - @users.each do |user|
+      .user
+        .login= link_to user.login, user
+  = will_paginate @users
