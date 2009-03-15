@@ -1,81 +1,55 @@
-
-function openSlider(self, refactorHeight)
-{
-  if(self.attr("box_h") > refactorHeight) {
-    refactorHeight = refactorHeight + "px";
-  	var open_height = self.attr("box_h") + "px";
-  	self.animate({"height": open_height}, { duration: "slow" });
-  	self.unbind('click');
-  	self.click(function() { closeSlider(jQuery(this), refactorHeight); });
-  }
-}
-
-function closeSlider(self, refactorHeight)
-{
-	self.animate({ "height": refactorHeight }, { duration: "slow" });
-	self.unbind('click');
-	self.click(function() { openSlider(jQuery(this), refactorHeight); });
-}
-
-
-jQuery(document).ready(function() {
+jQuery(document).ready(function($) {
 
   var displayMessage = function(className, msg) {
-    jQuery('#content').after('<div class=\"' + className + '\">' + msg + '</div>');
+    $('#content').after('<div class="' + className + '">' + msg + '</div>');
   }
   
-  jQuery('a.delete').live('click', function() {
+  $('a.delete').live('click', function() {
     var answer = confirm('Are you sure?');
-    var self = jQuery(this);
-    if (answer == true) {
-      $.post(self.attr('href') + ".js", { "_method": "delete" }, function(data) {
-        self.parents('tr').remove();
+    var self = $(this);
+    if (answer) {
+      $.post(self.attr('href'), { "_method": "delete" }, function(data) {
+        self.closest('tr').remove();
         displayMessage('success', data);
-        });
+        }, "js");
     }
     return false;
   });
   
-  jQuery('a.approve').live('click', function() {
-    var self = jQuery(this);
-    $.post(self.attr('href') + ".js", { "approved" : "true" }, function(data) {
+  $('a.approve').live('click', function() {
+    var self = $(this);
+    $.post(self.attr('href'), { "approved" : "true" }, function(data) {
       displayMessage('notice', data);
-    });
+    }, "js");
     
     return false;
   });
   
-  jQuery('a.fork').live('click', function() {
-    var self = jQuery(this);
-    self.parents('ul').next("div.hidden").slideToggle("slow"); 
+  $('a.fork').live('click', function() {
+    $(this).closest('ul').next("div.hidden").slideToggle("slow"); 
     return false;
   });
   
-  jQuery('a.send_to_gist').live('click', function() {
-    var self = jQuery(this);
-    $.get(self.attr('href') + ".js", function(data) {
-      self.replaceWith("<a href=\"" + data + "\">View Gist</a>");
+  $('a.send_to_gist').live('click', function() {
+    var self = $(this);
+    $.get(self.attr('href'), function(data) {
+      self.replaceWith('<a href="' + data + '">View Gist</a>');
     });
     return false;
   });
   
-  jQuery('a.vote').click(function() {
-    var self = jQuery(this);
-    if (!self.hasClass("reg")) {
-      value = self.hasClass("vote_up") ? 1 : -1;
+  $('a.vote').click(function() {
+    var self = $(this);
+    if (!self.is(".reg")) {
+      value = self.is(".vote_up") ? 1 : -1;
       $.post(self.attr('href'), { "vote[score]": value }, function(data) {
-        if (self.hasClass("vote_up")) {
-          var count = self.parents('.votes').find('.positive_vote');
-          var score = parseInt(self.parents('.votes').find('.positive_vote').html());
-          score = score + value;
-          self.parents('.votes').find('.positive_vote').html("+" + score);
-        }else{  
-          var count = self.parents('.votes').find('.negative_vote');
-          var score = parseInt(self.parents('.votes').find('.negative_vote').html());
-          score = score + value;
-          self.parents('.votes').find('.negative_vote').html(score);
-        }
-      
+        var votes = self.closest(".votes");
+        var count = self.is(".vote_up") ? votes.find(".positive_vote") : votes.find(".negative_vote");
+        var score = parseInt(count.html());
+        score = score + value;
+        
+        count.html((self.is(".vote_up") ? "+" : "") + score);
+        
         self.closest('.action').addClass('voted').html("Voted");
       
       });
@@ -83,14 +57,18 @@ jQuery(document).ready(function() {
     }
   });
   
-  jQuery('.refactor .gist-data').each(function() { jQuery(this).attr("box_h", jQuery(this).height()); });
-	jQuery(".refactor .gist-data").css("height", "125px");
-	jQuery('.refactor .gist-data').click(function() { openSlider(jQuery(this), "125"); });
+  $.fn.slider = function(size) {
+    this.each(function() { $(this).data("originalHeight", $(this).height()); })
+      .height(size).toggle(function() { 
+        $(this).animate({height: $(this).data("originalHeight")}, "slow");
+      }, function() {
+        $(this).animate({height: size});
+      });
+  }
   
-  jQuery('#snippet.code .gist-data:first').each(function() { jQuery(this).attr("box_h", jQuery(this).height()); });
-  jQuery('#snippet.code .gist-data:first').css("height", "200px");
-  jQuery('#snippet.code .gist-data:not(:first)').parent().remove();
-  jQuery('#snippet.code .gist-data:first').click(function() { openSlider(jQuery(this), "200")});
+  $(".refactor .gist-data").slider(125);
+  $("#snippet.code .gist-data:first").slider(200);
+
 });
 
 jQuery(document).ajaxSend(function(event, request, settings) {
