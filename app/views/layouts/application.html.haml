@@ -39,5 +39,7 @@
 
       .footer
         &copy; 2009 No One.
+        .admin
+          = render :partial => 'layouts/admin_panel' if @current_user && @current_user.is_admin?
   = render :partial => 'layouts/google_analytics' if RAILS_ENV == 'production'
       
