@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = @current_user
+    @user = User.find_by_login!(params[:id])
     @user_snippets = @user.snippets.find(:all, :conditions => ["displayed_on IS NOT NULL"], :limit => 5, :order => 'created_at DESC')
     @top_refactors = @user.refactors.find(:all, :limit => 5, :order => "(SELECT SUM(votes.score) FROM votes WHERE votes.refactor_id = refactors.id) DESC")
   end
