@@ -1,10 +1,6 @@
 class AccountsController < ApplicationController
   before_filter :require_user, :only => [:edit, :update]
 
-  def show
-    redirect_to user_path(@user)
-  end
-
   def edit
     @user = @current_user
   end
