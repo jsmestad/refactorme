@@ -1,12 +1,4 @@
 .simple_container
-  %p.summary
-    All Ruby developers speak the same language, but all have varying techniques.
-    Rewrite the code snippet and provide the best solution. Everyday a new problem
-    will be presented, and the best written refactor wins; you decide the winner,
-    you provide the solution. Good Luck --
-
-  %br
-
   %h2 Snippet List by date
   %ul
   - Snippet.all(:conditions => ['displayed_on IS NOT NULL'], :order => 'displayed_on DESC').each do |snippet|
