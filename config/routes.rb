@@ -11,7 +11,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.submit_snippet "/submit", :controller => "snippets", :action => "new"
   
-  map.resource :account, :controller => 'users'
+  map.resource :account, :controller => 'accounts'
   map.resources :users
   map.resources :password_resets, :as => 'forgot_password'
   map.resource :user_session, :as => 'session'

@@ -13,14 +13,10 @@
     %strong Last Active:
     =h @user.last_login_at
 
-  %h1== Snippets by #{@user.login}
-  %ul
-    - @user_snippets.each do |snippet|
-      %li= snippet.title
+  %h4== Snippets by #{@user.login}
+  %p= @user_snippets.length
 
-  %h1== Refactors by #{@user.login}
-  %ul
-    - @top_refactors.each do |refactor|
-      %li= refactor.id
+  %h4== Refactors by #{@user.login}
+  %p= @top_refactors.length
  
-  = link_to 'Edit', edit_account_path
+  = link_to 'Edit', edit_account_path if @user == @current_user
