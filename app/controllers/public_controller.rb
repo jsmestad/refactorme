@@ -29,9 +29,9 @@ class PublicController < ApplicationController
     end
 
     # perform a conditional GET if the template is not modified
-    if stale?(:last_modified => template.mtime)
+    #if stale?(:last_modified => template.mtime)
       render :template => template.relative_path_from(base).to_s
-    end
+    #end
   end
 end
 
