@@ -1,4 +1,4 @@
-- form_for @user, :url => activate_path(@user.id), :html => { :method => :post , :class => 'login'} do |f|
+- form_for @user, :url => activate_path(@user), :html => { :method => :post , :class => 'login'} do |f|
   %h2 Activate your account
   %p Your email has been confirmed. Now just answer a last set of questions.
   %br
@@ -9,12 +9,6 @@
   %br
   = f.label :password_confirmation, "Confirm Password"
   = f.password_field :password_confirmation
-  %br
-  = f.label :github_username, "Github Username"
-  = f.text_field :github_username
-  %br
-  = f.label :github_api_key, "Github API Key"
-  = f.text_field :github_api_key
   %br
   
   %button{:type => 'submit'}
