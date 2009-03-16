@@ -26,18 +26,6 @@ describe UsersController do
       get :show, :id => @user.login
       response.should be_success
     end
-  
-    it "should get edit" do
-      set_session_for(@user)
-      get :edit, :id => @user.id
-      response.should be_success
-    end
-
-    it "should update user" do
-      set_session_for(@user)
-      put :update, :id => @user.id, :user => { }
-      response.should redirect_to(account_path)
-    end
   end
   
 end

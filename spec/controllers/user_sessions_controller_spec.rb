@@ -14,7 +14,7 @@ describe UserSessionsController do
     post :create, :user_session => { :login => @user.login, :password => "benrocks" }
     user_session = UserSession.find
     @user.should == user_session.user
-    response.should redirect_to(account_path)
+    response.should redirect_to(root_path)
   end
 
   it "should destroy user session" do
