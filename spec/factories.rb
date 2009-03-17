@@ -16,8 +16,21 @@ Factory.define :snippet do |s|
 
   # need context, but m.context would call the rspec method
   s.add_attribute :context, "some context"
+  s.gist_id 7890
 end
 
 Factory.define :gist_snippet, :class => Snippet, :parent => :snippet do |s|
   s.github_url "http://gist.github.com/4277"
+end
+
+Factory.define :refactor do |r|
+  r.association :user, :factory => :user
+  r.association :snippet, :factory => :snippet
+  r.gist_id 4567
+end
+
+Factory.define :vote do |v|
+  v.association :user, :factory => :user
+  v.association :refactor, :factory => :refactor
+  v.score 1
 end

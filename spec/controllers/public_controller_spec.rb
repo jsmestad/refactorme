@@ -10,9 +10,9 @@ describe PublicController do
       response.should be_success
     end
 
-    it 'should set the Last-Modified header' do
-      response.headers['Last-Modified'].should_not be_nil
-    end
+    # it 'should set the Last-Modified header' do
+    #   response.headers['Last-Modified'].should_not be_nil
+    # end
 
     it 'should render the matching template' do
       response.should render_template('public/about.html.haml')
@@ -28,9 +28,9 @@ describe PublicController do
       response.should be_success
     end
 
-    it 'should set the Last-Modified header' do
-      response.headers['Last-Modified'].should_not be_nil
-    end
+    # it 'should set the Last-Modified header' do
+    #   response.headers['Last-Modified'].should_not be_nil
+    # end
 
     it 'should render the index template in the directory' do
       response.should render_template('public/api/index.html.haml')
@@ -46,9 +46,9 @@ describe PublicController do
       get :show, :path => %w[ about ]
     end
 
-    it 'should return a 304 Not Modified Status' do
-      response.status.to_i.should == 304
-    end
+    # it 'should return a 304 Not Modified Status' do
+    #   response.status.to_i.should == 304
+    # end
   end
 
   describe 'with an invalid path' do
