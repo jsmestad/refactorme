@@ -2,7 +2,9 @@ class Refactor < ActiveRecord::Base
   belongs_to :snippet
   belongs_to :user
   has_many :votes
-   
+  
+  validates_presence_of :code, :if => :gist_is_blank?
+  
   before_save :send_to_gist
   
   def code=(code)
@@ -41,4 +43,9 @@ class Refactor < ActiveRecord::Base
     result = open(gist_url + ".js").read
     result.scan(/document.write\('(.*|\s*)'\)/)[1][0]
   end
+  
+
+    def gist_is_blank?
+      self.gist_id.blank?
+    end
 end

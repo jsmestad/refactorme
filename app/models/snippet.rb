@@ -10,7 +10,7 @@ class Snippet < ActiveRecord::Base
   has_many :refactors
   
   validates_presence_of :title, :message => "can't be blank"
-  validates_presence_of :code, :message => "can't be blank"
+  validates_presence_of :code, :message => "can't be blank", :if => :gist_is_blank?
   validates_presence_of :context, :on => :create, :message => "can't be blank"
   validates_length_of :context, :minimum => 10
   
@@ -69,4 +69,8 @@ class Snippet < ActiveRecord::Base
     result.scan(/document.write\('(.*|\s*)'\)/)[1][0]
   end
   
+  private
+    def gist_is_blank?
+      self.gist_id.blank?
+    end
 end

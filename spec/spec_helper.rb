@@ -7,6 +7,7 @@ require 'spec/rails'
 
 # Include Factories
 require 'factory_girl'
+require 'shoulda'
 
 require 'fake_web'
 page = `curl -is http://gist.github.com/raw/4277/a73141fc3a0555a8ce705cab81188f0be7a275aa/output.xml`
