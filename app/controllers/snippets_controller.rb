@@ -8,7 +8,7 @@ class SnippetsController < ApplicationController
   end
 
   def index
-    @snippets = Snippet.all(:conditions => ['displayed_on IS NULL'])
+    @snippets = Snippet.paginate :page => params[:page], :per_page => 12, :conditions => ['displayed_on IS NULL'], :order => 'created_at'
   end
 
   # Admin Functionality - for main site, see display method
@@ -49,13 +49,21 @@ class SnippetsController < ApplicationController
   
   def destroy
     snippet = Snippet.find_by_id!(params[:id])
-    
-    if snippet.destroy
-      flash[:success] = "Snippet has been deleted"
-    else
-      flash[:error] = "Error while deleting snippet"
+    respond_to do |wants|
+      if snippet.destroy
+        wants.js { render :text => 'Removed successfully' }
+      else
+        wants.js { render :text => 'Deletion totally failed.' }
+      end
     end
-    redirect_to snippets_path
+  end
+  
+  def approve
+    snippet = Snippet.find(params[:id])
+    snippet.approve! if params[:approved] == "true"
+    respond_to do |wants|
+      wants.js { render :text => "#{snippet.position}" }
+    end
   end
   
 end

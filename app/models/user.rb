@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   }
   
   def is_admin?
-    !!self.admin
+    self.admin
   end
   
   def to_param

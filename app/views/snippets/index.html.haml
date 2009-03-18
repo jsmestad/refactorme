@@ -1,19 +1,25 @@
 .simple_container
   %h2 Snippet Queue
+  
+  %p= "Total Snippets: #{@snippets.size}"
 
   %table
     %thead
       %th Title
       %th Submit Date
-      %th Status
+      %th Queue Position
     - @snippets.each do |snippet|
       %tr
         %td= link_to snippet.title, snippet
-        %td= snippet.created_at.to_s(:no_date)
-        %td= snippet.position if snippet.position
+        %td= snippet.created_at.to_formatted_s(:date)
         %td
-          = link_to "Approve", '#'
-          |
-          = link_to "Reject", '#'
-    
-  = "Pending Snippets: #{@snippets.size}"
+          - if snippet.position
+            = (Date.today + snippet.position).strftime('%a, %m.%d')
+          - else
+            %a{ :href => approve_snippet_path(snippet), :class => 'approve' }
+              approve
+        %td
+          %a{ :href => snippet_path(snippet), :class => 'delete' }
+            delete
+  
+  = will_paginate @snippets
