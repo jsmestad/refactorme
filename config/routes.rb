@@ -3,7 +3,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.display_snippet "/:year/:month/:day", :controller => "snippets", :action => "display", :requirements => { :year => /20\d{2}/, :month => /(0?[1-9]|1[12])/, :day => /(0?[1-9]|[12]\d|3[01])/ }
   
-  map.resources :snippets do |snippet|
+  map.resources :snippets, :member => { :approve => :put } do |snippet|
     snippet.resources :refactors, :member => { :send_to_gist => :get }, :has_many => [:votes]
   end
   

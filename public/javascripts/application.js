@@ -1,25 +1,25 @@
 jQuery(document).ready(function($) {
 
   var displayMessage = function(className, msg) {
-    $('#content').after('<div class="' + className + '">' + msg + '</div>');
+    $('.content').prepend('<div class="' + className + '">' + msg + '</div>');
   }
   
-  $('a.delete').live('click', function() {
+  $('a.delete').click(function() {
     var answer = confirm('Are you sure?');
     var self = $(this);
     if (answer) {
       $.post(self.attr('href'), { "_method": "delete" }, function(data) {
         self.closest('tr').remove();
-        displayMessage('success', data);
+        displayMessage('notice', data);
         }, "js");
     }
     return false;
   });
   
-  $('a.approve').live('click', function() {
+  $('a.approve').click(function() {
     var self = $(this);
-    $.post(self.attr('href'), { "approved" : "true" }, function(data) {
-      displayMessage('notice', data);
+    $.post(self.attr('href'), { "_method": "put", "approved": true }, function(data) {
+      self.replaceWith(data);
     }, "js");
     
     return false;
