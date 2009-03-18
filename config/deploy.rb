@@ -1,51 +1,52 @@
-# Please install the Engine Yard Capistrano gem
-# gem install eycap --source http://gems.engineyard.com
-require "eycap/recipes"
-
-set :keep_releases, 5
-set :application,   'refactorme'
-set :repository,    'git@github.com:jsmestad/refactorme.git'
-set :deploy_to,     "/data/#{application}"
-set :deploy_via,    :export
-set :monit_group,   "#{application}"
-set :scm,           :git
-
-# This is the same database name for all environments
-set :production_database,'refactorme_production'
-
-set :environment_host, 'localhost'
+set :application, "refactorme"
+ 
+# If you aren't deploying to /u/apps/#{application} on the target
+# servers (which is the default), you can specify the actual location
+# via the :deploy_to variable:
+set :deploy_to, "/home/jsmestad/sites/refactorme"
+ 
+# If you aren't using Subversion to manage your source code, specify
+# your SCM below:
+set :scm, :git
+set :repository, "git@github.com:jsmestad/refactorme.git"
+set :branch, "master"
 set :deploy_via, :remote_cache
-
-# uncomment the following to have a database backup done before every migration
-# before "deploy:migrate", "db:dump"
-
-# comment out if it gives you trouble. newest net/ssh needs this set.
-ssh_options[:paranoid] = false
-default_run_options[:pty] = true
-ssh_options[:forward_agent] = true
-default_run_options[:pty] = true # required for svn+ssh:// andf git:// sometimes
-
-# This will execute the Git revision parsing on the *remote* server rather than locally
-set :real_revision, 			lambda { source.query_revision(revision) { |cmd| capture(cmd) } }
-
-
-task :Production do
-  role :web, '75.101.167.152'
-  role :app, '75.101.167.152'
-  role :db, '75.101.167.152', :primary => true
-  set :environment_database, Proc.new { production_database }
-  set :dbuser,        'refactorme'
-  set :dbpass,        '8oCRMbneY1'
-  set :user,          'refactorme'
-  set :password,      '8oCRMbneY1'
-  set :runner,        'refactorme'
+set :rails_env, "production" 
+set :keep_releases, 5
+ 
+set :user, 'jsmestad'
+set :ssh_options, { :forward_agent => true }
+ 
+role :app, "refactorme.com"
+role :web, "refactorme.com"
+role :db,  "refactorme.com", :primary => true
+ 
+namespace :deploy do
+  desc "Restarting mod_rails with restart.txt"
+  task :restart, :roles => :app, :except => { :no_release => true } do
+    run "touch #{current_path}/tmp/restart.txt"
+  end
+ 
+  [:start, :stop].each do |t|
+    desc "#{t} task is a no-op with mod_rails"
+    task t, :roles => :app do ; end
+  end
+  
+  task :symlink_configs, :roles => :app, :except => { :no_symlink => true } do
+    run <<-CMD
+      cd #{release_path} &&
+      ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml
+    CMD
+  end
+  
+  task :migrate, :roles => :db do
+    run "cd #{release_path}; rake RAILS_ENV=#{rails_env} db:migrate"
+  end
+  
+  # desc "Gem Tasks"
+  # task :gems, :roles => :app do
+  #   run "cd #{release_path}; rake RAILS_ENV=#{rails_env} gems:install"
+  # end
 end
 
-
-# TASKS
-# Don't change unless you know what you are doing!
-after "deploy", "deploy:cleanup"
-after "deploy:migrations", "deploy:cleanup"
-after "deploy:update_code","deploy:symlink_configs"
-
-
+after "deploy", "deploy:cleanup", "deploy:symlink_configs", "deploy:migrate"
