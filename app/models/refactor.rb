@@ -32,10 +32,7 @@ class Refactor < ActiveRecord::Base
       response = Net::HTTP.post_form(URI.parse('http://gist.github.com/api/v1/xml/new'), { "files[refactorme_#{self.created_at.strftime('%b%d%y').downcase!}_#{self.id}.rb]" => "#{self.code}" })
       doc = Nokogiri::XML.parse(response.body)
       repo_id = doc.xpath('//repo').first.content
-      self.gist_id = repo_id
-      return true
-    else
-      return false
+      write_attribute(:gist_id, repo_id)
     end
   end
   
@@ -44,7 +41,8 @@ class Refactor < ActiveRecord::Base
     result.scan(/document.write\('(.*|\s*)'\)/)[1][0]
   end
   
-
+  private
+  
     def gist_is_blank?
       self.gist_id.blank?
     end

@@ -16,9 +16,6 @@
       %li
         %span.bold Member Since:
         = refactor.user.created_at.strftime("%b %Y")
-      %li
-        %span.bold Participation Count:
-        = refactor.user.refactors.count
       %li= link_to "Send to Gist", send_to_gist_snippet_refactor_path(@snippet, refactor), :class => 'send_to_gist'
       %li= link_to "Fork", "#", :class => 'fork'
     

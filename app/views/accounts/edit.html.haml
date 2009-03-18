@@ -4,6 +4,7 @@
   %br
   = f.error_messages
   %br
+  %h5 Required Fields
   = f.label :login
   = f.text_field :login 
   %br
@@ -16,11 +17,11 @@
   = f.label :email
   = f.text_field :email
   %br
-  %h4 Optional Fields
-  = f.label :github_username, "Github Username"
+  %h5 Optional Fields
+  = f.label :github_username, "GitHub Username"
   = f.text_field :github_username
   %br
-  = f.label :github_api_key, "Github API Key"
+  = f.label :github_api_key, "GitHub API Key"
   = f.text_field :github_api_key
   %br
   

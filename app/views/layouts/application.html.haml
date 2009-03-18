@@ -36,8 +36,8 @@
 
           = yield
 
-      .footer
-        &copy; 2009 No One.
-        = render :partial => 'layouts/admin_panel' if current_user && current_user.is_admin?
+        .footer
+          &copy; 2009 No One.
+          = render :partial => 'layouts/admin_panel' if current_user && current_user.is_admin?
   = render :partial => 'layouts/google_analytics' if RAILS_ENV == 'production'
       

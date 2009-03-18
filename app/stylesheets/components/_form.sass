@@ -1,13 +1,14 @@
 .content
   form
+    :width 90%
     :border 2px solid #DADADA
     :padding 10px 20px 20px 20px
     :overflow hidden
     :margin 0 auto
     :background-color #FFF
-    h4
-      :border-bottom 1px dotted #999
-      :margin-bottom 10px
+h5
+  :border-bottom 1px dotted #999
+  :margin-bottom 10px
 
 label
   :font-weight bold
@@ -76,30 +77,34 @@ button
     :list-style-type inherit
 
 .code_input
-  :display block
-  :overflow hidden
-  .gist_block
-    :float left
-    :display block
-    :overflow hidden
+  :margin-bottom 20px
+  .gist_block,
+  .code_block
+    :margin-left 50px
+    :background-color #DADADA
+    :padding 8px
+    :border 2px solid #999
+    :width 475px
+    h5
+      :border none
     label
       :width 100px
+  .gist_block
+    :margin-bottom 10px
+    
+  .code_block
+    :margin-top 10px
 
   .or_block
-    :position relative
-    :margin-left 390px
-    :margin-right 470px
-    :margin-top 28px
     :color #ee8a1c
+    :margin-left 285px
     h1
       :font-size 24px
-      :text-decoration underline
 
   .code_block
-    :float right
     label
       :width 100px
 
-button.submission
-  :float none
-  :margin 0 auto
+/ button.submission
+/   :float none
+/   :margin 0 auto

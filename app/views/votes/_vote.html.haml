@@ -12,6 +12,9 @@
       %a{ :href => snippet_refactor_votes_path(@snippet, refactor), :class => 'vote vote_up' }
         GOOD
   - else
-    = link_to "up", login_path, :class => 'vote vote_up reg'
-    |
-    = link_to "down", login_path, :class => 'vote vote_up reg'
+    .neg_link
+      %a{ :href => login_path, :class => 'vote_down' }
+        BAD
+    .pos_link
+      %a{ :href => login_path, :class => 'vote_up' }
+        GOOD

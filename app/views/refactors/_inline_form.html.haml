@@ -1,15 +1,25 @@
-- form_for @snippet.refactors.new, :url => snippet_refactors_path(@snippet) do |f|
-  = f.label :gist_url
-  = f.text_field :gist_url
+.inline_reply
+  - form_for Refactor.new, :url => snippet_refactors_path(@snippet) do |f|
     
-  %b OR
+    %h5 Reply
+    = f.label :gist_url, "Gist URL"
+    = f.text_field :gist_url
+    
+    %br 
+    %b OR
+    %br
+    %br
+    = f.label :code
+    = f.text_area :code
   
-  = f.label :code
-  = f.text_area :code
+    .code_block
+      %h5
+        Optional Description
+        %a{ :href => '' }
+          (show)
+      .code_box.hidden
+        = f.label :context, "Description"
+        = f.text_area :context
   
-  %h3 Provide some context for this submission (optional)
-  = f.label :context
-  = f.text_area :context
-  
-  %button{ :type => 'submit' }
-    Submit
+    %button{ :type => 'submit' }
+      Submit
