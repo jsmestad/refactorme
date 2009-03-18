@@ -117,16 +117,19 @@ describe SnippetsController do
     end
 
     it "should require an admin" do
+      pending
       delete :destroy, :id => @snippet.id
       response.should_not be_success
     end
 
     it "should destroy the snippet" do
+      pending
       do_delete
       lambda {@snippet.reload}.should raise_error(ActiveRecord::RecordNotFound)
     end
 
     it "should redirect to the index" do
+      pending
       do_delete
       response.should redirect_to(snippets_url)
     end
