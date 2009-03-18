@@ -4,6 +4,13 @@ jQuery(document).ready(function($) {
     $('.content').prepend('<div class="' + className + '">' + msg + '</div>');
   }
   
+  $('.code_block h5 a').click(function() {
+    var self = $(this);
+    self.text(self.text() == "(show)" ? "(hide)" : "(show)");
+    self.closest('.code_block').children('.code_box').toggle("fast");
+    return false;
+  });
+  
   $('a.delete').click(function() {
     var answer = confirm('Are you sure?');
     var self = $(this);

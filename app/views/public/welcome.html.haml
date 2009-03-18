@@ -1,9 +1,11 @@
 .simple_container
-  %h2 Snippet List by date
-  %ul
-  - Snippet.all(:conditions => ['displayed_on IS NOT NULL'], :order => 'displayed_on DESC').each do |snippet|
-    %li
-      %a{ :href => display_snippet_path(snippet.displayed_on.year, snippet.displayed_on.month, snippet.displayed_on.day) }
-        = "#{snippet.displayed_on.to_s(:no_year)}: #{snippet.title}"
+  %h2 Snippet List by Date
   %p
     = "There are #{Snippet.count} snippets in the system, #{Snippet.count(:conditions => ['displayed_on IS NOT NULL'])} have been displayed & #{Snippet.count(:conditions => ['position IS NOT NULL'])} are in the queue."
+  %br
+  
+  %ul
+    - Snippet.all(:conditions => ['displayed_on IS NOT NULL'], :order => 'displayed_on DESC').each do |snippet|
+      %li
+        %a{ :href => display_snippet_path(snippet.displayed_on.year, snippet.displayed_on.month, snippet.displayed_on.day) }
+          = "#{snippet.displayed_on.to_s(:no_year)}: #{snippet.title}"

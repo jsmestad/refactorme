@@ -21,9 +21,7 @@ class RefactorsController < ApplicationController
     @refactor.user = current_user # Set User As Author
     if @refactor.save
       flash[:success] = "Refactor posted successfully."
-      redirect_to @snippet
-    else
-      render :action => :new
+      redirect_to display_snippet_path(@snippet.displayed_on.year, @snippet.displayed_on.mon, @snippet.displayed_on.day)
     end
   end
   

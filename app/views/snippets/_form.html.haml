@@ -1,28 +1,33 @@
-%h4 Give a title for your submission
-= form.label :title
-= form.text_field :title
-%br
-%h4 Provide some context for this submission
-= form.label :context
-= form.text_area :context
-%br
-
 .code_input
-  .code_block
-    %h4 Be lame and paste your code below, we create the gist!
-    %br
-    = form.label :code
-    = form.text_area :code
-
   .gist_block
-    %h4 
+    %h5 
       Post your code from a gist
       %span
         %a{ :href => 'http://gist.github.com' } (gist link)
-    %br
-    = form.label :gist_url, "Gist URL"
-    = form.text_field :gist_url
+    .code_box
+      = form.label :gist_url, "Gist URL"
+      = form.text_field :gist_url
 
   .or_block
-    %h1 OR 
+    %h1 OR
+    
+  .code_block
+    %h5 
+      Paste your code below, we create the gist
+      %a{ :href => '' } (show)
+    .code_box.hidden
+      = form.label :code
+      = form.text_area :code
+
+%br
+%h5 Give a title for this submission
+= form.label :title
+= form.text_field :title
+%br
+%h5 Provide a description for this submission
+= form.label :context, "Description"
+= form.text_area :context
+%br
+
+
 
