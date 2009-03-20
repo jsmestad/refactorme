@@ -13,6 +13,7 @@ set :branch, "master"
 set :deploy_via, :remote_cache
 set :rails_env, "production" 
 set :keep_releases, 5
+set :use_sudo, false
  
 set :user, 'jsmestad'
 set :ssh_options, { :forward_agent => true }
