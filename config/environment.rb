@@ -7,8 +7,14 @@ RAILS_GEM_VERSION = '2.3.2' unless defined? RAILS_GEM_VERSION
 require File.join(File.dirname(__FILE__), 'boot')
 
 require 'validations'
+require 'rack/cache'
 
 Rails::Initializer.run do |config|
+  config.middleware.use(Rack::Cache,
+     :verbose => true,
+     :metastore   => 'file:/var/cache/rack/meta',
+     :entitystore => 'file:/var/cache/rack/body')
+  
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
   # -- all .rb files in that directory are automatically loaded.
@@ -20,11 +26,12 @@ Rails::Initializer.run do |config|
   config.gem "haml"
   config.gem "mislav-will_paginate", :lib => "will_paginate", :source => "http://gems.github.com"
   config.gem "authlogic"
-  config.gem "nokogiri"
-  config.gem "bcrypt-ruby", :lib => 'bcrypt'
+  # config.gem "nokogiri"
+  # config.gem "bcrypt-ruby", :lib => 'bcrypt'
   config.gem "simplificator-tls-support", :lib => 'tls-support', :source => "http://gems.github.com"
   config.gem "mislav-will_paginate", :lib => 'will_paginate', :source => "http://gems.github.com"
   config.gem "chriseppstein-compass", :lib => 'compass', :source => 'http://gems.github.com'
+  
   
   # For GitHub Messaging Integration
   # config.gem "mechanize"
