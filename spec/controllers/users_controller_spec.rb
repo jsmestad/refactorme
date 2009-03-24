@@ -28,4 +28,18 @@ describe UsersController do
     end
   end
   
+  describe "given a usr exists" do
+    before do
+      @user = Factory.create(:user)
+    end
+    
+    it "should have a valid url" do
+      get :profile, :id => @user.id
+      response.should_not be_nil 
+    end
+    
+    it ""
+  end
+  
+  
 end
