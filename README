@@ -5,16 +5,17 @@ Its intent is also to feature snippets from the Rails 3 work done by Yehuda and 
 if code can be refactored in a cleaner way. Want to know more? Run script/server ;)
 
 == TODO
-
- Profile Page
  Rankings Page
  Archive Viewer (Calender like Calender About Nothing)
  Splice up design / Styling
- jQuery inline submission for refactor posting
- Redesign Submit page to be more IA friendly
  Style About Page and add content about participants
  Admin Panel
- Add Approve / Reject to admin panel on snippets (logic is there)
  Make Cucumber tests pass, update where needed
- Refactor User controller to work for administration (currently only allows @user = @current_user)
- Add CRON task for Daily Snippet rake task
+ 
+== COMPLETED
+ # Refactor User controller to work for administration (currently only allows @user = @current_user)
+ # Add CRON task for Daily Snippet rake task
+ # Redesign Submit page to be more IA friendly
+ # Profile Page
+ # Add Approve / Reject to admin panel on snippets (logic is there)
+ # jQuery inline submission for refactor posting
