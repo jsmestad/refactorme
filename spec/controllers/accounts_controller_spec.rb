@@ -10,14 +10,15 @@ describe AccountsController do
   
     it "should get edit" do
       set_session_for(@user)
-      get :edit, :id => @user.id
+      get :edit
       response.should be_success
     end
 
     it "should update user" do
       set_session_for(@user)
-      put :update, :id => @user.id, :user => { }
-      response.should redirect_to(account_path)
+      put :update, :user => { :email => 'dude@pants.com' }
+      p response.body
+      response.should redirect_to(account_url)
     end
   end
   

@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
-  acts_as_authentic do |c| 
-    c.crypto_provider = Authlogic::CryptoProviders::BCrypt
-  end
+  acts_as_authentic :crypto_provider => Authlogic::CryptoProviders::BCrypt,
+                    :password_field_validates_length_of_options => { :on => :update, :if => :has_no_credentials? }
   
   attr_accessible :login, :email, :password, :password_confirmation
   
@@ -59,10 +58,8 @@ class User < ActiveRecord::Base
     UserNotifier.deliver_password_reset_instructions(self)
   end
   
-  private
-  
-    def require_password?
-      !self.new_record?
-    end
+  def has_no_credentials?
+    self.crypted_password.blank?
+  end
   
 end
