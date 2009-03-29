@@ -25,7 +25,7 @@ Rails::Initializer.run do |config|
   # Specify gems that this application depends on and have them installed with rake gems:install
   config.gem "haml"
   config.gem "mislav-will_paginate", :lib => "will_paginate", :source => "http://gems.github.com"
-  config.gem "authlogic"
+  config.gem "authlogic", :version => "1.4.3"
   config.gem "nokogiri"
   config.gem "bcrypt-ruby", :lib => 'bcrypt'
   config.gem "simplificator-tls-support", :lib => 'tls-support', :source => "http://gems.github.com"
