@@ -50,4 +50,4 @@ namespace :deploy do
   # end
 end
 
-after "deploy", "deploy:cleanup", "deploy:symlink_configs", "deploy:migrate", "deploy:bundle_assets"
+after "deploy", "deploy:cleanup", "deploy:symlink_configs", "deploy:migrate"
