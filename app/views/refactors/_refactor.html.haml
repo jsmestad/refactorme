@@ -1,4 +1,6 @@
 .refactor_container
+  .vote_label
+    &nbsp;
   .votes
     = render :partial => 'votes/vote', :locals => { :refactor => refactor }
   
@@ -8,15 +10,15 @@
       %script{ :type => "text/javascript" } 
         = "document.write('#{refactor.display}');"
       .hidden=h refactor.code
-  
-    %ul
-      %li
-        %span.bold Submission by:
-        = refactor.user.login
-      %li
-        %span.bold Member Since:
-        = refactor.user.created_at.strftime("%b %Y")
-      %li= link_to "Send to Gist", send_to_gist_snippet_refactor_path(@snippet, refactor), :class => 'send_to_gist'
-      %li= link_to "Fork", "#", :class => 'fork'
+    .details
+      %ul
+        %li
+          %span.bold Submission by:
+          = refactor.user.login
+        %li
+          %span.bold Member Since:
+          = refactor.user.created_at.strftime("%b %Y")
+        %li= link_to "Send to Gist", send_to_gist_snippet_refactor_path(@snippet, refactor), :class => 'send_to_gist'
+        %li= link_to "Fork", "#", :class => 'fork'
     
     .hidden= render :partial => 'refactors/inline_form', :locals => {:code => refactor.code}

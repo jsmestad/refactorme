@@ -1,20 +1,21 @@
-.positive_vote= "+#{refactor.votes.positive.sum(:score)}"
-.negative_vote= refactor.votes.negative.sum(:score) == 0 ? "-#{refactor.votes.negative.sum(:score)}": refactor.votes.negative.sum(:score)
+.positive_vote= refactor.votes.positive.sum(:score)
+.negative_vote= refactor.votes.negative.sum(:score)
 .action
   - if logged_in?
     - if current_user.votes.include?(refactor)
       Voted
     - else
-    .neg_link
-      %a{ :href => snippet_refactor_votes_path(@snippet, refactor), :class => 'vote vote_down' }
-        BAD
     .pos_link
       %a{ :href => snippet_refactor_votes_path(@snippet, refactor), :class => 'vote vote_up' }
         GOOD
-  - else
     .neg_link
-      %a{ :href => login_path, :class => 'vote_down' }
+      %a{ :href => snippet_refactor_votes_path(@snippet, refactor), :class => 'vote vote_down' }
         BAD
+
+  - else
     .pos_link
       %a{ :href => login_path, :class => 'vote_up' }
         GOOD
+    .neg_link
+      %a{ :href => login_path, :class => 'vote_down' }
+        BAD

@@ -10,24 +10,44 @@
       .container
         .header
           %ul.navigation
-            %li= link_to "LIST", root_url
-            %li= link_to "SUBMIT", submit_snippet_url
-            %li= link_to "USERS", users_url
+            %li= link_to "List", root_url
+            %li
+              __
+            %li= link_to "Submit", submit_snippet_url
+            %li
+              __
+            %li= link_to "Users", users_url
+            %li
+              __
             - if logged_in?
-              %li= link_to "ACCNT", edit_account_url
-              %li= link_to "LOGOUT", logout_url
+              %li= link_to "Account", edit_account_url
+              %li
+                __
+              %li= link_to "Logout", logout_url
+              %li
+                __
             - else
-              %li= link_to "LOGIN", login_url
-              %li= link_to "SIGNUP", signup_url
+              %li= link_to "Login", login_url
+              %li
+                __
+              %li= link_to "Signup", signup_url
+              %li
+                __
             %li
-              %a{:href => 'http://getsatisfaction.com/evalcode'} FEEDBACK
+              %a{:href => 'http://getsatisfaction.com/evalcode'} Feedback
             %li
-              %a{:href => '/about'} ABOUT
+              __
+            %li
+              %a{:href => '/about'} About
         
           %h1
             %a{ :href => root_url }
-              RefactorMe
-
+              %img{ :src => '/images/logo.png' }
+          .description
+            All Ruby developers speak the same language, but all have varying techniques.
+            Rewrite the code snippet and provide the best solution. Everyday a new problem
+            will be presented, and the best written refactor wins; you decide the winner,
+            you provide the solution. Good Luck --
          
         .content
           - [ :error, :success, :notice ].each do |type|
@@ -39,5 +59,6 @@
         .footer
           &copy; 2009 No One.
           = render :partial => 'layouts/admin_panel' if current_user && current_user.is_admin?
+          Designed by Hoshi Ludwig with conceptual work from Chris Nguyen
   = render :partial => 'layouts/google_analytics' if RAILS_ENV == 'production'
       
