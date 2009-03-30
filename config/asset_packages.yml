@@ -3,6 +3,3 @@ javascripts:
 - base: 
   - jquery
   - application
-stylesheets: 
-- base: 
-  - screen
