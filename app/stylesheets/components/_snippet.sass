@@ -1,9 +1,8 @@
 .snippet_container
   :overflow hidden
-  :margin 1em 0
+  :display block
   #date
     :float left
-    :margin-left 7em
     :width 100px
     :overflow hidden
     :display block
@@ -11,7 +10,6 @@
     .day
       :font-size 79px
       :font-weight bold
-      :border-bottom 1px solid #DADADA
       :background-color #707070
       :color #FFF
       :margin-bottom 1px
@@ -21,123 +19,124 @@
       :width 50px
       :float left
       :margin 1px 1px 0 0
-      :background-color #FFF
-      :color #707070
+      :color #00aeef
     .year
       :font-size 34px
       :width 47px
       :float left
       :padding-top 5px
       :margin 1px 0 0 1px
-      :background-color #FFF
-      :color #707070
+      :color #00aeef
       .century
         :line-height 0.6em
 
   .snippet_nav
     :position relative
-    :font-size 32px
-    :display block
-    :overflow hidden
-    :margin-left 200px
-    :background-color #567ba4
-    :padding 5px 10px
+    :font-size 79px
+    :text-align center
+    :margin-left 102px
+    :background-color #707070
+    :padding 2px 0 1px
     :color #e8e8e8
-    .right_arrow
-      :float right
-      :background url('/images/right_arrow.png') no-repeat
-      a
-        :width 45px
-        :height 35px
-        :display block
-    .left_arrow
-      :float left
-      :background url('/images/left_arrow.png') no-repeat
-      a
-        :width 45px
-        :height 35px
-        :display block
-    .middle
-      :margin 0 40px
-      :text-align center
+    / .right_arrow
+    /   :float right
+    /   :background url('/images/right_arrow.png') no-repeat
+    /   a
+    /     :width 45px
+    /     :height 35px
+    /     :display block
+    / .left_arrow
+    /   :float left
+    /   :background url('/images/left_arrow.png') no-repeat
+    /   a
+    /     :width 45px
+    /     :height 35px
+    /     :display block
+    / .middle
+    /   :margin 0 40px
+    /   :text-align center
       
 
   #snippet
-    :margin-left 200px
+    :margin-left 102px
     :position relative
     .code
 
 .refactor,
 #snippet
-  ul
-    :font-size 11px
-    :margin-bottom 2px
-    :padding 7px
-    +inline-list
-    li
-      :padding 0 6px
-      :background-color #fff
-      :border-left 2px solid #DADADA
-      :border-right 2px solid #DADADA
-      :border-bottom 2px solid #DADADA
-      :margin 0 2px
-    .bold
-      :font-weight bold
+  .details
+    :background url('/images/details_bg.png') repeat-y
+    :height 22px
+    :padding-top 8px
+    ul
+      :font-size 11px
+      :color #FFF
+      :margin 0 20px
+      li
+        :padding 10px 0
+        :margin-right 20px
+        :display inline
+      .bold
+        :font-weight bold
 
 .refactor_container
   :overflow hidden
-  :margin 1em 0
+  :margin 25px 0
+  .vote_label
+    :float left
+    :width 11px
+    :height 37px
+    :background url('/images/vote_label.png') no-repeat
+    :margin-left 91px
   .votes
     :float left
-    :margin-left 200px
+    :display block
     :overflow hidden
-    :text-align right
-    :border 1px solid #DADADA
     :width 100px
-    :background url('/images/vote_bg.png') no-repeat
+    :text-align center
     .positive_vote,
     .negative_vote
-      :margin-right 5px
+      :width 50px
+      :height 33px
+      :background url('/images/details_bg.png') no-repeat
+      :padding-top 2px
     .positive_vote
-      :font-size 30px
+      :font-size 22px
       :font-weight bold
-      :color #00AEEF
+      :color #00aeef
+      :float left
     .negative_vote
-      :font-size 30px
+      :font-size 22px
       :font-weight bold
-      :color #CC0A4A
+      :color #ab281d
+      :margin-left 51px
       
     .action
       :display block
       :overflow hidden
-      :text-align center
-      :background-color #FFF
-      :padding 4px 0
       a
         :color #FFF
         :font-weight bold
-        :padding 3px 0
       &.voted
         :background-color #C6D880
         :color #264409
       .neg_link,
       .pos_link
-        :display block
+        :width 50px
+        :height 22px
+        :padding 8px 0
       .pos_link
         :float left
-        :width 48px
-        :margin-right 1px
-        :background-color #567BA4
+        :background-color #00aeef
+        :background url('/images/good_button.png') repeat-x
       .neg_link
-        :float right
-        :width 48px
-        :margin-left 1px
-        :background-color #ed145b
+        :margin-left 51px
+        :background-color #AB281D
+        :background url('/images/bad_button.png') repeat-x
 
   .refactor
-    :margin-left 315px
+    :margin-left 206px
     :position relative
-    :overflow hidden
     .code
     
     .inline_reply

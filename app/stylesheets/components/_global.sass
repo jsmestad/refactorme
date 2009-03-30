@@ -1,6 +1,7 @@
 body
   :font-family "Helvetica Neue", Helvetica, Arial, sans-serif
   :font-size 12px
+  :background-color #212121
 
 h1, h2, h3, h4, h5, h6
   :font-weight bold
@@ -23,58 +24,11 @@ a,
 a:hover,
 a:visited,
 a:active
-  :color #ee8a1c
+  :color #00aeef
   :text-decoration none
 
 textarea
   :font-family "Monaco", Courier, sans-serif
-
-.container
-  :margin 0 auto
-  :width 960px
   
-.simple_container
-  ul
-    :margin-left 25px
-    li
-      :padding 5px 10px 5px 0
-      :border-bottom 1px dotted #DADADA
-  
-.error, .notice, .success
-  :border 2px solid #DDDDDD
-  :padding 0.8em
-  :width 50%
-  :margin 1.2em auto
-  :text-align center
-.success
-  :background-color #E6EFC2
-  :border-color #C6D880
-  :color #264409
-  &.summary
-    :width 758px
-    :margin-left 82px
-    :text-align justify
-    :margin-top 0
-.error
-  :background-color #FBE3E4
-  :border-color #FBC2C4
-  :color #8A1F11
-.notice
-  :background-color #FFF6BF
-  :border-color #FFD324
-  :color #514721
-
-
 .hidden
   :display none
-
-.footer
-  :text-align center
-  :font-weight bold
-  :color #333
-  :border-top 1px dotted #333
-  :margin 0 10px
-  :padding 8px 0
-  .admin
-    ul
-      +inline-list

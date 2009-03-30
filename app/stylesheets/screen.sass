@@ -2,48 +2,39 @@
 @import compass/utilities.sass
 
 @import components/global
-@import components/form
+/ @import components/form
 @import components/gist
 @import components/snippet
-@import components/simple_container
+/ @import components/simple_container
 
 @import components/users
-
-.wrapper
-  :background url("/images/container_bg.png") repeat-y
-  :width 966px
-  :margin 0 auto
-  :height 100%
+    
+    
 .container
-  :width 958px
-
-
-.header
-  :padding-top 10px
-  :height 75px
-  :margin-bottom 10px
-  :width 100%
-  h1
-    +replace-text("/images/header_logo.png", 5%)
-    :height 75px
-  a
-    :color #707070
-  ul.navigation
-    +inline-list
-    :font-weight bold
-    :float right
-    :height 30px
-    :font-size 11px
-    li
-      :border-left 1px solid #DADADA
-      :padding 10px 0 0 8px
-      :margin 0 8px
-      
-      a:hover
-        :text-decoration underline
-
-.content
-  :margin 10px 0 20px 0
-  .summary
+  :margin 0 auto
+  :width 960px
+  
+  .header
+    :display block
+    :overflow hidden
     
+    h1
+      :font-size 60px
+      :padding 20px 0
+      img
+        :float left
+        :padding 20px 0
+    .description
+      :font-weight bold
+      :color #FFF
+      :background url('/images/seperator.png') no-repeat
+      :padding 8px 0px 0px 35px
+      :height 65px
+      :margin-left 280px
+      :text-align justify
     
+    ul.navigation
+      :color #FFF
+      :font-size 11px
+      :float right
+      +inline-list
