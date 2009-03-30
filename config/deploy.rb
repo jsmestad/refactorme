@@ -44,10 +44,6 @@ namespace :deploy do
     run "cd #{release_path}; rake RAILS_ENV=#{rails_env} db:migrate"
   end
   
-  task :bundle_assets, :roles => :app do
-    run "cd #{release_path}; /usr/local/ruby-enterprise/bin/compass && rake RAILS_ENV=#{rails_env} asset:packager:build_all"
-  end
-  
   # desc "Gem Tasks"
   # task :gems, :roles => :app do
   #   run "cd #{release_path}; rake RAILS_ENV=#{rails_env} gems:install"
