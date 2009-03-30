@@ -45,7 +45,7 @@ namespace :deploy do
   end
   
   task :bundle_assets, :roles => :app do
-    run "cd #{release_path}; compass && rake RAILS_ENV=#{rails_env} asset:packager:build_all"
+    run "cd #{release_path}; /usr/local/ruby-enterprise/bin/compass && rake RAILS_ENV=#{rails_env} asset:packager:build_all"
   end
   
   # desc "Gem Tasks"
