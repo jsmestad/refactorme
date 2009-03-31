@@ -14,7 +14,11 @@
     %script{ :type => "text/javascript" } 
       = "document.write('#{@snippet.display}');"
     .hidden=h @snippet.display
+    %a{:href => '', :class => 'fork' }
+      .fork_button
+        REFACTOR
     .details
+      
       %ul
         %li
           %span.bold Submission by:
@@ -25,7 +29,7 @@
         %li
           %span.bold Participation Count:
           = @snippet.user.refactors.count
-        %li= link_to "Refactor", "#", :class => 'fork'
+        
 
     .hidden= render :partial => 'refactors/inline_form', :locals => {:code => @snippet.code}
 

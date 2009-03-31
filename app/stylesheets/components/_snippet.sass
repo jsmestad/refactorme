@@ -13,6 +13,7 @@
       :background-color #707070
       :color #FFF
       :margin-bottom 1px
+      :background url('/images/snippet_of_day.png') no-repeat
     .month
       :font-size 20px
       :font-weight bold
@@ -32,11 +33,14 @@
 
   .snippet_nav
     :position relative
+    :background url('/images/snippet_of_day.png') repeat-x
     :font-size 79px
     :text-align center
     :margin-left 102px
     :background-color #707070
-    :padding 2px 0 1px
+    :color #212121
+    :font-weight bold
+    :padding-bottom 1px
     / .right_arrow
     /   :float right
     /   :background url('/images/right_arrow.png') no-repeat
@@ -64,8 +68,9 @@
 .refactor,
 #snippet
   .details
-    :background url('/images/details_bg.png') repeat-y
-    :height 22px
+    :background url('/images/details_bg.png') no-repeat
+    :height 33px
+    :margin-right 85px
     :padding-top 8px
     ul
       :font-size 11px
@@ -77,6 +82,16 @@
         :display inline
       .bold
         :font-weight bold
+  .fork_button
+    :float right
+    :font-weight bold
+    :width 85px
+    :height 34px
+    :padding-top 8px
+    :text-align center
+    :background url('/images/good_button.png') repeat-x
+    :margin-top 1px
+    :color #FFF
 
 .refactor_container
   :overflow hidden
