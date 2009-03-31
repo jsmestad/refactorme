@@ -425,8 +425,7 @@ button {
     text-align: center;
     margin-left: 102px;
     background-color: #707070;
-    padding: 2px 0 1px;
-    color: #e8e8e8; }
+    padding: 2px 0 1px; }
   .snippet_container #snippet {
     margin-left: 102px;
     position: relative; }
@@ -542,7 +541,6 @@ table {
       text-align: justify; }
     .container .header ul.navigation {
       color: #FFF;
-      font-size: 11px;
       float: right;
       list-style-type: none;
       margin: 0px;
