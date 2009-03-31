@@ -15,8 +15,6 @@ class User < ActiveRecord::Base
   named_scope :top_refactors, {
     :joins => ["INNER JOIN refactors ON refactors.user_id = users.id",
                "LEFT JOIN votes ON votes.refactor_id = refactors.id"],
-    #:group => "users.id",
-    #:conditions => "ratable_rankings.deleted_at IS NULL",
     :order => "SUM(votes.score) DESC, users.login ASC"
   }
   
@@ -30,11 +28,6 @@ class User < ActiveRecord::Base
   
   def active?
     active
-  end
-  
-  def activate!
-    self.active = true
-    save
   end
   
   def signup!(params)
