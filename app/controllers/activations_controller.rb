@@ -16,7 +16,7 @@ class ActivationsController < ApplicationController
     if @user.update_attributes( params[:user].merge({:active => true}) )
       @user.deliver_activation_confirmation!
       flash[:success] = "Your account has been activated."
-      redirect_to login_url
+      redirect_to account_url
     else
       render :action => 'new'
     end
