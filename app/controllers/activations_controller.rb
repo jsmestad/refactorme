@@ -9,7 +9,7 @@ class ActivationsController < ApplicationController
   end
  
   def create
-    @user = User.find(params[:id])
+    @user = User.find_by_login!(params[:id])
 
     raise Exception if @user.active?
 
