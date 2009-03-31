@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   acts_as_authentic :crypto_provider => Authlogic::CryptoProviders::BCrypt,
                     :password_field_validates_length_of_options => { :on => :update, :if => :has_no_credentials? }
   
-  attr_accessible :login, :email, :password, :password_confirmation
+  attr_accessible :login, :email, :password, :password_confirmation, :active
   
   validates_length_of :login, :within => 2..15
   
