@@ -166,8 +166,9 @@ button {
   font-weight: bold;
   line-height: 130%;
   margin: 0 7px 0 160px;
-  padding: 5px 10px 6px 7px;
-  text-decoration: none; }
+  padding: 7px 7px 7px 7px;
+  text-decoration: none;
+  border: 0; }
 
 .errorExplanation {
   padding: 8px;
@@ -402,7 +403,8 @@ button {
       font-weight: bold;
       background-color: #707070;
       color: #FFF;
-      margin-bottom: 1px; }
+      margin-bottom: 1px;
+      background: url('/images/snippet_of_day.png') no-repeat; }
     .snippet_container #date .month {
       font-size: 20px;
       font-weight: bold;
@@ -421,19 +423,23 @@ button {
         line-height: 0.6em; }
   .snippet_container .snippet_nav {
     position: relative;
+    background: url('/images/snippet_of_day.png') repeat-x;
     font-size: 79px;
     text-align: center;
     margin-left: 102px;
     background-color: #707070;
-    padding: 2px 0 1px; }
+    color: #212121;
+    font-weight: bold;
+    padding-bottom: 1px; }
   .snippet_container #snippet {
     margin-left: 102px;
     position: relative; }
 
 .refactor .details,
 #snippet .details {
-  background: url('/images/details_bg.png') repeat-y;
-  height: 22px;
+  background: url('/images/details_bg.png') no-repeat;
+  height: 33px;
+  margin-right: 85px;
   padding-top: 8px; }
   .refactor .details ul,
   #snippet .details ul {
@@ -448,6 +454,17 @@ button {
     .refactor .details ul .bold,
     #snippet .details ul .bold {
       font-weight: bold; }
+.refactor .fork_button,
+#snippet .fork_button {
+  float: right;
+  font-weight: bold;
+  width: 85px;
+  height: 34px;
+  padding-top: 8px;
+  text-align: center;
+  background: url('/images/good_button.png') repeat-x;
+  margin-top: 1px;
+  color: #FFF; }
 
 .refactor_container {
   overflow: hidden;
@@ -541,6 +558,7 @@ table {
       text-align: justify; }
     .container .header ul.navigation {
       color: #FFF;
+      font-size: 12px;
       float: right;
       list-style-type: none;
       margin: 0px;
