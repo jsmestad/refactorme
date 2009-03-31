@@ -17,8 +17,7 @@ describe AccountsController do
     it "should update user" do
       set_session_for(@user)
       put :update, :user => { :email => 'dude@pants.com' }
-      p response.body
-      response.should redirect_to(account_url)
+      response.should redirect_to(user_path(@user))
     end
   end
   
