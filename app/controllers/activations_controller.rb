@@ -13,14 +13,15 @@ class ActivationsController < ApplicationController
 
     raise Exception if @user.active?
 
-    if @user.update_attributes(params[:user].merge({:active => true}))
+    if @user.update_attributes( params[:user].merge({:active => true}) )
       @user.deliver_activation_confirmation!
       flash[:success] = "Your account has been activated."
-      redirect_to account_url
+      redirect_to login_url
     else
       render :action => 'new'
     end
   rescue Exception => e
+      flash[:error] = "Uh oh! An error occured. Please contact an admin."
       redirect_to root_url
   end
 
