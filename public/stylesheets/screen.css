@@ -158,7 +158,6 @@ form.login {
 button {
   background-color: #92C97C;
   background: url('/images/good_button.png') repeat-x;
-  border: 1px solid #00aeef;
   color: #E8F7DF;
   cursor: pointer;
   display: block;
