@@ -6,7 +6,7 @@ dir = File.expand_path(File.join(File.dirname(__FILE__), '..'))
 daemon_options = {
   :multiple   => false,
   :dir_mode   => :normal,
-  :dir        => File.join(dir, 'log', 'pids'),
+  :dir        => File.join(dir, 'tmp', 'pids'),
   :backtrace  => true
 }
  
