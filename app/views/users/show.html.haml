@@ -18,6 +18,6 @@
 
 .additional
   %strong Last Active:
-  =h @user.last_login_at.strftime('%m/%d/%y %T')
+  =h @user.last_login_at.strftime('%m/%d/%y %T') if @user.last_login_at
 
 = link_to 'Edit', edit_account_path if @user == @current_user
