@@ -18,7 +18,7 @@ Daemons.run_proc('job_runner', daemon_options) do
   end
   
   Dir.chdir dir
-  RAILS_ENV = ARGV.first || ENV['RAILS_ENV'] || 'development'
+  RAILS_ENV = ARGV.first || ENV['RAILS_ENV'] || 'production'
   require File.join('config', 'environment')
   
   Delayed::Worker.new.start
