@@ -1,9 +1,11 @@
-- form_for @snippet do |f|
-  %h2 Submit New Snippet
+.page_title
+  %h1 Submit New Snippet
   %p You have two ways to post, select one. Than fill in some additional details.
+
+- form_for @snippet do |f|
   = f.error_messages
   %br
   %br
   = render "form", :object => f
   %button{ :type => 'submit', :class => 'submission' }
-    Submit For Approval
+    Submit

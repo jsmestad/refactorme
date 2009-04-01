@@ -103,6 +103,60 @@ textarea {
 .hidden {
   display: none; }
 
+.form_element {
+  display: block;
+  overflow: hidden;
+  margin-bottom: 2px; }
+  .form_element .step_number,
+  .form_element .step_details {
+    background: url('/images/form_bg.png') no-repeat; }
+  .form_element .step_number {
+    float: left;
+    font-size: 79px;
+    font-weight: bold;
+    width: 100px;
+    text-align: center; }
+    .form_element .step_number.text_height {
+      height: 160px;
+      padding-top: 65px; }
+  .form_element .step_details {
+    margin-left: 101px;
+    padding-top: 20px;
+    height: 79px;
+    padding-left: 10px; }
+    .form_element .step_details h2 {
+      padding-bottom: 5px; }
+    .form_element .step_details.bottom {
+      padding-top: 60px;
+      height: 39px; }
+    .form_element .step_details.text_height {
+      height: 160px;
+      padding-top: 10px; }
+
+.code_box {
+  margin: 2px 0 2px 102px;
+  padding: 10px 0 20px 20px;
+  background: url('/images/form_bg.png') repeat-y; }
+  .code_box textarea {
+    height: 200px;
+    width: 600px;
+    margin-bottom: 0; }
+
+button {
+  background-color: #92C97C;
+  background: url('/images/good_button.png') repeat-x;
+  color: #E8F7DF;
+  cursor: pointer;
+  display: block;
+  float: left;
+  font-size: 100%;
+  font-weight: bold;
+  line-height: 130%;
+  margin: 0 7px 0 120px;
+  padding: 7px 7px 7px 7px;
+  text-decoration: none;
+  border: 0; }
+
 .content form {
   padding: 10px 20px 20px 20px;
   overflow: hidden;
@@ -154,21 +208,6 @@ form.login {
       padding: 0;
       text-decoration: none;
       width: 16px; }
-
-button {
-  background-color: #92C97C;
-  background: url('/images/good_button.png') repeat-x;
-  color: #E8F7DF;
-  cursor: pointer;
-  display: block;
-  float: left;
-  font-size: 100%;
-  font-weight: bold;
-  line-height: 130%;
-  margin: 0 7px 0 160px;
-  padding: 7px 7px 7px 7px;
-  text-decoration: none;
-  border: 0; }
 
 .errorExplanation {
   padding: 8px;
@@ -587,6 +626,10 @@ button {
     color: #212121;
     background: url('/images/page_title_bg.png') no-repeat;
     padding-left: 10px; }
+  .container .page_title p {
+    font-weight: bold;
+    padding-top: 5px;
+    margin-left: 25px; }
   .container .footer {
     margin-top: 20px;
     text-align: center;
