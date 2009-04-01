@@ -1,8 +1,7 @@
-.simple_container
-  %h2 Snippet List by Date
+.page_title
+  %h1 CALENDAR
   %p
     = "There are #{Snippet.count} snippets in the system, #{Snippet.count(:conditions => ['displayed_on IS NOT NULL'])} have been displayed & #{Snippet.count(:conditions => ['position IS NOT NULL'])} are in the queue."
-  %br
   
   %ul
     - Snippet.all(:conditions => ['displayed_on IS NOT NULL'], :order => 'displayed_on DESC').each do |snippet|

@@ -1,22 +1,23 @@
-.simple_container
-  = gravatar_for @user
+.profile
+  .avatar_title
+    = gravatar_for @user, :size => 80
+  .page_title
+    %h1= @user.login
 
-  %p
-    %strong Login:
-    =h @user.login
+.big
+  %h1 
+    REFACTORS:
+    %span
+      = @user_snippets.length
+  
+.big
+  %h1 
+    SNIPPETS:
+    %span
+      = @user_snippets.length
 
-  %p
-    %strong Email:
-    =h @user.email
+.additional
+  %strong Last Active:
+  =h @user.last_login_at.strftime('%m/%d/%y %T')
 
-  %p
-    %strong Last Active:
-    =h @user.last_login_at
-
-  %h4== Snippets by #{@user.login}
-  %p= @user_snippets.length
-
-  %h4== Refactors by #{@user.login}
-  %p= @top_refactors.length
- 
-  = link_to 'Edit', edit_account_path if @user == @current_user
+= link_to 'Edit', edit_account_path if @user == @current_user
