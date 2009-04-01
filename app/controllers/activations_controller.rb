@@ -14,7 +14,7 @@ class ActivationsController < ApplicationController
     raise Exception if @user.active?
 
     if @user.update_attributes( params[:user].merge({:active => true}) )
-      @user.deliver_activation_confirmation!
+      UserNotifier.send_later(:deliver_activation_confirmation, @user)
       flash[:success] = "Your account has been activated."
       redirect_to user_path(@user)
     else
