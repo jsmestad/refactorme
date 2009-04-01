@@ -38,9 +38,34 @@
       :font-size 12px
       :float right
       +inline-list
-      
+  
+  .page_title
+    h1
+      :font-size 79px
+      :text-transform uppercase
+      :color #212121
+      :background url('/images/page_title_bg.png') no-repeat
+      :padding-left 10px
   .footer
     :margin-top 20px
     :text-align center
+    :font-weight bold
     ul
       +inline-list
+
+.pagination
+  :font-weight bold
+  :text-align center
+  a,
+  span
+    :margin 0 1px
+    :color #FFF
+  .prev_page,
+  .next_page
+    :padding 0 8px
+    :color #00aeef
+  .disabled
+    :color #00aeef
+
+  .current
+    :color #707070

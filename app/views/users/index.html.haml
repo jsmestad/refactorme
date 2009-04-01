@@ -1,8 +1,12 @@
-.simple_container
-  %h1 Users
-  
-  .users
-    - @users.each do |user|
-      .user
-        .login= link_to user.login, user
-  = will_paginate @users
+.page_title
+  %h1 User List
+
+.users
+  - @users.each_with_index do |user, index|
+    .user{ :class => ('end_row' if (index + 1) % 6 == 0) }
+      .avatar= gravatar_for user
+      .content
+        .login= user.login
+        %a{ :href => user_path(user) }
+          see profile
+= will_paginate @users

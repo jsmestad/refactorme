@@ -5,7 +5,7 @@ class SnippetsController < ApplicationController
   def display
     date = Date.parse("#{params[:year]}-#{params[:month]}-#{params[:day]}")
     @snippet = Snippet.find_by_displayed_on!(date)
-    @refactors = @snippet.refactors.paginate :include => [:user], :page => params[:page], :order => 'created_at'
+    @refactors = @snippet.refactors.paginate :include => [:user], :page => params[:page], :order => 'created_at', :per_page => 6
   end
 
   def index
