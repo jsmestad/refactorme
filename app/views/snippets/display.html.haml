@@ -33,4 +33,7 @@
 
     .hidden= render :partial => 'refactors/inline_form', :locals => {:code => @snippet.code}
 
-  = render :partial => 'refactors/refactor', :collection => @snippet.refactors
+  
+  = render :partial => 'refactors/refactor', :collection => @refactors
+  
+  = will_paginate @refactors

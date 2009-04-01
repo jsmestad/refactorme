@@ -527,14 +527,27 @@ button {
     .refactor_container .refactor .inline_reply b {
       margin: 10px 0; }
 
-table {
-  margin: 0 auto;
-  width: 80%; }
-  table th {
-    font-weight: bold; }
-  table td {
-    border-bottom: 1px dotted #DADADA;
-    padding: 10px 8px; }
+.users {
+  display: block;
+  overflow: hidden;
+  margin: 10px 0; }
+  .users .user {
+    display: block;
+    overflow: hidden;
+    float: left;
+    padding: 5px;
+    margin: 0 10px; }
+    .users .user.end_row {
+      float: none; }
+    .users .user .avatar {
+      float: left; }
+    .users .user .content {
+      margin-left: 60px;
+      padding-top: 5px; }
+      .users .user .content .login {
+        font-size: 14px;
+        font-weight: bold;
+        color: #fff; }
 
 .container {
   margin: 0 auto;
@@ -568,9 +581,16 @@ table {
         margin: 0px;
         padding: 0px;
         display: inline; }
+  .container .page_title h1 {
+    font-size: 79px;
+    text-transform: uppercase;
+    color: #212121;
+    background: url('/images/page_title_bg.png') no-repeat;
+    padding-left: 10px; }
   .container .footer {
     margin-top: 20px;
-    text-align: center; }
+    text-align: center;
+    font-weight: bold; }
     .container .footer ul {
       list-style-type: none;
       margin: 0px;
@@ -580,3 +600,19 @@ table {
         margin: 0px;
         padding: 0px;
         display: inline; }
+
+.pagination {
+  font-weight: bold;
+  text-align: center; }
+  .pagination a,
+  .pagination span {
+    margin: 0 1px;
+    color: #FFF; }
+  .pagination .prev_page,
+  .pagination .next_page {
+    padding: 0 8px;
+    color: #00aeef; }
+  .pagination .disabled {
+    color: #00aeef; }
+  .pagination .current {
+    color: #707070; }

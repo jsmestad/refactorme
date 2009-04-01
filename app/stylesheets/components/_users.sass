@@ -1,8 +1,21 @@
-table
-  :margin 0 auto
-  :width 80%
-  th
-    :font-weight bold
-  td
-    :border-bottom 1px dotted #DADADA
-    :padding 10px 8px
+.users
+  :display block
+  :overflow hidden
+  :margin 10px 0
+  .user
+    :display block
+    :overflow hidden
+    :float left
+    :padding 5px
+    :margin 0 10px
+    &.end_row
+      :float none
+    .avatar
+      :float left
+    .content
+      :margin-left 60px
+      :padding-top 5px
+      .login
+        :font-size 14px
+        :font-weight bold
+        :color #fff
