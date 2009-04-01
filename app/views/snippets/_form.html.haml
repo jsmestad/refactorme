@@ -1,33 +1,37 @@
-.code_input
-  .gist_block
-    %h5 
-      Post your code from a gist
+.form_element
+  .step_number
+    01
+  .step_details
+    %h2 
+      Post your code from a gist.
       %span
-        %a{ :href => 'http://gist.github.com' } (gist link)
-    .code_box
-      = form.label :gist_url, "Gist URL"
-      = form.text_field :gist_url
+        %a{ :href => 'http://gist.github.com' } Gist Link
+    = form.text_field :gist_url
 
-  .or_block
-    %h1 OR
-    
-  .code_block
-    %h5 
-      Paste your code below, we create the gist
-      %a{ :href => '' } (show)
-    .code_box.hidden
-      = form.label :code
-      = form.text_area :code
+.form_element
+  .step_number
+    02
+  .step_details.bottom
+    %h2 
+      Or, paste your code, we create the Gist.
+      %span
+        %a{ :href => '' } Show
+.code_box.hidden
+  = form.text_area :code
 
-%br
-%h5 Give a title for this submission
-= form.label :title
-= form.text_field :title
-%br
-%h5 Provide a description for this submission
-= form.label :context, "Description"
-= form.text_area :context
-%br
+.form_element
+  .step_number
+    03
+  .step_details
+    %h2 Title your submission.
+    = form.text_field :title
+
+.form_element{ :style => 'height: 165px;' }
+  .step_number.text_height
+    04
+  .step_details.text_height
+    %h2 Description of your submission.
+    = form.text_area :context
 
 
 

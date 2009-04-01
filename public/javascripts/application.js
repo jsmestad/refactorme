@@ -4,10 +4,10 @@ jQuery(document).ready(function($) {
     $('.content').prepend('<div class="' + className + '">' + msg + '</div>');
   }
   
-  $('.code_block h5 a').click(function() {
+  $('.step_details.bottom h2 span a').click(function() {
     var self = $(this);
-    self.text(self.text() == "(show)" ? "(hide)" : "(show)");
-    self.closest('.code_block').children('.code_box').toggle("fast");
+    self.text(self.text() == "Show" ? "Hide" : "Show");
+    self.closest('.form_element').next().toggle("fast");
     return false;
   });
   
