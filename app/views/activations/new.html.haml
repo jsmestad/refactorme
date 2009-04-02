@@ -1,6 +1,6 @@
 - form_for @user, :url => activate_path(@user), :html => { :method => :post , :class => 'login'} do |f|
-  %h2 Activate your account
-  %p Your email has been confirmed. Now just answer a last set of questions.
+  %h1 Activate your account
+  %p{:style => 'color: #999;font-size: 14px;'} Your email has been confirmed. Now just set your password.
   %br
   = f.error_messages
   
