@@ -76,6 +76,26 @@ jQuery(document).ready(function($) {
   $(".refactor .gist-data").slider(125);
   $("#snippet.code .gist-data:first").slider(200);
 
+  // $('.day').bt({
+  //   // hoverIntentOpts: {
+  //   //   interval: 100,
+  //   //   timeout: 0
+  //   // },
+  //   fill: '#F7F7F7', 
+  //   strokeStyle: '#B7B7B7', 
+  //   spikeLength: 8, 
+  //   spikeGirth: 8, 
+  //   padding: 8, 
+  //   cornerRadius: 0,
+  //   shadow: true,
+  //   //animate: true,
+  //   cssStyles: {
+  //     fontFamily: '"Helvetica Neue", Helvetica, Arial, Sans-serif', 
+  //     fontSize: '12px'
+  //   }
+  // });
+
+
 });
 
 jQuery(document).ajaxSend(function(event, request, settings) {
