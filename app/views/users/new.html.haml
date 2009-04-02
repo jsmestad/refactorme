@@ -1,7 +1,7 @@
 
 - form_for @user, :url => users_path, :html => {:class => 'login'} do |f|
-  %h2 Register
-  %p Enter two fields, hit register, and your on your way to rip it up.
+  %h1 Register
+  %p{:style => 'color: #999;font-size: 14px;'} Two fields, click the button, and your done.
   = f.error_messages
   %br
   = f.label :login 
