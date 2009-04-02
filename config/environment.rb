@@ -33,7 +33,6 @@ Rails::Initializer.run do |config|
   config.gem "chriseppstein-compass", :lib => 'compass', :source => "http://gems.github.com"
   config.gem "daemons"
   
-  
   # For GitHub Messaging Integration
   # config.gem "mechanize"
   # config.gem "mechanical_github"
