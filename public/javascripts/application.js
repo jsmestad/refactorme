@@ -94,7 +94,13 @@ jQuery(document).ready(function($) {
   //     fontSize: '12px'
   //   }
   // });
-
+  
+  $('.calendar .day').hover(function() {
+    $(this).addClass("rollover");
+  },
+  function() {
+    $(this).removeClass("rollover");
+  });
 
 });
 
