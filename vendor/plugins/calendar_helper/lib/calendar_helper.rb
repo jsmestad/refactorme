@@ -146,7 +146,7 @@ module CalendarHelper
       cal << "<td #{cell_attrs}>"
       if @snippet_hash.has_key?(symbol)
         cal << "#{link_to(cell_text.to_s.size == 2 ? cell_text : "0" << cell_text.to_s, display_snippet_path(@snippet_hash[symbol].displayed_on.year, @snippet_hash[symbol].displayed_on.month, @snippet_hash[symbol].displayed_on.day) ) }"
-        cal << "<br /><div class=\"title\">#{@snippet_hash[symbol].title}</div>"
+        cal << "<br /><div class=\"title\">#{truncate(@snippet_hash[symbol].title, :omission => '...', :length => 20)}</div>"
       else
         cal << "#{ cell_text.to_s.size == 2 ? cell_text : "0" << cell_text.to_s }"
         cal << "<br /><div class=\"title\">&nbsp;</div>"
