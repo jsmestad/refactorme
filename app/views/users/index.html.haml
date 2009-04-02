@@ -5,7 +5,7 @@
   - @users.each_with_index do |user, index|
     .user{ :class => ('end_row' if (index + 1) % 6 == 0) }
       .avatar= gravatar_for user
-      .content
+      .user_info
         .login= user.login
         %a{ :href => user_path(user) }
           see profile
