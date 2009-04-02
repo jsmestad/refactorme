@@ -1,24 +1,31 @@
 .inline_reply
   - form_for Refactor.new, :url => snippet_refactors_path(@snippet) do |f|
-    
-    %h5 Reply
-    = f.label :gist_url, "Gist URL"
-    = f.text_field :gist_url
-    
-    %br 
-    %b OR
-    %br
-    %br
-    = f.label :code
-    = f.text_area :code
+    .form_element
+      .step_number
+        01
+      .step_details
+        %h2 
+          Reply with a gist.
+          %span
+            %a{ :href => 'http://gist.github.com' } Gist Link
+        = f.text_field :gist_url
+
+    .form_element
+      .step_number
+        02
+      .step_details.bottom
+        %h2 
+          Or, paste your code, we create the Gist.
+          %span
+            %a{ :href => '' } Show
+    .code_box.hidden
+      = f.text_area :code
   
-    .code_block
-      %h5
-        Optional Description
-        %a{ :href => '' }
-          (show)
-      .code_box.hidden
-        = f.label :context, "Description"
+    .form_element{ :style => 'height: 165px;' }
+      .step_number.text_height
+        03
+      .step_details.text_height
+        %h2 Optionally, add a comment to your reply.
         = f.text_area :context
   
     %button{ :type => 'submit' }
