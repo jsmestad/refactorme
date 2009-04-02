@@ -24,7 +24,7 @@ ActionController::Routing::Routes.draw do |map|
   map.register '/register/:activation_code', :controller => 'activations', :action => 'new'
   map.activate '/activate/:id', :controller => 'activations', :action => 'create'
   
-  map.root :controller => "public", :action => "show", :path => ["welcome"]
+  map.root :controller => "calendars", :action => "index"
   #map.root :controller => "snippets", :action => "display", :month => Date.today.month, :day => Date.today.day, :year => Date.today.year
 
   map.connect '*path', :controller => 'public', :action => 'show', :conditions => { :method => :get }
