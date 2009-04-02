@@ -8,7 +8,35 @@
 / @import components/simple_container
 
 @import components/users
-    
+
+
+html, body, .container
+  :height 100%
+
+body > .container
+  :height auto
+  :min-height 100%
+
+/* must be same height as the footer
+.content
+  :padding-bottom 65px  
+
+/* negative value of footer height
+.footer 
+  :position relative
+  :margin-top -65px
+  :height 65px
+  :clear both
+  :text-align right
+  :width 960px
+  :color #666
+  :margin -65px auto 0 auto
+  .admin
+    :padding-top 18px
+  p.normal
+    :padding-top 28px
+  ul
+    +inline-list
     
 .container
   :margin 0 auto
@@ -50,12 +78,6 @@
       :font-weight bold
       :padding-top 5px
       :margin-left 25px
-  .footer
-    :margin-top 20px
-    :text-align center
-    :font-weight bold
-    ul
-      +inline-list
 
 .pagination
   :font-weight bold

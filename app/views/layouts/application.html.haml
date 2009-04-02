@@ -6,64 +6,64 @@
     = javascript_include_tag 'jquery', 'application', :cache => 'all'
     = stylesheet_link_tag :all, :cache => true
   %body
-    .wrapper
-      .container
-        .header
-          %ul.navigation
-            %li= link_to "List", root_url
+    .container
+      .header
+        %ul.navigation
+          %li= link_to "List", root_url
+          %li
+            __
+          %li= link_to "Submit", submit_snippet_url
+          %li
+            __
+          %li= link_to "Users", users_url
+          %li
+            __
+          - if logged_in?
+            %li= link_to "Account", edit_account_url
             %li
               __
-            %li= link_to "Submit", submit_snippet_url
+            %li= link_to "Logout", logout_url
             %li
               __
-            %li= link_to "Users", users_url
+          - else
+            %li= link_to "Login", login_url
             %li
               __
-            - if logged_in?
-              %li= link_to "Account", edit_account_url
-              %li
-                __
-              %li= link_to "Logout", logout_url
-              %li
-                __
-            - else
-              %li= link_to "Login", login_url
-              %li
-                __
-              %li= link_to "Signup", signup_url
-              %li
-                __
-            %li
-              %a{:href => 'http://getsatisfaction.com/evalcode'} Feedback
+            %li= link_to "Signup", signup_url
             %li
               __
-            %li
-              %a{:href => '/about'} About
-        
-          %h1
-            %a{ :href => root_url }
-              %img{ :src => '/images/logo.png' }
-          .description
-            All Ruby developers speak the same language, but all have varying techniques.
-            Rewrite the code snippet and provide the best solution. Everyday a new problem
-            will be presented, and the best written refactor wins; you decide the winner,
-            you provide the solution. Good Luck --
-         
-        .content
-          - [ :error, :success, :notice ].each do |type|
-            - if flash[type]
-              %div{:class => type }= flash[type]
+          %li
+            %a{:href => 'http://getsatisfaction.com/evalcode'} Feedback
+          %li
+            __
+          %li
+            %a{:href => '/about'} About
+      
+        %h1
+          %a{ :href => root_url }
+            %img{ :src => '/images/logo.png' }
+        .description
+          All Ruby developers speak the same language, but all have varying techniques.
+          Rewrite the code snippet and provide the best solution. Everyday a new problem
+          will be presented, and the best written refactor wins; you decide the winner,
+          you provide the solution. Good Luck --
+       
+      .content.clearfix
+        - [ :error, :success, :notice ].each do |type|
+          - if flash[type]
+            %div{:class => type }= flash[type]
 
-          = yield
+        = yield
 
-        .footer
-          = render :partial => 'layouts/admin_panel' if current_user && current_user.is_admin?
-          RefactorMe is an 
-          %a{:href => 'http://www.evalcode.com'}
-            eval(code)
-          product.
-          &copy; 2009 Justin Smestad. All posted code is shared under the MIT License.
-          %br
-          Designed by Hoshi Ludwig with conceptual work from Chris Nguyen.
+    .footer
+      = render :partial => 'layouts/admin_panel' if current_user && current_user.is_admin?
+      %p{:class => ('normal' unless current_user && current_user.is_admin?) }
+        Designed by Hoshi Ludwig with conceptual work from Chris Nguyen.
+        %br
+        RefactorMe is an 
+        %a{:href => 'http://www.evalcode.com'}
+          eval(code)
+        product.
+        &copy; 2009 Justin Smestad. All posted code is shared under the MIT License.
   = render :partial => 'layouts/google_analytics' if RAILS_ENV == 'production'
       
