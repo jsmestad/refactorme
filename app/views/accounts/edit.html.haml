@@ -1,6 +1,8 @@
 .page_title
   %h1 Update Account
 
+= render :partial => 'layouts/admin_panel' if current_user && current_user.is_admin?
+
 - form_for @user, :url => account_path do |f| 
   = f.error_messages
   %br
