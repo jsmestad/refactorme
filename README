@@ -6,11 +6,8 @@ if code can be refactored in a cleaner way. Want to know more? Run script/server
 
 == TODO
  Rankings Page
- Archive Viewer (Calender like Calender About Nothing)
- Splice up design / Styling
- Style About Page and add content about participants
- Admin Panel
- Make Cucumber tests pass, update where needed
+ - PENDING - Calendar Page
+ Setup Caching Mechanisms 
  
 == COMPLETED
  # Refactor User controller to work for administration (currently only allows @user = @current_user)
@@ -19,3 +16,7 @@ if code can be refactored in a cleaner way. Want to know more? Run script/server
  # Profile Page
  # Add Approve / Reject to admin panel on snippets (logic is there)
  # jQuery inline submission for refactor posting
+ # Splice up design / Styling
+ # Style About Page and add content about participants
+ # Admin Panel
+ # Make Cucumber tests pass, update where needed
