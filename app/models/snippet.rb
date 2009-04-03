@@ -65,8 +65,10 @@ class Snippet < ActiveRecord::Base
   end
   
   def display
-    result = open(gist_url + ".js").read
-    result.scan(/document.write\('(.*|\s*)'\)/)[1][0]
+    Rails.cache.fetch("gist_#{self.gist_id}") do
+      result = open(gist_url + ".js").read
+      result.scan(/document.write\('(.*|\s*)'\)/)[1][0]
+    end
   end
   
   private
