@@ -57,7 +57,7 @@ jQuery(document).ready(function($) {
         
         count.html((self.is(".vote_up") ? "+" : "") + score);
         
-        self.closest('.action').addClass('voted').html("Voted");
+        self.closest('.action').html("Voted");
       
       });
       return false;

@@ -66,10 +66,10 @@ class Snippet < ActiveRecord::Base
   end
   
   def display
-    Rails.cache.fetch("gist_#{self.gist_id}", :expires_in => 24.hours) do
+    # Rails.cache.fetch("gist_#{self.gist_id}", :expires_in => 24.hours) do
       result = open(gist_url + ".js").read
       result.scan(/document.write\('(.*|\s*)'\)/)[1][0]
-    end
+    # end
   end
   
   private

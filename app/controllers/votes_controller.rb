@@ -8,6 +8,7 @@ class VotesController < ApplicationController
       @vote.user = current_user
       @vote.refactor = @refactor
       if @vote.save
+        expire_fragment("refactor_votes_#{@refactor.id}")
         render :text => 'success'
       else
         render :text => 'fail'
