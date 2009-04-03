@@ -5,7 +5,7 @@ namespace :admin do
   
     begin
       Snippet.set_daily_snippet
-      ActionController::Base::expire_page(:controller => "calendars", :action => "index")
+      ActionController::Base::expire_page('/')
     rescue Exception => e
       notify_hoptoad e
       puts e
