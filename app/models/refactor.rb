@@ -7,6 +7,8 @@ class Refactor < ActiveRecord::Base
   
   before_save :send_to_gist
   
+  named_scope :top, :limit => 5, :order => "vote_score_cache DESC"
+  
   def code=(code)
     write_attribute(:code, code) unless code.blank?
   end

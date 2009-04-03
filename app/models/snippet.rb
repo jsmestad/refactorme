@@ -16,6 +16,9 @@ class Snippet < ActiveRecord::Base
   
   before_save :send_to_gist
 
+  named_scope :latest, :conditions => ["displayed_on IS NOT NULL"], :limit => 5, :order => 'created_at DESC'
+  named_scope :current_month, lambda{{ :conditions => ["MONTH(displayed_on) = ?", Date.today.month], :order => 'displayed_on ASC' }}
+  
   def self.set_daily_snippet
     todays = Snippet.first(:conditions => 'displayed_on IS NULL AND position IS NOT NULL', :order => 'position')
     if todays.remove_from_list
