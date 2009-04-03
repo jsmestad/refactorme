@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :snippets
   has_many :refactors
   has_many :votes
+  has_many :voted_refactors, :through => :votes, :source => :refactor
   
   validates_uniqueness_of :login, :email
   
