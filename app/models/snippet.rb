@@ -20,7 +20,6 @@ class Snippet < ActiveRecord::Base
     todays = Snippet.first(:conditions => 'displayed_on IS NULL AND position IS NOT NULL', :order => 'position')
     if todays.remove_from_list
       todays.update_attribute :displayed_on, Date.today
-      expire_page :controller => "calendars", :action => "index"
     else
       Exception.new("Error running rake set_todays_snippet at #{Time.now}, remove_from_list returned false.")
     end
