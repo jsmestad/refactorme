@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+%feed{:xmlns => "http://www.w3.org/2005/Atom"}
+  %link http://www.refactorme.com
+  %link{:href=>"http://www.refactorme.com/feed.atom", :rel=>"self"}
+  %title RefactorMe
+  %subtitle Refactor your ruby code
+  %language en-us
+  %updated= @snippets.first.displayed_on
+  %id http://www.refactorme.com
+
+  - @snippets.each do |snippet|
+    %entry
+      %updated= snippet.displayed_on
+      %link{:href => "#{display_snippet_url(snippet.displayed_on.year, snippet.displayed_on.month, snippet.displayed_on.day)}" }
+      %id= snippet.id
+      %author= snippet.user.login
+      %title= snippet.title
+      %summary= snippet.context
+      

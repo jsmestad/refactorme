@@ -5,7 +5,7 @@ class CalendarsController < ApplicationController
     @snippets = Snippet.current_month.all
     respond_to do |wants|
       wants.html { }
-      wants.rss { }
+      wants.atom { render :layout => false }
     end
   end
   
