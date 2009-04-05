@@ -13,6 +13,8 @@
     #snippet.code
       %script{ :type => "text/javascript" } 
         = "document.write('#{@snippet.display}');"
+      .description
+        =h @snippet.context
       %a{:href => '', :class => 'fork' }
         .fork_button
           REFACTOR
@@ -25,7 +27,6 @@
           %li
             %span.bold Member Since:
             = @snippet.user.created_at.strftime("%b %Y")
-        
 
       .hidden= render :partial => 'refactors/inline_form', :locals => {:code => @snippet.code}
 
