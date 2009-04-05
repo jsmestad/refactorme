@@ -40,6 +40,8 @@ class SnippetsController < ApplicationController
   def update
     @snippet = Snippet.find_by_id!(params[:id])
     
+    @snippet.user.deliver_approved_snippet_notification!(@snippet) if params[:approved] == "true"
+    
     if @snippet.update_attributes(params[:snippet])
       flash[:success] = "Snippet has been updated"
       redirect_to @snippet

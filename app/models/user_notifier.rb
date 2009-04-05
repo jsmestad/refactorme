@@ -24,4 +24,12 @@ class UserNotifier < ActionMailer::Base
     sent_on       Time.now
     body          :edit_password_reset_url => edit_password_reset_url(user.perishable_token)
   end
+  
+  def approved_snippet_notification(user, snippet)
+    subject       "We have approved your snippet!"
+    from          "RefactorMe Notifier <notifier@refactorme.com>"
+    recipients    user.email
+    sent_on       Time.now
+    body          :snippet => snippet, :user => user
+  end
 end
