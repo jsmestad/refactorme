@@ -17,5 +17,5 @@
       %title= snippet.title
       %summary{:type => 'html'}
         %p= snippet.context
-        = link_to 'View Gist', snippet.gist_url
+        %script{ :src => "#{snippet.gist_url}.js"  }
       
