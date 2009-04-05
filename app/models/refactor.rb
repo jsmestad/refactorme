@@ -6,6 +6,8 @@ class Refactor < ActiveRecord::Base
   validates_presence_of :code, :if => :gist_is_blank?
   
   before_save :send_to_gist
+
+  named_scope :top, :limit => 5, :order => "vote_score_cache DESC"
   
   def code=(code)
     write_attribute(:code, code) unless code.blank?

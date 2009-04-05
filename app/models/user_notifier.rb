@@ -32,4 +32,5 @@ class UserNotifier < ActionMailer::Base
     sent_on       Time.now
     body          :snippet => snippet, :user => user
   end
+
 end

@@ -25,7 +25,6 @@ ActionController::Routing::Routes.draw do |map|
   map.activate '/activate/:id', :controller => 'activations', :action => 'create'
   
   map.rss_feed "/rss.xml", :controller => "calendars", :action => 'index', :format => 'rss'
-  
   map.root :controller => "calendars", :action => "index"
   map.connect '*path', :controller => 'public', :action => 'show', :conditions => { :method => :get }
 end

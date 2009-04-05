@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :refactors
   has_many :votes
   has_many :voted_refactors, :through => :votes, :source => :refactor
+
   
   validates_uniqueness_of :login, :email
   
@@ -52,10 +53,13 @@ class User < ActiveRecord::Base
     UserNotifier.deliver_password_reset_instructions(self)
   end
   
+<<<<<<< HEAD:app/models/user.rb
   def deliver_approved_snippet_notification!(snippet)
     UserNotifier.deliver_approved_snippet_notification(self, snippet)
   end
   
+=======
+>>>>>>> remotes/gvarela/master:app/models/user.rb
   def has_no_credentials?
     self.crypted_password.blank?
   end
