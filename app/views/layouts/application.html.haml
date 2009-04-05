@@ -5,6 +5,7 @@
     = javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery?
     = javascript_include_tag 'jquery', 'application', :cache => 'all'
     = stylesheet_link_tag :all, :cache => true
+    = auto_discovery_link_tag(:atom, rss_feed_path)
   %body
     .container
     
@@ -43,8 +44,7 @@
 
     .footer
       .rss
-        %a{:href => '/rss.xml'}
-          GET NOTIFIED. FOLLOW OUR RSS.
+        = link_to "GET NOTIFIED. FOLLOW OUR RSS.", rss_feed_path()
       %p.normal
         Designed by Hoshi Ludwig with conceptual work from Chris Nguyen.
         %br
