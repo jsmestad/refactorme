@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :snippets
   has_many :refactors
   has_many :votes
+  has_many :voted_refactors, :through => :votes, :source => :refactor
   
   validates_uniqueness_of :login, :email
   
@@ -49,6 +50,10 @@ class User < ActiveRecord::Base
   def deliver_password_reset_instructions!
     reset_perishable_token!
     UserNotifier.deliver_password_reset_instructions(self)
+  end
+  
+  def deliver_approved_snippet_notification!(snippet)
+    UserNotifier.deliver_approved_snippet_notification(self, snippet)
   end
   
   def has_no_credentials?

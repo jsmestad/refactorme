@@ -4,7 +4,7 @@ namespace :admin do
     include HoptoadNotifier::Catcher
   
     begin
-      Snippet.set_daily_snippet
+      Snippet.set_daily_snippet if Snippet.find(:all, :conditions => ['displayed_on = ?', Date.today]).empty?
     rescue Exception => e
       notify_hoptoad e
       puts e

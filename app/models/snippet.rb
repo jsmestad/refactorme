@@ -23,7 +23,6 @@ class Snippet < ActiveRecord::Base
     todays = Snippet.first(:conditions => 'displayed_on IS NULL AND position IS NOT NULL', :order => 'position')
     if todays.remove_from_list
       todays.update_attribute :displayed_on, Date.today
-      expire_page :controller => "calendars", :action => "index"
     else
       Exception.new("Error running rake set_todays_snippet at #{Time.now}, remove_from_list returned false.")
     end
@@ -69,10 +68,10 @@ class Snippet < ActiveRecord::Base
   end
   
   def display
-    Rails.cache.fetch("gist_#{self.gist_id}", :expires_in => 24.hours) do
+    # Rails.cache.fetch("gist_#{self.gist_id}", :expires_in => 24.hours) do
       result = open(gist_url + ".js").read
       result.scan(/document.write\('(.*|\s*)'\)/)[1][0]
-    end
+    # end
   end
   
   private

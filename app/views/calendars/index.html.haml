@@ -1,10 +1,5 @@
 .page_title
   %h1= @date.strftime('%B')
   = calendar({:year => @date.year, :month => @date.month, :first_day_of_week => 1, :snippets => @snippets})
-  
-  %ul
-    - Snippet.all(:conditions => ['displayed_on IS NOT NULL'], :order => 'displayed_on DESC').each do |snippet|
-      %li
-        %a{ :href => display_snippet_path(snippet.displayed_on.year, snippet.displayed_on.month, snippet.displayed_on.day) }
-          = "#{snippet.displayed_on.to_s(:no_year)}: #{snippet.title}"
+
   
