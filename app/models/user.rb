@@ -53,7 +53,7 @@ class User < ActiveRecord::Base
   end
   
   def deliver_approved_snippet_notification!(snippet)
-    UserNotifier.approved_snippet_notification(self, snippet)
+    UserNotifier.deliver_approved_snippet_notification(self, snippet)
   end
   
   def has_no_credentials?
