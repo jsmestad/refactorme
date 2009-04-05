@@ -7,7 +7,6 @@ if code can be refactored in a cleaner way. Want to know more? Run script/server
 == TODO
  Rankings Page
  - PENDING - Calendar Page
- Setup Caching Mechanisms 
  
 == COMPLETED
  # Refactor User controller to work for administration (currently only allows @user = @current_user)
@@ -20,3 +19,4 @@ if code can be refactored in a cleaner way. Want to know more? Run script/server
  # Style About Page and add content about participants
  # Admin Panel
  # Make Cucumber tests pass, update where needed
+ # Setup Caching Mechanisms 
