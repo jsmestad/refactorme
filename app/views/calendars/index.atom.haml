@@ -15,5 +15,7 @@
       %id= snippet.id
       %author= snippet.user.login
       %title= snippet.title
-      %summary= snippet.context
+      %summary{:type => 'html'}
+        %p= snippet.context
+        = link_to 'View Gist', snippet.gist_url
       
