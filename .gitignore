@@ -6,6 +6,7 @@ tmp/**/*
 tmp/*
 log/*.log
 config/database.yml
+config/deploy.rb
 db/schema.rb
 coverage/*
 public/stylesheets/*
