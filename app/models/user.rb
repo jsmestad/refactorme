@@ -52,19 +52,10 @@ class User < ActiveRecord::Base
     UserNotifier.deliver_password_reset_instructions(self)
   end
   
-<<<<<<< HEAD:app/models/user.rb
-<<<<<<< HEAD:app/models/user.rb
-=======
->>>>>>> gvarela/master:app/models/user.rb
   def deliver_approved_snippet_notification!(snippet)
     UserNotifier.deliver_approved_snippet_notification(self, snippet)
   end
-  
-<<<<<<< HEAD:app/models/user.rb
-=======
->>>>>>> remotes/gvarela/master:app/models/user.rb
-=======
->>>>>>> gvarela/master:app/models/user.rb
+
   def has_no_credentials?
     self.crypted_password.blank?
   end
