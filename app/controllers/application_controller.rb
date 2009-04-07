@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   include HoptoadNotifier::Catcher
   
   helper :all
-  # protect_from_forgery
+  protect_from_forgery
 
   helper_method :current_user_session, :current_user
   filter_parameter_logging :password, :password_confirmation
