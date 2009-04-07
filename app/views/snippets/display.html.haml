@@ -17,7 +17,6 @@
           .fork_button
             REFACTOR
         .details
-      
           %ul
             %li
               %span.bold Submission by:
@@ -27,7 +26,7 @@
               = @snippet.user.created_at.strftime("%b %Y")
             %li= link_to "View Gist", @snippet.gist_url
 
-      .hidden= render :partial => 'refactors/inline_form', :locals => {:code => @snippet.code}
+    .hidden= render :partial => 'refactors/inline_form', :locals => {:code => @snippet.code}
 
   = render :partial => 'refactors/refactor', :collection => @refactors
   
