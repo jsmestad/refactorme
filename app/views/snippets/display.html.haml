@@ -1,32 +1,32 @@
 .snippet_container
-    - cache "display_snippet_#{@snippet.id}", :expires_in => 24.hours do
-      #date
-        .day= @snippet.displayed_on.strftime('%d')
-        .month= @snippet.displayed_on.strftime('%b').upcase!
-        .year
-          .century 20
-          = @snippet.displayed_on.strftime('%y')
-      .snippet_nav
-        SNIPPET OF THE DAY
-      #snippet.code
-        %script{ :type => "text/javascript" } 
-          = "document.write('#{@snippet.display}');"
-        .description
-          =h @snippet.context
-        %a{:href => '', :class => 'fork' }
-          .fork_button
-            REFACTOR
-        .details
-          %ul
-            %li
-              %span.bold Submission by:
-              = @snippet.user.login
-            %li
-              %span.bold Member Since:
-              = @snippet.user.created_at.strftime("%b %Y")
-            %li= link_to "View Gist", @snippet.gist_url
+  - cache "display_snippet_#{@snippet.id}", :expires_in => 24.hours do
+    #date
+      .day= @snippet.displayed_on.strftime('%d')
+      .month= @snippet.displayed_on.strftime('%b').upcase!
+      .year
+        .century 20
+        = @snippet.displayed_on.strftime('%y')
+    .snippet_nav
+      SNIPPET OF THE DAY
+    #snippet.code
+      %script{ :type => "text/javascript" } 
+        = "document.write('#{@snippet.display}');"
+      .description
+        =h @snippet.context
+      %a{:href => '', :class => 'fork' }
+        .fork_button
+          REFACTOR
+      .details
+        %ul
+          %li
+            %span.bold Submission by:
+            = @snippet.user.login
+          %li
+            %span.bold Member Since:
+            = @snippet.user.created_at.strftime("%b %Y")
+          %li= link_to "View Gist", @snippet.gist_url
 
-    .hidden= render :partial => 'refactors/inline_form', :locals => {:code => @snippet.code}
+  .hidden= render :partial => 'refactors/inline_form', :locals => {:code => @snippet.code}
 
   = render :partial => 'refactors/refactor', :collection => @refactors
   
