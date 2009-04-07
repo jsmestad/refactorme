@@ -15,5 +15,7 @@
       %id= snippet.id
       %author= snippet.user.login
       %title= snippet.title
-      %summary= snippet.context
+      %summary{:type => 'html'}
+        %p= snippet.context
+        %script{ :src => "#{snippet.gist_url}.js"  }
       
