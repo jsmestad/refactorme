@@ -1,15 +1,8 @@
 class ApplicationController < ActionController::Base
   include HoptoadNotifier::Catcher
   
-  #### REMOVE WHEN LIVE
-  # USER_NAME, PASSWORD = "betas", "testing"
-  # if RAILS_ENV == "production"
-  #   before_filter :authenticate
-  # end
-  #### REMOVE WHEN LIVE
-  
   helper :all
-  protect_from_forgery
+  # protect_from_forgery
 
   helper_method :current_user_session, :current_user
   filter_parameter_logging :password, :password_confirmation
@@ -17,14 +10,6 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound, :with => :not_found
 
   private
-  
-    #### REMOVE WHEN LIVE
-    # def authenticate
-    #   authenticate_or_request_with_http_basic do |user_name, password|
-    #     user_name == USER_NAME && password == PASSWORD
-    #   end
-    # end
-    #### REMOVE WHEN LIVE
   
     def current_user_session
       return @current_user_session if defined?(@current_user_session)
