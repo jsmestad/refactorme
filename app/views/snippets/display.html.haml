@@ -15,9 +15,7 @@
         = "document.write('#{@snippet.display}');"
       .description
         =h @snippet.context
-      %a{:href => '', :class => 'fork' }
-        .fork_button
-          REFACTOR
+      = render :partial => 'shared/refactor_button'
       .details
         %ul
           %li

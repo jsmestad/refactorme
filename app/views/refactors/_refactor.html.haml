@@ -11,9 +11,7 @@
         = "document.write('#{refactor.display}');"
     .description
       =h refactor.context
-    %a{:href => '', :class => 'fork' }
-      .fork_button
-        REFACTOR
+    = render :partial => 'shared/refactor_button'
     .details
       %ul
         %li
