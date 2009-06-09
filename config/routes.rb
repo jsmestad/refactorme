@@ -25,6 +25,7 @@ ActionController::Routing::Routes.draw do |map|
   map.activate '/activate/:id', :controller => 'activations', :action => 'create'
   
   map.rss_feed "/feed/atom.xml", :controller => "calendars", :action => 'index', :format => 'atom'
+  map.api "/api/github/track_commit", :controller => "api", :action => 'github_commit', :conditions => { :method => :post }
   
   map.root :controller => "calendars", :action => "index"
   map.connect '*path', :controller => 'public', :action => 'show', :conditions => { :method => :get }
