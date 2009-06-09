@@ -10,10 +10,18 @@
 %ul.features
   %li Automatic submissions from GitHub Projects
   %ul
-    %li Add a post-recieve commit hook on the github project you would like to submit to RefactorMe.
-    %li Make sure your github account is entered into your User Profile, otherwise the submission will be rejected.
-    %li Note - gists will be generated as the entire changed file, not the change itself.
-
+    %li 
+      Add a post-recieve commit hook on the GitHub project you would like to submit to RefactorMe.
+      %br
+      %strong Post-Receive URL: 
+      http://www.refactorme.com/api/github/track_commit
+      %br
+      %br
+      %img{ :src => '/images/github_posthook.jpg'}
+      %br
+      %br
+    %li Make sure your GitHub account is entered into your User Profile, otherwise your submissions will be rejected.
+    %li Note - snippets will be submitted as the whole file, not just the commit diff.
 %br
 
 %p

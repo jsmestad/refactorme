@@ -22,13 +22,16 @@
   = f.label :password_confirmation, "Confirm Password"
   = f.password_field :password_confirmation
   
-  / %h5 Optional Fields
-  / = f.label :github_username, "GitHub Username"
-  / = f.text_field :github_username
+  %h5 Advanced Settings
+  %p 
+    Automatically submit your GitHub commits to RefactorMe.
+    %a{:href => "/api"} See our API 
+    for more details.
+  %br
+  = f.label :github_username, "GitHub Username"
+  = f.text_field :github_username
   / %br
   / = f.label :github_api_key, "GitHub API Key"
   / = f.text_field :github_api_key
-  %br
-  
   %button{:type => 'submit'}
     Update Account
