@@ -1,1 +1,0 @@
-0 0 */1 * * admin:set_daily_snippet > /home/jsmestad/sites/refactorme/shared/log/set_daily_snippet.log 2>&1
