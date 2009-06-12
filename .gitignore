@@ -10,3 +10,4 @@ config/deploy.rb
 db/schema.rb
 coverage/*
 public/stylesheets/*
+test
