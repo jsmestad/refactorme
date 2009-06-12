@@ -6,9 +6,10 @@ class ApiController < ApplicationController
         # .. use this commit ..
         # grab affected files
         # create snippet as user
+      elsif @user = User.find_by_email(commit["author"]["email"])
+        # do same stuff
       end
     end
-    
-    render :text => "thanks."
+    render :text => 'thing.'
   end
 end
