@@ -1,19 +1,39 @@
-# Sets up the Rails environment for Cucumber
-ENV["RAILS_ENV"] ||= "test"
-require File.expand_path(File.dirname(__FILE__) + '/../../config/environment')
-require 'cucumber/rails/world'
-require 'cucumber/formatters/unicode' # Comment out this line if you don't want Cucumber Unicode support
-Cucumber::Rails.use_transactional_fixtures
+require 'test/unit/assertions'
+include Test::Unit::Assertions
+require 'spec'
 
-require 'webrat'
-require 'factory_girl'
-require File.expand_path(File.join( RAILS_ROOT, "spec", "factories"))
-
-Cucumber::Rails.use_transactional_fixtures
- 
-Webrat.configure do |config|
-  config.mode = :rails
+if ENV['FIREWATIR']
+  require 'firewatir'
+  Browser = FireWatir::Firefox
+else
+  case RUBY_PLATFORM
+  when /darwin/
+    require 'firewatir'
+    Browser = FireWatir::Firefox
+    # require 'safariwatir'    
+    # Browser = Watir::Safari
+  when /win32|mingw/
+    require 'watir'
+    Browser = Watir::IE
+  when /java/
+    require 'celerity'
+    Browser = Celerity::Browser
+  else
+    raise "This platform is not supported (#{PLATFORM})"
+  end
 end
+ 
 
-require 'cucumber/rails/rspec'
-require 'webrat/core/matchers'
+ # "before all"
+ browser = Browser.new
+
+ Before do
+   @browser = browser
+   @environment = "http://github.com/"
+   sleep 3
+ end
+
+ # "after all"
+ at_exit do
+   # @browser.close
+ end
