@@ -31,5 +31,3 @@ config.gem 'rspec-rails', :lib => false, :version => ">= 1.1.99.12"
 config.gem 'thoughtbot-shoulda', :lib => false, :source => 'http://gems.github.com'
 config.gem 'thoughtbot-factory_girl', :lib => 'factory_girl', :source => 'http://gems.github.com'
 config.gem 'chrisk-fakeweb', :lib => false, :source => 'http://gems.github.com'
-config.gem 'cucumber'
-config.gem 'webrat', :lib => false, :version => ">= 0.4.2"

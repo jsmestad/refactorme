@@ -18,7 +18,7 @@ development:
   adapter: mysql
   encoding: utf8
   reconnect: false
-  database: refactor_me_dev
+  database: refactorme_dev
   pool: 5
   username: build_user
   password:
@@ -30,7 +30,7 @@ test:
   adapter: mysql
   encoding: utf8
   reconnect: false
-  database: refactor_me_test
+  database: refactorme_test
   pool: 5
   username: build_user
   password:
@@ -39,7 +39,10 @@ production:
   adapter: mysql
   encoding: utf8
   reconnect: false
-  database: refactor_me_production
+  database: refactorme_production
   pool: 5
   username: root
   password: 
+
+cucumber:
+  <<: *TEST
