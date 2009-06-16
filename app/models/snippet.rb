@@ -17,7 +17,10 @@ class Snippet < ActiveRecord::Base
   before_save :send_to_gist
 
   named_scope :latest, :conditions => ["displayed_on IS NOT NULL"], :limit => 5, :order => 'created_at DESC'
-  named_scope :current_month, lambda{{ :conditions => ["MONTH(displayed_on) = ?", Date.today.month], :order => 'displayed_on ASC' }}
+  named_scope :in_date_range, lambda { |date|
+    { :conditions => ["MONTH(displayed_on) = ? AND YEAR(displayed_on) = ?", date.month, date.year], 
+      :order => 'displayed_on ASC' }
+  }
   
   def self.set_daily_snippet
     todays = Snippet.first(:conditions => 'displayed_on IS NULL AND position IS NOT NULL', :order => 'position')

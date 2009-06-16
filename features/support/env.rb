@@ -1,6 +1,7 @@
 require 'test/unit/assertions'
 include Test::Unit::Assertions
 require 'spec'
+require 'factory_girl'
 
 if ENV['FIREWATIR']
   require 'firewatir'
@@ -10,8 +11,8 @@ else
   when /darwin/
     require 'firewatir'
     Browser = FireWatir::Firefox
-    # require 'safariwatir'    
-    # Browser = Watir::Safari
+    #require 'safariwatir'    
+    #Browser = Watir::Safari
   when /win32|mingw/
     require 'watir'
     Browser = Watir::IE
@@ -25,15 +26,15 @@ end
  
 
  # "before all"
- browser = Browser.new
+ browser ||= Browser.new
 
- Before do
-   @browser = browser
-   @environment = "http://github.com/"
+Before do
+  @browser = browser
+   @environment = "http://localhost:3000"
    sleep 3
  end
 
  # "after all"
  at_exit do
-   # @browser.close
+   # browser.close
  end

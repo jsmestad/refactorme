@@ -9,8 +9,9 @@ module NavigationHelpers
     case page_name
     
     when /the homepage/
-      '/'
-    
+      @environment + '/'
+    when /the calendar/
+      @environment + '/calendar'
     # Add more mappings here.
     # Here is a more fancy example:
     #
