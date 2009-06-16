@@ -3,7 +3,7 @@ class SnippetsController < ApplicationController
   before_filter :require_admin, :except => [:display, :new, :create]
   
   def display
-    date = Date.parse("#{params[:year]}-#{params[:month]}-#{params[:day]}")
+    date = Date.new(params[:year].to_i, params[:month].to_i, params[:day].to_i)
     @snippet = Snippet.find_by_displayed_on!(date)
     @refactors = @snippet.refactors.paginate :include => [:user], :page => params[:page], :order => 'created_at', :per_page => 6
   end
