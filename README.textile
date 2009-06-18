@@ -1,0 +1,13 @@
+h1. Refactor Me
+p. A site tightly integrated with Github and Gists. It is TodaysBigThing.com meets ruby refactoring.
+People can submit gists via url, text box, api, gem, etc and have it approved to be the refactor of the day.
+Its intent is also to feature snippets from the Rails 3 work done by Yehuda and other popular projects to see
+if code can be refactored in a cleaner way. Want to know more? Run script/server ;)
+
+h2. Getting Started
+
+p. Download the source code, run `rake db:bootstrap` and then launch the server. The default admin account is jstad:admin
+
+h2. Contribute
+
+p. View our pivotal project to see what you can help with: http://www.pivotaltracker.com/projects/19321
