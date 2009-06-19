@@ -1,0 +1,31 @@
+{ 
+    "before": "5aef35982fb2d34e9d9d4502f6ede1072793222d",
+    "repository": {
+      "url": "http://github.com/defunkt/github",
+      "name": "github",
+      "description": "You're lookin' at it.",
+      "watchers": 5,
+      "forks": 2,
+      "private": 1,
+      "owner": {
+        "email": "chris@ozmm.org",
+        "name": "defunkt" 
+      }
+    },
+    "commits": [
+      {
+        "id": "a6698f30b8235fed761f4dec5fa7d4ef15d0b682",
+        "url": "http://github.com/jsmestad/refactorme/commit/a6698f30b8235fed761f4dec5fa7d4ef15d0b682",
+        "author": {
+          "email": "chris@ozmm.org",
+          "name": "jsmestad" 
+      },
+      "message": "okay i give in",
+      "timestamp": "2008-02-15T14:57:17-08:00",
+      "modified": ["app/controllers/snippets_controller.rb"]
+      }
+    ],
+    "after": "de8251ff97ee194a289832576287d6f8ad74e3d0",
+    "ref": "refs/heads/master" 
+  }
+

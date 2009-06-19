@@ -1,0 +1,35 @@
+{
+  "commit": {
+    "message": "replace Date.parse with Date.new",
+    "added": [
+
+    ],
+    "removed": [
+
+    ],
+    "parents": [
+      {
+        "id": "c8f15d90594faa85bd85b5b314a9411bb6e5eaec"
+      }
+    ],
+    "modified": [
+      {
+        "diff": "@@ -3,7 +3,7 @@ class SnippetsController < ApplicationController\n   before_filter :require_admin, :except => [:display, :new, :create]\n   \n   def display\n-    date = Date.parse(\"#{params[:year]}-#{params[:month]}-#{params[:day]}\")\n+    date = Date.new(params[:year].to_i, params[:month].to_i, params[:day].to_i)\n     @snippet = Snippet.find_by_displayed_on!(date)\n     @refactors = @snippet.refactors.paginate :include => [:user], :page => params[:page], :order => 'created_at', :per_page => 6\n   end\n@@ -69,4 +69,4 @@ class SnippetsController < ApplicationController\n     end\n   end\n   \n-end\n\\ No newline at end of file\n+end",
+        "filename": "app\/controllers\/snippets_controller.rb"
+      }
+    ],
+    "author": {
+      "name": "jsmestad",
+      "email": "justin.smestad@gmail.com"
+    },
+    "url": "http:\/\/github.com\/jsmestad\/refactorme\/commit\/a6698f30b8235fed761f4dec5fa7d4ef15d0b682",
+    "id": "a6698f30b8235fed761f4dec5fa7d4ef15d0b682",
+    "committed_date": "2009-06-16T09:12:58-07:00",
+    "authored_date": "2009-06-16T09:12:58-07:00",
+    "tree": "5c825f8fe586739f4e664d23ec8771a9b7961f06",
+    "committer": {
+      "name": "jsmestad",
+      "email": "justin.smestad@gmail.com"
+    }
+  }
+}
