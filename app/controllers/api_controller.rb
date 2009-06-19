@@ -26,6 +26,7 @@ protected
       Snippet.send_later(:create, { :context => commit["message"],
                                   :gist_url => req['Location'],
                                   :title => "Posted from #{commit["url"]}"})
+      p "context: #{commit["message"]} : gist_url: #{req['Location']} : url: #{commit["url"]}"
     end
   end
 
