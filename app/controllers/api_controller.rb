@@ -20,13 +20,13 @@ protected
     @result = commit["url"].match(/http:\/\/\w+\.com\/(\w+)\/(\w+)\/commit\/(.+)/i)
     diff = JSON.parse(RestClient.get("http://github.com/api/v2/json/commits/show/#{@result[1]}/#{@result[2]}/#{@result[3]}"))
     diff["commit"]["modified"].each do |mod|
-      @raw_file = RestClient.get "#{commit["url"]}/#{mod["filename"]}"
+      @raw_file = RestClient.get "http://github.com/#{@result[1]}/#{@result[2]}/raw/#{@result[3]}/#{mod["filename"]}"
       url = URI.parse('http://gist.github.com/gists')
       req = Net::HTTP.post_form(url, { 'file_ext[gistfile1]' => 'rb', 'file_ext[gistfile1]' => "#{mod["filename"]}", 'file_contents[gistfile1]' => @raw_file })
       Snippet.send_later(:create, { :context => commit["message"],
                                   :gist_url => req['Location'],
                                   :title => "Posted from #{commit["url"]}"})
-      p "context: #{commit["message"]} : gist_url: #{req['Location']} : url: #{commit["url"]}"
+      Logger.info "API_GITHUB: context: #{commit["message"]} | gist_url: #{req['Location']} | url: #{commit["url"]}"
     end
   end
 
