@@ -7,8 +7,10 @@
   .refactor
   
     .code
-      %script{ :type => "text/javascript" } 
-        = "document.write('#{refactor.display}');"
+    - refactor.display.each do |file|
+      .gist
+        %script{ :type => "text/javascript" } 
+          = "document.write('#{file}</div>');"
     .description
       =h refactor.context
     = render :partial => 'shared/refactor_button'
