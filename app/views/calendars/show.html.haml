@@ -1,9 +1,1 @@
-.page_title
-  %h1= @date.strftime('%B')
-  = render_calendar(@calendar)
-
-.links
-  .next_month
-    = link_to 'Next Month ->', display_calendar_path(@date.next_month.year, @date.next_month.month), :class => 'month' unless @date.next_month.future?
-  .prev_month
-    = link_to '<- Previous Month', display_calendar_path(@date.last_month.year, @date.last_month.month), :class => 'month'
+= render 'calendar'
