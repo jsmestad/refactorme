@@ -9,13 +9,15 @@ Warden::Manager.serialize_from_session{ |klass, id| klass.find(id) }
 
 Warden::Strategies.add(:bcrypt) do
   def valid?
-    params[:username] || params[:password]
+    true
   end
-  
+
   def authenticate!
-    return fail! unless user = User.first(:username => params[:username])
-    
-    if user.crypted_password == params[:password]
+    return fail! unless user = User.find_by_login(params['session']['login'])
+    hash = params['session']['password'] 
+
+    hash << user.password_salt unless user.password_salt.nil?
+    if user.password == hash 
       success!(user)
     else
       errors.add(:login, "Username or Password are incorrect.")

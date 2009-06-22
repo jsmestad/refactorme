@@ -18,6 +18,7 @@ ActionController::Routing::Routes.draw do |map|
   map.signup '/signup', :controller => 'users', :action => 'new'
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
+  map.resources :sessions
   
   # User Activation
   map.register '/register/:activation_code', :controller => 'activations', :action => 'new'
