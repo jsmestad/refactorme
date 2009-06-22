@@ -14,11 +14,10 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :account, :controller => 'accounts'
   map.resources :users
   map.resources :password_resets, :as => 'forgot_password'
-  map.resource :user_session, :as => 'session'
   
   map.signup '/signup', :controller => 'users', :action => 'new'
-  map.login '/login', :controller => 'user_sessions', :action => 'new'
-  map.logout '/logout', :controller => 'user_sessions', :action => 'destroy'
+  map.login '/login', :controller => 'sessions', :action => 'new'
+  map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   
   # User Activation
   map.register '/register/:activation_code', :controller => 'activations', :action => 'new'
