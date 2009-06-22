@@ -1,6 +1,6 @@
 Rails.configuration.middleware.use RailsWarden::Manager do |manager|
-  manager.default_strategies :my_strategy
-  manager.failure_app = LoginController
+  manager.default_strategies :bcrypt
+  manager.failure_app = SessionsController
 end
 
 # Setup Session Serialization
@@ -15,10 +15,10 @@ Warden::Strategies.add(:bcrypt) do
   def authenticate!
     return fail! unless user = User.first(:username => params[:username])
     
-    if user.encrypted_password == params[:password]
+    if user.crypted_password == params[:password]
       success!(user)
     else
-      errors.add(:login, "Username or Password incorrect")
+      errors.add(:login, "Username or Password are incorrect.")
       fail!
     end
   end
