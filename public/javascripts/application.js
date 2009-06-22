@@ -84,6 +84,14 @@ jQuery(document).ready(function($) {
   function() {
     $(this).removeClass("rollover");
   });
+  
+  $('a.month').live('click', function() {
+    var self = $(this);
+    $.get(self.attr('href'), function(data) {
+      self.parents('.content').html(data);
+    });
+    return false;
+  });
 
 });
 
@@ -93,6 +101,8 @@ jQuery(document).ajaxSend(function(event, request, settings) {
   settings.data = settings.data || "";
   settings.data += (settings.data ? "&" : "") + "authenticity_token=" + encodeURIComponent(AUTH_TOKEN);
 });
+
+jQuery.ajaxSetup({ 'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")} });
 
 
 	

@@ -7,3 +7,4 @@
     = link_to 'Next Month ->', display_calendar_path(@date.next_month.year, @date.next_month.month), :class => 'month' unless @date.next_month.future?
   .prev_month
     = link_to '<- Previous Month', display_calendar_path(@date.last_month.year, @date.last_month.month), :class => 'month'
+
