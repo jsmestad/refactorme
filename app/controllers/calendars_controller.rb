@@ -5,7 +5,10 @@ class CalendarsController < ApplicationController
     @calendar = Calendar.find_by_date(@date)
     respond_to do |wants|
       wants.html { render :action => 'show' }
-      wants.atom { render :layout => false }
+      wants.atom do 
+        @snippets = Snippet.latest.all
+        render :layout => false
+      end
     end
   end
 
