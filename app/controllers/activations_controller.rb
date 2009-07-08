@@ -1,6 +1,5 @@
 class ActivationsController < ApplicationController
-  before_filter :require_no_user, :only => [:new, :create]
-  
+
   def new
     @user = User.find_using_perishable_token(params[:activation_code], 1.week) || (raise Exception)
     raise Exception if @user.active?
@@ -21,6 +20,9 @@ class ActivationsController < ApplicationController
       render :action => 'new'
     end
   rescue Exception => e
+     logger.info e.message
+     logger.info "\n"
+     logger.info e.backtrace.join("\n")
       flash[:error] = "Uh oh! An error occured. Please contact an admin."
       redirect_to root_url
   end

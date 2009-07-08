@@ -1,5 +1,5 @@
 class VotesController < ApplicationController
-  before_filter :require_user
+  before_filter :authenticate!
   before_filter :fetch_refactor
   
   def create

@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   include HoptoadNotifier::Catcher
   
   helper :all
+  helper_method :warden, :authenticated?
   protect_from_forgery
 
   filter_parameter_logging :password, :password_confirmation
@@ -46,6 +47,8 @@ class ApplicationController < ActionController::Base
         return false
       end
     end
+
+
 
     def redirect_back_or_default(default)
       redirect_to(session[:return_to] || default)

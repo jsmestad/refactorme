@@ -1,15 +1,16 @@
-- form_for :session, :url => { :action => "create" }, :html => {:class => 'login'} do |f|
+-form_tag sessions_url, :method => :post, :html => {:class => "login" } do 
+
   %h1 Login
   %p{:style => 'color: #999;font-size: 14px;'} 
     = "New User? #{link_to 'Go ahead and register.', signup_url}"
   
-  = f.error_messages
+  = error_message_on warden, :login
   %br
-  = f.label :login
-  = f.text_field :login
+  = label_tag :username
+  = text_field_tag :username
   %br
-  = f.label :password
-  = f.password_field :password
+  = label_tag :password
+  = password_field_tag :password
   %br
   %button{:type => 'submit'}
     Login

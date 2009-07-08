@@ -29,7 +29,7 @@ Rails::Initializer.run do |config|
   config.gem "daemons"
   config.gem "json_pure", :lib => 'json'
   config.gem "rest-client", :lib => 'rest_client'
-  config.gem "warden"
+  config.gem "warden", :version => "0.2.3"
   config.gem "rails_warden"
 
   # For GitHub Messaging Integration
