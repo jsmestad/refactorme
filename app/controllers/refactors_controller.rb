@@ -1,5 +1,5 @@
 class RefactorsController < ApplicationController
-  before_filter :require_user, :except => [:send_to_gist]
+  before_filter :authenticate!, :except => [:send_to_gist]
   before_filter :require_admin, :only => [:destroy]
   
   before_filter :fetch_snippet

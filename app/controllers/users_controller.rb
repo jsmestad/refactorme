@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_filter :require_no_user, :only => [:new, :create]
   
   def index
     @users = User.paginate :page => params[:page], :per_page => 30, :conditions => {:active => true}, :order => 'created_at DESC'

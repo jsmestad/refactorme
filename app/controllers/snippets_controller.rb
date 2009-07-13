@@ -1,5 +1,5 @@
 class SnippetsController < ApplicationController
-  before_filter :require_user, :only => [:new, :create]
+  before_filter :authenticate!, :only => [:new, :create]
   before_filter :require_admin, :except => [:display, :new, :create]
   
   def display
